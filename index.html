@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Net & Net | Débarras & Nettoyage Futuriste – Île-de-France</title>
+  <meta name="description" content="Net & Net – Débarras et nettoyage en Île-de-France. Devis gratuit sous 24h. Maison, appartement, cave, grenier, garage, locaux professionnels." />
+
+  <!-- Polices modernes : Space Grotesk & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            cyber: {
+              bg: '#050811',
+              surface: '#0A0F1D',
+              card: 'rgba(14, 21, 38, 0.65)',
+              cyan: '#00F5D4',
+              blue: '#00BBF9',
+              coral: '#FF4D6D',
+              coralDark: '#E03555',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg-deep: #050811;
+      --bg-surface: #0A0F1D;
+      --neon-cyan: #00F5D4;
+      --neon-blue: #00BBF9;
+      --neon-coral: #FF4D6D;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Grille architecturale cyber & halos ambiants */
+    .cyber-grid {
+      background-size: 48px 48px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse 85% 75% at 50% 25%, #000 50%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 25%, #000 50%, transparent 100%);
+    }
+
+    /* Barre de progression de lecture néon */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue), var(--neon-coral));
+      box-shadow: 0 0 12px rgba(0, 245, 212, 0.8);
+      z-index: 9999;
+      transition: width 0.08s ease-out;
+    }
+
+    /* Preloader futuriste */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: #050811;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+    }
+    #preloader.done {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loader-ring {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 245, 212, 0.15);
+      border-top-color: var(--neon-cyan);
+      border-right-color: var(--neon-blue);
+      animation: spin 0.9s linear infinite;
+      box-shadow: 0 0 25px rgba(0, 245, 212, 0.25);
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Textes dégradés */
+    .text-gradient-cyan {
+      background: linear-gradient(135deg, #00F5D4 0%, #00BBF9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-gradient-hero {
+      background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glassmorphism & Boîtes Interactives Spotlight + Tilt 3D */
+    .glass-panel {
+      background: rgba(12, 18, 34, 0.65);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .spotlight-card {
+      position: relative;
+      background: rgba(13, 20, 38, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    /* Halo dynamique qui suit la souris */
+    .spotlight-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(
+        450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(0, 245, 212, 0.14),
+        rgba(0, 187, 249, 0.05) 40%,
+        transparent 75%
+      );
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Bordure néon réactive au curseur */
+    .spotlight-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(
+        320px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(0, 245, 212, 0.65),
+        rgba(0, 187, 249, 0.25) 45%,
+        transparent 70%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .spotlight-card:hover::before,
+    .spotlight-card:hover::after {
+      opacity: 1;
+    }
+
+    .spotlight-card:hover {
+      border-color: rgba(0, 245, 212, 0.35);
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(0, 245, 212, 0.15);
+    }
+
+    .spotlight-content {
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Animations bidirectionnelles au scroll (Apparition & Disparition fluide) */
+    .scroll-node {
+      opacity: 0;
+      filter: blur(6px);
+      transform: translateY(36px) scale(0.96);
+      transition:
+        opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+
+    .scroll-node.from-left {
+      transform: translateX(-42px) scale(0.97);
+    }
+
+    .scroll-node.from-right {
+      transform: translateX(42px) scale(0.97);
+    }
+
+    /* État visible dans le viewport */
+    .scroll-node.in-view {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    /* État lorsqu'un élément sort par le haut du viewport */
+    .scroll-node.out-top {
+      opacity: 0.12;
+      filter: blur(4px);
+      transform: translateY(-28px) scale(0.97);
+    }
+
+    /* Navigation entre vues */
+    .page-view {
+      display: none;
+      animation: pageFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .page-view.active {
+      display: block;
+    }
+    @keyframes pageFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Boutons néon */
+    .btn-neon-coral {
+      background: linear-gradient(135deg, #FF4D6D 0%, #E03555 100%);
+      box-shadow: 0 8px 28px -4px rgba(255, 77, 109, 0.45);
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .btn-neon-coral:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 36px -2px rgba(255, 77, 109, 0.65);
+    }
+
+    .btn-neon-cyan {
+      background: rgba(0, 245, 212, 0.08);
+      border: 1px solid rgba(0, 245, 212, 0.35);
+      color: #00F5D4;
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .btn-neon-cyan:hover {
+      background: rgba(0, 245, 212, 0.16);
+      border-color: #00F5D4;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px -5px rgba(0, 245, 212, 0.3);
+    }
+
+    /* Inputs futuristes */
+    .cyber-input {
+      background: rgba(7, 11, 22, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #F8FAFC;
+      transition: all 0.25s ease;
+    }
+    .cyber-input:focus {
+      outline: none;
+      border-color: #00F5D4;
+      box-shadow: 0 0 0 3px rgba(0, 245, 212, 0.14);
+      background: rgba(10, 16, 32, 0.95);
+    }
+    .cyber-input::placeholder {
+      color: #64748B;
+    }
+
+    /* Pulse WhatsApp */
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      50% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+    }
+    .wa-float {
+      animation: waPulse 2.6s infinite;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050811;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1E293B;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00F5D4;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyber-cyan selection:text-cyber-bg relative">
+
+  <!-- Barre de progression de scroll -->
+  <div id="scroll-progress"></div>
+
+  <!-- Arrière-plan architectural fixe avec halos -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute inset-0 cyber-grid"></div>
+    <div class="absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full bg-cyber-cyan/10 blur-[130px]"></div>
+    <div class="absolute top-1/3 -right-48 w-[480px] h-[480px] rounded-full bg-cyber-blue/10 blur-[140px]"></div>
+    <div class="absolute bottom-0 left-1/3 w-[500px] h-[400px] rounded-full bg-cyber-coral/5 blur-[140px]"></div>
+  </div>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader-ring"></div>
+    <div class="font-display text-2xl font-bold tracking-wider text-white">
+      NET <span class="text-cyber-cyan">&</span> NET
+    </div>
+    <span class="text-xs uppercase tracking-[0.3em] text-slate-400">Initialisation...</span>
+  </div>
+
+  <!-- ==================== HEADER FLOTTANT ==================== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-4 sm:px-6">
+    <div id="header-container" class="max-w-7xl mx-auto rounded-2xl transition-all duration-300 px-5 py-3 flex items-center justify-between">
+      <!-- Logo typographique épuré -->
+      <button onclick="navigateTo('accueil')" class="text-left group focus:outline-none">
+        <span class="font-display text-xl sm:text-2xl font-bold tracking-tight text-white block leading-none group-hover:text-slate-100 transition-colors">
+          Net <span class="text-cyber-cyan">&</span> Net
+        </span>
+        <span class="text-[10px] uppercase tracking-[0.26em] text-cyber-cyan/80 font-semibold block mt-1">
+          Débarras & Nettoyage
+        </span>
+      </button>
+
+      <!-- Navigation Desktop -->
+      <nav class="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/[0.06] rounded-full px-2 py-1.5 backdrop-blur-md">
+        <button onclick="navigateTo('accueil')" data-nav="accueil" class="nav-link active px-4 py-2 rounded-full text-sm font-medium text-white bg-white/10 transition-all">Accueil</button>
+        <button onclick="navigateTo('services')" data-nav="services" class="nav-link px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Services</button>
+        <button onclick="navigateTo('galerie')" data-nav="galerie" class="nav-link px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Galerie</button>
+        <button onclick="navigateTo('apropos')" data-nav="apropos" class="nav-link px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">À propos</button>
+        <button onclick="navigateTo('contact')" data-nav="contact" class="nav-link px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">Contact</button>
+      </nav>
+
+      <!-- CTA Header & Burger -->
+      <div class="flex items-center gap-3">
+        <button onclick="navigateTo('devis')" class="hidden sm:inline-flex items-center gap-2 btn-neon-coral text-white text-sm font-semibold px-5 py-2.5 rounded-full">
+          <i class="fas fa-bolt text-xs"></i>
+          <span>Devis Gratuit</span>
+        </button>
+
+        <button id="burger-btn" onclick="toggleMobileMenu()" aria-label="Menu" class="lg:hidden w-11 h-11 rounded-xl glass-panel flex flex-col items-center justify-center gap-1.5 text-white hover:border-cyber-cyan/50 transition-colors">
+          <span id="b-line-1" class="w-5 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+          <span id="b-line-2" class="w-5 h-0.5 bg-cyber-cyan rounded-full transition-all duration-300"></span>
+          <span id="b-line-3" class="w-5 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MENU MOBILE PLEIN ÉCRAN ==================== -->
+  <div id="mobile-menu" class="fixed inset-0 z-40 bg-cyber-bg/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-4 opacity-0 pointer-events-none transition-all duration-300">
+    <button onclick="navigateTo('accueil'); toggleMobileMenu()" class="text-2xl font-display font-bold text-white hover:text-cyber-cyan py-2 transition-colors">Accueil</button>
+    <button onclick="navigateTo('services'); toggleMobileMenu()" class="text-2xl font-display font-bold text-white hover:text-cyber-cyan py-2 transition-colors">Services</button>
+    <button onclick="navigateTo('galerie'); toggleMobileMenu()" class="text-2xl font-display font-bold text-white hover:text-cyber-cyan py-2 transition-colors">Galerie</button>
+    <button onclick="navigateTo('apropos'); toggleMobileMenu()" class="text-2xl font-display font-bold text-white hover:text-cyber-cyan py-2 transition-colors">À propos</button>
+    <button onclick="navigateTo('contact'); toggleMobileMenu()" class="text-2xl font-display font-bold text-white hover:text-cyber-cyan py-2 transition-colors">Contact</button>
+    <button onclick="navigateTo('devis'); toggleMobileMenu()" class="mt-4 btn-neon-coral text-white font-semibold px-8 py-3.5 rounded-full text-lg flex items-center gap-2">
+      <i class="fas fa-file-invoice"></i> Devis Gratuit sous 24h
+    </button>
+  </div>
+
+  <!-- ==================== CONTENU PRINCIPAL ==================== -->
+  <main class="relative z-10">
+
+    <!-- ========================================================== -->
+    <!-- PAGE 1 : ACCUEIL                                           -->
+    <!-- ========================================================== -->
+    <section id="page-accueil" class="page-view active">
+      <!-- HERO SECTION -->
+      <div class="relative min-h-screen flex items-center pt-28 pb-20 px-4 sm:px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+          
+          <!-- Colonne Texte -->
+          <div class="lg:col-span-7 text-center lg:text-left">
+            <div class="scroll-node in-view inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan text-xs sm:text-sm font-semibold tracking-wide mb-7 shadow-[0_0_25px_rgba(0,245,212,0.15)]">
+              <span class="w-2 h-2 rounded-full bg-cyber-cyan animate-ping"></span>
+              <span>Devis gratuit sous 24h • Île-de-France</span>
+            </div>
+
+            <h1 class="scroll-node in-view font-display text-4xl sm:text-5xl lg:text-[4rem] font-bold leading-[1.08] tracking-tight mb-6">
+              <span class="text-gradient-hero">On libère vos espaces.</span><br />
+              <span class="text-white">Vous </span><span class="text-gradient-cyan">respirez</span><span class="text-cyber-coral">.</span>
+            </h1>
+
+            <p class="scroll-node in-view text-slate-300/90 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8 font-light">
+              Débarras et nettoyage professionnels en Île-de-France. Des tarifs compétitifs, une équipe fiable et un résultat impeccable.
+            </p>
+
+            <!-- Badges interactifs -->
+            <div class="scroll-node in-view flex flex-wrap justify-center lg:justify-start gap-2.5 mb-10">
+              <div class="px-3.5 py-2 rounded-xl glass-panel text-xs sm:text-sm text-slate-200 flex items-center gap-2 hover:border-cyber-cyan/40 transition-colors">
+                <i class="fas fa-check-circle text-cyber-cyan"></i> Devis sous 24h
+              </div>
+              <div class="px-3.5 py-2 rounded-xl glass-panel text-xs sm:text-sm text-slate-200 flex items-center gap-2 hover:border-cyber-cyan/40 transition-colors">
+                <i class="fas fa-shield-alt text-cyber-blue"></i> Équipe assurée
+              </div>
+              <div class="px-3.5 py-2 rounded-xl glass-panel text-xs sm:text-sm text-slate-200 flex items-center gap-2 hover:border-cyber-cyan/40 transition-colors">
+                <i class="fas fa-map-marker-alt text-cyber-coral"></i> Île-de-France
+              </div>
+              <div class="px-3.5 py-2 rounded-xl glass-panel text-xs sm:text-sm text-slate-200 flex items-center gap-2 hover:border-cyber-cyan/40 transition-colors">
+                <i class="fas fa-leaf text-cyber-cyan"></i> Tri & Recyclage
+              </div>
+            </div>
+
+            <!-- Boutons d'action -->
+            <div class="scroll-node in-view flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <button onclick="navigateTo('devis')" class="w-full sm:w-auto btn-neon-coral text-white font-semibold px-8 py-4 rounded-full text-base flex items-center justify-center gap-3">
+                <i class="fas fa-file-alt"></i>
+                <span>Demander un devis</span>
+              </button>
+              <button onclick="navigateTo('services')" class="w-full sm:w-auto btn-neon-cyan font-semibold px-8 py-4 rounded-full text-base flex items-center justify-center gap-3">
+                <span>Nos services</span>
+                <i class="fas fa-arrow-right text-sm"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Colonne Visuel Parallaxe & Carte HUD -->
+          <div class="lg:col-span-5 relative">
+            <div id="hero-parallax" class="relative group">
+              <!-- Halo derrière l'image -->
+              <div class="absolute -inset-2 bg-gradient-to-tr from-cyber-cyan/30 via-cyber-blue/20 to-cyber-coral/30 rounded-[28px] blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div class="relative rounded-[24px] overflow-hidden border border-white/15 shadow-2xl bg-cyber-surface">
+                <img 
+                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=85" 
+                  alt="Nettoyage professionnel Net & Net" 
+                  class="w-full h-[380px] sm:h-[450px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  onerror="this.src='https://placehold.co/800x600/0A0F1D/00F5D4?text=Net+%26+Net'"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-transparent to-transparent opacity-80"></div>
+                
+                <!-- Barre HUD intégrée -->
+                <div class="absolute bottom-4 left-4 right-4 glass-panel rounded-2xl p-4 flex items-center justify-between border border-white/15">
+                  <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-cyber-cyan/15 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan">
+                      <i class="fas fa-check-double text-lg"></i>
+                    </div>
+                    <div>
+                      <div class="font-display text-xl font-bold text-white leading-none">+500</div>
+                      <div class="text-xs text-slate-300 mt-1">Interventions réalisées</div>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyber-cyan bg-cyber-cyan/10 px-3 py-1 rounded-full border border-cyber-cyan/20">
+                      <i class="fas fa-star text-[10px]"></i> 98% Satisfaits
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION SERVICES (BOÎTES INTERACTIVES SPOTLIGHT + SCROLL REVEAL) -->
+      <div class="py-24 px-4 sm:px-6 relative">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center max-w-2xl mx-auto mb-16 scroll-node">
+            <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-cyber-cyan bg-cyber-cyan/10 border border-cyber-cyan/25 px-4 py-1.5 rounded-full mb-4">
+              Nos Services
+            </span>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Un service complet, <span class="text-gradient-cyan">un seul interlocuteur</span>
+            </h2>
+            <p class="text-slate-400 text-base sm:text-lg font-light">
+              Du simple nettoyage au grand débarras, nous nous adaptons à tous vos besoins.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Carte 1 -->
+            <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
+              <div class="spotlight-content">
+                <div class="w-14 h-14 rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/25 flex items-center justify-center text-cyber-cyan text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-cyan group-hover:text-cyber-bg transition-all duration-300 shadow-[0_0_20px_rgba(0,245,212,0.15)]">
+                  <i class="fas fa-home"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-cyan transition-colors">Débarras Maison</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Libérez votre maison de tout ce qui l'encombre. Tri, évacuation et recyclage inclus.</p>
+              </div>
+            </div>
+
+            <!-- Carte 2 -->
+            <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
+              <div class="spotlight-content">
+                <div class="w-14 h-14 rounded-2xl bg-cyber-blue/10 border border-cyber-blue/25 flex items-center justify-center text-cyber-blue text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-blue group-hover:text-cyber-bg transition-all duration-300 shadow-[0_0_20px_rgba(0,187,249,0.15)]">
+                  <i class="fas fa-building"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-blue transition-colors">Débarras Appartement</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Idéal avant une vente, une location ou un déménagement. Rapide et discret.</p>
+              </div>
+            </div>
+
+            <!-- Carte 3 -->
+            <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
+              <div class="spotlight-content">
+                <div class="w-14 h-14 rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/25 flex items-center justify-center text-cyber-cyan text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-cyan group-hover:text-cyber-bg transition-all duration-300">
+                  <i class="fas fa-boxes"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-cyan transition-colors">Cave & Grenier</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Nous vidons, trions et évacuons tout en respectant les normes de recyclage.</p>
+              </div>
+            </div>
+
+            <!-- Carte 4 -->
+            <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
+              <div class="spotlight-content">
+                <div class="w-14 h-14 rounded-2xl bg-cyber-coral/10 border border-cyber-coral/25 flex items-center justify-center text-cyber-coral text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-coral group-hover:text-white transition-all duration-300">
+                  <i class="fas fa-warehouse"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-coral transition-colors">Garage & Remise</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Nous vidons et nettoyons pour vous offrir un espace prêt à être réutilisé.</p>
+              </div>
+            </div>
+
+            <!-- Carte 5 -->
+            <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
+              <div class="spotlight-content">
+                <div class="w-14 h-14 rounded-2xl bg-cyber-blue/10 border border-cyber-blue/25 flex items-center justify-center text-cyber-blue text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-blue group-hover:text-cyber-bg transition-all duration-300">
+                  <i class="fas fa-briefcase"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-blue transition-colors">Locaux Professionnels</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Bureaux, commerces, entrepôts : intervention discrète et dans les délais.</p>
+              </div>
+            </div>
+
+            <!-- Carte 6 -->
+            <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
+              <div class="spotlight-content">
+                <div class="w-14 h-14 rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/25 flex items-center justify-center text-cyber-cyan text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-cyan group-hover:text-cyber-bg transition-all duration-300">
+                  <i class="fas fa-spray-can-sparkles"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-cyan transition-colors">Nettoyage Particulier</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Nettoyage en profondeur de votre logement : sols, vitres, sanitaires, cuisine.</p>
+              </div>
+            </div>
+
+            <!-- Carte 7 -->
+            <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
+              <div class="spotlight-content">
+                <div class="w-14 h-14 rounded-2xl bg-cyber-coral/10 border border-cyber-coral/25 flex items-center justify-center text-cyber-coral text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-coral group-hover:text-white transition-all duration-300">
+                  <i class="fas fa-industry"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-coral transition-colors">Nettoyage Professionnel</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Nettoyage régulier ou ponctuel de vos locaux, bureaux et espaces communs.</p>
+              </div>
+            </div>
+
+            <!-- Carte 8 -->
+            <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
+              <div class="spotlight-content">
+                <div class="w-14 h-14 rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/25 flex items-center justify-center text-cyber-cyan text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-cyan group-hover:text-cyber-bg transition-all duration-300">
+                  <i class="fas fa-recycle"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-cyan transition-colors">Tri & Recyclage</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">Chaque objet est orienté vers la filière de recyclage ou de don appropriée.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION COMMENT ÇA MARCHE (ÉTAPES INTERACTIVES) -->
+      <div class="py-24 px-4 sm:px-6 relative">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center max-w-2xl mx-auto mb-16 scroll-node">
+            <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-cyber-blue bg-cyber-blue/10 border border-cyber-blue/25 px-4 py-1.5 rounded-full mb-4">
+              Comment ça marche
+            </span>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+              Simple, rapide, <span class="text-gradient-cyan">efficace</span>
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="spotlight-card scroll-node p-7 text-center group">
+              <div class="spotlight-content">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-cyber-cyan/20 to-cyber-blue/10 border border-cyber-cyan/40 flex items-center justify-center font-display text-2xl font-bold text-cyber-cyan mb-5 group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(0,245,212,0.4)] transition-all">
+                  01
+                </div>
+                <h4 class="font-display text-lg font-bold text-white mb-2">Vous nous contactez</h4>
+                <p class="text-sm text-slate-400">Par téléphone, WhatsApp ou formulaire en ligne.</p>
+              </div>
+            </div>
+
+            <div class="spotlight-card scroll-node p-7 text-center group">
+              <div class="spotlight-content">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-cyber-blue/20 to-cyber-cyan/10 border border-cyber-blue/40 flex items-center justify-center font-display text-2xl font-bold text-cyber-blue mb-5 group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(0,187,249,0.4)] transition-all">
+                  02
+                </div>
+                <h4 class="font-display text-lg font-bold text-white mb-2">Devis sous 24h</h4>
+                <p class="text-sm text-slate-400">Nous analysons votre demande et vos photos, puis envoyons un devis gratuit.</p>
+              </div>
+            </div>
+
+            <div class="spotlight-card scroll-node p-7 text-center group">
+              <div class="spotlight-content">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-cyber-coral/20 to-cyber-blue/10 border border-cyber-coral/40 flex items-center justify-center font-display text-2xl font-bold text-cyber-coral mb-5 group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(255,77,109,0.4)] transition-all">
+                  03
+                </div>
+                <h4 class="font-display text-lg font-bold text-white mb-2">Intervention</h4>
+                <p class="text-sm text-slate-400">Notre équipe intervient à la date convenue avec le matériel adapté.</p>
+              </div>
+            </div>
+
+            <div class="spotlight-card scroll-node p-7 text-center group">
+              <div class="spotlight-content">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-cyber-cyan/20 to-cyber-blue/10 border border-cyber-cyan/40 flex items-center justify-center font-display text-2xl font-bold text-cyber-cyan mb-5 group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(0,245,212,0.4)] transition-all">
+                  04
+                </div>
+                <h4 class="font-display text-lg font-bold text-white mb-2">Espace libéré</h4>
+                <p class="text-sm text-slate-400">Vous retrouvez un espace propre, vide et prêt à l'emploi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPTEURS ANIMÉS -->
+      <div class="py-12 px-4 sm:px-6">
+        <div id="counters-section" class="max-w-6xl mx-auto glass-panel rounded-3xl p-8 sm:p-12 border border-cyber-cyan/20 shadow-[0_0_50px_rgba(0,245,212,0.06)] scroll-node">
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div>
+              <div class="counter-val font-display text-4xl sm:text-5xl font-bold text-gradient-cyan mb-2" data-target="500" data-prefix="+">0</div>
+              <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">Interventions réalisées</div>
+            </div>
+            <div>
+              <div class="counter-val font-display text-4xl sm:text-5xl font-bold text-white mb-2" data-target="98" data-suffix="%">0</div>
+              <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">De clients satisfaits</div>
+            </div>
+            <div>
+              <div class="counter-val font-display text-4xl sm:text-5xl font-bold text-cyber-blue mb-2" data-target="24" data-suffix="h">0</div>
+              <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">Pour un devis gratuit</div>
+            </div>
+            <div>
+              <div class="counter-val font-display text-4xl sm:text-5xl font-bold text-cyber-coral mb-2" data-target="8">0</div>
+              <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">Départements couverts</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TÉMOIGNAGES CARROUSEL -->
+      <div class="py-24 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-14 scroll-node">
+            <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-cyber-cyan bg-cyber-cyan/10 border border-cyber-cyan/25 px-4 py-1.5 rounded-full mb-4">
+              Témoignages
+            </span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Ils nous font confiance</h2>
+          </div>
+
+          <div class="relative scroll-node">
+            <div class="overflow-hidden rounded-3xl">
+              <div id="testimonial-track" class="flex transition-transform duration-500 ease-out">
+                <!-- Avis 1 -->
+                <div class="min-w-full px-2">
+                  <div class="spotlight-card p-8 sm:p-12 text-center">
+                    <div class="spotlight-content">
+                      <div class="flex justify-center gap-1.5 text-amber-400 text-base mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                      </div>
+                      <p class="text-lg sm:text-xl text-slate-200 italic leading-relaxed mb-8">
+                        "Équipe très professionnelle et ponctuelle. Ils ont vidé toute ma cave en une journée. Le résultat est impeccable, je recommande vivement !"
+                      </p>
+                      <div class="inline-flex items-center gap-3.5 text-left">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyber-cyan to-cyber-blue flex items-center justify-center font-display font-bold text-cyber-bg">MC</div>
+                        <div>
+                          <div class="font-display font-bold text-white">Marie C.</div>
+                          <div class="text-xs text-cyber-cyan">Versailles (78)</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Avis 2 -->
+                <div class="min-w-full px-2">
+                  <div class="spotlight-card p-8 sm:p-12 text-center">
+                    <div class="spotlight-content">
+                      <div class="flex justify-center gap-1.5 text-amber-400 text-base mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                      </div>
+                      <p class="text-lg sm:text-xl text-slate-200 italic leading-relaxed mb-8">
+                        "Devis reçu en moins de 24h comme promis. Tarifs très compétitifs et travail soigné. Mon appartement était prêt pour la vente en 2 jours."
+                      </p>
+                      <div class="inline-flex items-center gap-3.5 text-left">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyber-blue to-cyber-coral flex items-center justify-center font-display font-bold text-white">JP</div>
+                        <div>
+                          <div class="font-display font-bold text-white">Jean-Luc P.</div>
+                          <div class="text-xs text-cyber-blue">Créteil (94)</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Avis 3 -->
+                <div class="min-w-full px-2">
+                  <div class="spotlight-card p-8 sm:p-12 text-center">
+                    <div class="spotlight-content">
+                      <div class="flex justify-center gap-1.5 text-amber-400 text-base mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                      </div>
+                      <p class="text-lg sm:text-xl text-slate-200 italic leading-relaxed mb-8">
+                        "Nous avons fait appel à Net & Net pour le débarras de nos bureaux avant déménagement. Travail rapide, propre et sans stress. Merci !"
+                      </p>
+                      <div class="inline-flex items-center gap-3.5 text-left">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyber-cyan to-emerald-400 flex items-center justify-center font-display font-bold text-cyber-bg">SB</div>
+                        <div>
+                          <div class="font-display font-bold text-white">Sophie B.</div>
+                          <div class="text-xs text-cyber-cyan">Boulogne-Billancourt (92)</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Avis 4 -->
+                <div class="min-w-full px-2">
+                  <div class="spotlight-card p-8 sm:p-12 text-center">
+                    <div class="spotlight-content">
+                      <div class="flex justify-center gap-1.5 text-amber-400 text-base mb-6">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                      </div>
+                      <p class="text-lg sm:text-xl text-slate-200 italic leading-relaxed mb-8">
+                        "Service au top du début à la fin. Le nettoyage de mon garage et le tri ont été faits avec beaucoup de soin. Je les recontacterai sans hésiter."
+                      </p>
+                      <div class="inline-flex items-center gap-3.5 text-left">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyber-coral to-amber-500 flex items-center justify-center font-display font-bold text-white">AK</div>
+                        <div>
+                          <div class="font-display font-bold text-white">Ahmed K.</div>
+                          <div class="text-xs text-cyber-coral">Montreuil (93)</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contrôles Carrousel -->
+            <div class="flex items-center justify-center gap-4 mt-8">
+              <button onclick="prevTestimonial()" aria-label="Précédent" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-cyber-cyan hover:border-cyber-cyan/50 transition-all">
+                <i class="fas fa-chevron-left text-xs"></i>
+              </button>
+              <div id="testimonial-dots" class="flex items-center gap-2.5"></div>
+              <button onclick="nextTestimonial()" aria-label="Suivant" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-cyber-cyan hover:border-cyber-cyan/50 transition-all">
+                <i class="fas fa-chevron-right text-xs"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BANNIÈRE CTA FUTURISTE -->
+      <div class="pb-24 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto relative rounded-3xl overflow-hidden p-10 sm:p-16 text-center scroll-node border border-cyber-cyan/30 bg-gradient-to-br from-[#0D192E] via-[#091224] to-[#130D24]">
+          <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-cyber-cyan/20 blur-[90px] pointer-events-none"></div>
+          <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-cyber-coral/20 blur-[90px] pointer-events-none"></div>
+          
+          <div class="relative z-10 max-w-2xl mx-auto">
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
+              Prêt à libérer vos espaces ?
+            </h2>
+            <p class="text-slate-300 text-base sm:text-lg mb-8">
+              Obtenez votre devis gratuit en moins de 24h. Sans engagement.
+            </p>
+            <button onclick="navigateTo('devis')" class="btn-neon-coral text-white font-semibold px-9 py-4 rounded-full text-base inline-flex items-center gap-3">
+              <i class="fas fa-paper-plane"></i>
+              <span>Demander mon devis gratuit</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- PAGE 2 : SERVICES DÉTAILLÉS                                -->
+    <!-- ========================================================== -->
+    <section id="page-services" class="page-view">
+      <div class="pt-36 pb-16 px-4 sm:px-6 text-center relative">
+        <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-cyber-cyan bg-cyber-cyan/10 border border-cyber-cyan/25 px-4 py-1.5 rounded-full mb-4">
+          Expertise & Précision
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-white mb-4">Nos Services</h1>
+        <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto">Débarras & nettoyage pour particuliers et professionnels en Île-de-France</p>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pb-24 space-y-12">
+        <!-- Service 1 -->
+        <div class="spotlight-card scroll-node p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 overflow-hidden rounded-2xl border border-white/10">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Débarras maison et appartement" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="lg:col-span-7 spotlight-content">
+            <span class="text-xs font-semibold uppercase tracking-widest text-cyber-cyan">01 • Habitation</span>
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1 mb-4">Débarras Maison & Appartement</h3>
+            <p class="text-slate-300 leading-relaxed mb-6">
+              Déménagement, succession, vente ou simple envie d'espace : nous vidons et nettoyons votre logement en profondeur.
+            </p>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Vidage complet ou partiel</li>
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Tri et évacuation des encombrants</li>
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Recyclage et don des objets réutilisables</li>
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Nettoyage final inclus</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="spotlight-card scroll-node p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 lg:order-1 order-2 spotlight-content">
+            <span class="text-xs font-semibold uppercase tracking-widest text-cyber-blue">02 • Annexes & Stockage</span>
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1 mb-4">Cave, Grenier & Garage</h3>
+            <p class="text-slate-300 leading-relaxed mb-6">
+              Ces espaces accumulent des années d'objets. Nous les vidons, trions et nettoyons pour un résultat prêt à l'emploi.
+            </p>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-blue"></i> Vidage complet de l'espace</li>
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-blue"></i> Tri sélectif des matériaux</li>
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-blue"></i> Évacuation en filière agréée</li>
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-blue"></i> Nettoyage des sols et surfaces</li>
+            </ul>
+          </div>
+          <div class="lg:col-span-5 lg:order-2 order-1 overflow-hidden rounded-2xl border border-white/10">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Cave grenier garage" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="spotlight-card scroll-node p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 overflow-hidden rounded-2xl border border-white/10">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Locaux professionnels" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="lg:col-span-7 spotlight-content">
+            <span class="text-xs font-semibold uppercase tracking-widest text-cyber-coral">03 • Entreprises</span>
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1 mb-4">Locaux Professionnels</h3>
+            <p class="text-slate-300 leading-relaxed mb-6">
+              Bureaux, commerces, entrepôts : nous gérons le débarras de vos espaces pro en toute discrétion.
+            </p>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-coral"></i> Intervention hors horaires d'ouverture possible</li>
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-coral"></i> Gestion des déchets professionnels</li>
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-coral"></i> Intervention ponctuelle ou contrat</li>
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-coral"></i> Facturation adaptée aux entreprises</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="spotlight-card scroll-node p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 lg:order-1 order-2 spotlight-content">
+            <span class="text-xs font-semibold uppercase tracking-widest text-cyber-cyan">04 • Propreté Haute Précision</span>
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mt-1 mb-4">Nettoyage Particulier & Professionnel</h3>
+            <p class="text-slate-300 leading-relaxed mb-6">
+              Un intérieur ou un local impeccable sans effort, en prestation ponctuelle ou régulière.
+            </p>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Nettoyage complet (sols, vitres, sanitaires, cuisine)</li>
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Nettoyage après travaux</li>
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Nettoyage de fin de bail</li>
+              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Produits écologiques disponibles</li>
+            </ul>
+          </div>
+          <div class="lg:col-span-5 lg:order-2 order-1 overflow-hidden rounded-2xl border border-white/10">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Nettoyage particulier et professionnel" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="glass-panel rounded-3xl p-10 text-center border border-cyber-cyan/25 scroll-node">
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mb-3">Un projet de débarras ou de nettoyage ?</h2>
+          <p class="text-slate-300 mb-7">Contactez-nous pour un devis gratuit et sans engagement sous 24h.</p>
+          <button onclick="navigateTo('devis')" class="btn-neon-coral text-white font-semibold px-8 py-4 rounded-full inline-flex items-center gap-2.5">
+            <i class="fas fa-paper-plane"></i> Obtenir mon devis
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- PAGE 3 : GALERIE PHOTOS                                    -->
+    <!-- ========================================================== -->
+    <section id="page-galerie" class="page-view">
+      <div class="pt-36 pb-14 px-4 sm:px-6 text-center">
+        <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-cyber-cyan bg-cyber-cyan/10 border border-cyber-cyan/25 px-4 py-1.5 rounded-full mb-4">
+          Nos Réalisations
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-white mb-3">Galerie Photos</h1>
+        <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto">Découvrez nos interventions en Île-de-France. Cliquez sur une photo pour l'agrandir.</p>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pb-24">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Nettoyage professionnel – Paris" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Nettoyage professionnel – Paris</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Débarras maison – Versailles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Débarras maison – Versailles</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Vidage cave – Créteil" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Vidage cave – Créteil</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Bureaux – Boulogne" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Bureaux – Boulogne</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80" alt="Nettoyage cuisine – Montreuil" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Nettoyage cuisine – Montreuil</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="Intérieur rénové – Nanterre" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Intérieur rénové – Nanterre</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Notre équipe en action" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Notre équipe en action</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80" alt="Nettoyage sols – Levallois" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Nettoyage sols – Levallois</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+            </div>
+          </div>
+
+          <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1527515637462-cff94d1184a?w=800&q=80" alt="Rangement & tri – Ivry" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Rangement & tri – Ivry</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- PAGE 4 : À PROPOS                                          -->
+    <!-- ========================================================== -->
+    <section id="page-apropos" class="page-view">
+      <div class="pt-36 pb-14 px-4 sm:px-6 text-center">
+        <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-cyber-cyan bg-cyber-cyan/10 border border-cyber-cyan/25 px-4 py-1.5 rounded-full mb-4">
+          Notre ADN
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-white mb-3">À Propos</h1>
+        <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto">Notre histoire, nos valeurs, notre engagement</p>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pb-24 space-y-24">
+        <!-- Histoire -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-6 relative scroll-node from-left">
+            <div class="rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=850&q=80" alt="Équipe Net & Net" class="w-full h-[380px] object-cover" />
+            </div>
+            <div class="absolute -bottom-5 right-4 sm:right-8 glass-panel border border-cyber-cyan/40 rounded-2xl px-6 py-4 shadow-[0_10px_30px_rgba(0,245,212,0.2)]">
+              <div class="font-display text-2xl font-bold text-cyber-cyan">+500</div>
+              <div class="text-xs text-slate-300">Interventions réussies</div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 scroll-node from-right">
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-5">
+              Une équipe passionnée au service de <span class="text-gradient-cyan">vos espaces</span>
+            </h2>
+            <p class="text-slate-300 leading-relaxed mb-4">
+              <strong class="text-white">Net & Net</strong> est née d'un constat simple : beaucoup de personnes ont besoin de libérer un espace, mais n'ont ni le temps, ni les moyens, ni l'envie de s'en occuper seules.
+            </p>
+            <p class="text-slate-300 leading-relaxed mb-4">
+              Notre mission ? Rendre ce processus simple, rapide et sans stress. Nous intervenons partout en Île-de-France avec une équipe formée, équipée et assurée.
+            </p>
+            <p class="text-slate-300 leading-relaxed mb-8">
+              Chaque intervention est unique : nous prenons le temps de comprendre votre besoin et de réaliser un travail soigné, dans le respect de votre bien et de l'environnement.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div class="glass-panel rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-white">
+                <i class="fas fa-check-circle text-cyber-cyan"></i> Devis gratuit sous 24h
+              </div>
+              <div class="glass-panel rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-white">
+                <i class="fas fa-check-circle text-cyber-cyan"></i> Équipe assurée
+              </div>
+              <div class="glass-panel rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-white">
+                <i class="fas fa-check-circle text-cyber-cyan"></i> Tri & recyclage
+              </div>
+              <div class="glass-panel rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-white">
+                <i class="fas fa-check-circle text-cyber-cyan"></i> Tarifs compétitifs
+              </div>
+              <div class="glass-panel rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-white">
+                <i class="fas fa-check-circle text-cyber-cyan"></i> Ponctualité garantie
+              </div>
+              <div class="glass-panel rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-white">
+                <i class="fas fa-check-circle text-cyber-cyan"></i> Satisfait ou refait
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zone d'intervention -->
+        <div class="spotlight-card p-8 sm:p-12 scroll-node">
+          <div class="spotlight-content grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-6">
+              <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-cyber-blue bg-cyber-blue/10 border border-cyber-blue/25 px-4 py-1.5 rounded-full mb-4">
+                Zone d'intervention
+              </span>
+              <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-4">Toute l'Île-de-France</h2>
+              <p class="text-slate-300 leading-relaxed mb-6">
+                Nous couvrons Paris et toute la région francilienne. Un doute sur votre secteur ? Contactez-nous, nous trouvons toujours une solution.
+              </p>
+
+              <div class="grid grid-cols-2 gap-3 text-sm">
+                <div class="flex items-center gap-2.5 text-slate-200 bg-white/[0.03] px-3.5 py-2.5 rounded-xl border border-white/5">
+                  <span class="w-2 h-2 rounded-full bg-cyber-cyan"></span> Paris (75)
+                </div>
+                <div class="flex items-center gap-2.5 text-slate-200 bg-white/[0.03] px-3.5 py-2.5 rounded-xl border border-white/5">
+                  <span class="w-2 h-2 rounded-full bg-cyber-cyan"></span> Hauts-de-Seine (92)
+                </div>
+                <div class="flex items-center gap-2.5 text-slate-200 bg-white/[0.03] px-3.5 py-2.5 rounded-xl border border-white/5">
+                  <span class="w-2 h-2 rounded-full bg-cyber-blue"></span> Seine-Saint-Denis (93)
+                </div>
+                <div class="flex items-center gap-2.5 text-slate-200 bg-white/[0.03] px-3.5 py-2.5 rounded-xl border border-white/5">
+                  <span class="w-2 h-2 rounded-full bg-cyber-blue"></span> Val-de-Marne (94)
+                </div>
+                <div class="flex items-center gap-2.5 text-slate-200 bg-white/[0.03] px-3.5 py-2.5 rounded-xl border border-white/5">
+                  <span class="w-2 h-2 rounded-full bg-cyber-coral"></span> Yvelines (78)
+                </div>
+                <div class="flex items-center gap-2.5 text-slate-200 bg-white/[0.03] px-3.5 py-2.5 rounded-xl border border-white/5">
+                  <span class="w-2 h-2 rounded-full bg-cyber-coral"></span> Essonne (91)
+                </div>
+                <div class="flex items-center gap-2.5 text-slate-200 bg-white/[0.03] px-3.5 py-2.5 rounded-xl border border-white/5">
+                  <span class="w-2 h-2 rounded-full bg-cyber-cyan"></span> Val-d'Oise (95)
+                </div>
+                <div class="flex items-center gap-2.5 text-slate-200 bg-white/[0.03] px-3.5 py-2.5 rounded-xl border border-white/5">
+                  <span class="w-2 h-2 rounded-full bg-cyber-cyan"></span> Seine-et-Marne (77)
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:col-span-6 overflow-hidden rounded-2xl border border-white/15">
+              <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=850&q=80" alt="Paris – Île-de-France" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- PAGE 5 : CONTACT                                           -->
+    <!-- ========================================================== -->
+    <section id="page-contact" class="page-view">
+      <div class="pt-36 pb-14 px-4 sm:px-6 text-center">
+        <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-cyber-cyan bg-cyber-cyan/10 border border-cyber-cyan/25 px-4 py-1.5 rounded-full mb-4">
+          Ligne Directe
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-white mb-3">Contact</h1>
+        <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto">Une question ? Un projet ? Parlons-en.</p>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-24">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <!-- Téléphone -->
+          <div class="spotlight-card tilt-card scroll-node p-8 text-center group">
+            <div class="spotlight-content">
+              <div class="w-16 h-16 mx-auto rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan text-2xl mb-5 group-hover:scale-110 transition-transform">
+                <i class="fas fa-phone"></i>
+              </div>
+              <h4 class="font-display text-xl font-bold text-white mb-2">Téléphone</h4>
+              <p class="text-sm text-slate-400 mb-4">Du lundi au samedi, 8h – 20h</p>
+              <a href="tel:+33758695823" class="inline-block font-display text-lg font-bold text-cyber-cyan hover:underline">
+                07 58 69 58 23
+              </a>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="spotlight-card tilt-card scroll-node p-8 text-center group">
+            <div class="spotlight-content">
+              <div class="w-16 h-16 mx-auto rounded-2xl bg-cyber-blue/10 border border-cyber-blue/30 flex items-center justify-center text-cyber-blue text-2xl mb-5 group-hover:scale-110 transition-transform">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h4 class="font-display text-xl font-bold text-white mb-2">Email</h4>
+              <p class="text-sm text-slate-400 mb-4">Réponse sous 24h ouvrées</p>
+              <a href="mailto:contact@net-et-net.fr" class="inline-block font-display text-lg font-bold text-cyber-blue hover:underline">
+                contact@net-et-net.fr
+              </a>
+            </div>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="spotlight-card tilt-card scroll-node p-8 text-center group">
+            <div class="spotlight-content">
+              <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-500/15 border border-emerald-400/35 flex items-center justify-center text-emerald-400 text-2xl mb-5 group-hover:scale-110 transition-transform">
+                <i class="fab fa-whatsapp"></i>
+              </div>
+              <h4 class="font-display text-xl font-bold text-white mb-2">WhatsApp</h4>
+              <p class="text-sm text-slate-400 mb-4">Envoyez-nous vos photos directement</p>
+              <a href="https://wa.me/33758695823" target="_blank" class="inline-block font-display text-lg font-bold text-emerald-400 hover:underline">
+                Discuter sur WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Devis -->
+        <div class="glass-panel rounded-3xl p-10 text-center border border-cyber-cyan/25 scroll-node">
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mb-3">Besoin d'un devis ?</h2>
+          <p class="text-slate-300 mb-7">Remplissez notre formulaire avec photos : réponse garantie sous 24h.</p>
+          <button onclick="navigateTo('devis')" class="btn-neon-coral text-white font-semibold px-8 py-4 rounded-full inline-flex items-center gap-2.5">
+            <i class="fas fa-file-invoice"></i> Formulaire de devis
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- PAGE 6 : FORMULAIRE DE DEVIS GRATUIT                       -->
+    <!-- ========================================================== -->
+    <section id="page-devis" class="page-view">
+      <div class="pt-36 pb-24 px-4 sm:px-6">
+        <div class="max-w-3xl mx-auto">
+          <div class="text-center mb-10 scroll-node">
+            <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-cyber-cyan bg-cyber-cyan/10 border border-cyber-cyan/25 px-4 py-1.5 rounded-full mb-4">
+              Devis Gratuit sous 24h
+            </span>
+            <h1 class="font-display text-3xl sm:text-5xl font-bold text-white mb-3">Demandez votre devis gratuit</h1>
+            <p class="text-slate-400 text-base sm:text-lg">Joignez des photos de l'espace concerné pour un devis précis. Réponse sous 24h.</p>
+          </div>
+
+          <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl scroll-node">
+            <form id="quote-form" novalidate>
+              <div id="form-fields-wrapper" class="space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="f-nom" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                      Nom complet <span class="text-cyber-coral">*</span>
+                    </label>
+                    <input type="text" id="f-nom" placeholder="Votre nom" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
+                  </div>
+                  <div>
+                    <label for="f-tel" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                      Téléphone <span class="text-cyber-coral">*</span>
+                    </label>
+                    <input type="tel" id="f-tel" placeholder="06 12 34 56 78" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="f-email" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                      Email <span class="text-cyber-coral">*</span>
+                    </label>
+                    <input type="email" id="f-email" placeholder="votre@email.fr" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
+                  </div>
+                  <div>
+                    <label for="f-ville" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                      Ville / Code postal <span class="text-cyber-coral">*</span>
+                    </label>
+                    <input type="text" id="f-ville" placeholder="75011 Paris" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="f-type" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                      Type de prestation <span class="text-cyber-coral">*</span>
+                    </label>
+                    <select id="f-type" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm">
+                      <option value="">-- Sélectionnez --</option>
+                      <option>Débarras maison</option>
+                      <option>Débarras appartement</option>
+                      <option>Débarras cave / grenier</option>
+                      <option>Débarras garage</option>
+                      <option>Débarras locaux professionnels</option>
+                      <option>Nettoyage particulier</option>
+                      <option>Nettoyage professionnel</option>
+                      <option>Débarras + Nettoyage</option>
+                      <option>Autre</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="f-surf" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                      Surface approximative (m²)
+                    </label>
+                    <input type="text" id="f-surf" placeholder="Ex : 80" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="f-msg" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                    Décrivez votre besoin
+                  </label>
+                  <textarea id="f-msg" rows="4" placeholder="Décrivez l'espace, le volume estimé, l'accès, vos délais..." class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm resize-y"></textarea>
+                </div>
+
+                <!-- Zone d'upload de photos -->
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                    Photos de l'espace <span class="text-cyber-coral">*</span>
+                    <span class="normal-case font-normal text-slate-400">(obligatoire pour un devis précis)</span>
+                  </label>
+                  <div id="drop-zone" class="relative rounded-2xl border-2 border-dashed border-white/15 hover:border-cyber-cyan/60 bg-white/[0.02] hover:bg-cyber-cyan/[0.04] transition-all p-8 text-center cursor-pointer group">
+                    <input type="file" id="f-photos" accept="image/*" multiple class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-cyber-cyan/10 border border-cyber-cyan/25 flex items-center justify-center text-cyber-cyan text-xl mb-3 group-hover:scale-110 transition-transform">
+                      <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <p class="text-sm text-slate-200">
+                      Glissez vos photos ici ou <strong class="text-cyber-cyan">cliquez pour parcourir</strong>
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1">JPG, PNG — jusqu'à 8 photos</p>
+                  </div>
+
+                  <!-- Prévisualisations -->
+                  <div id="photo-previews" class="flex flex-wrap gap-3 mt-4 justify-center"></div>
+
+                  <p id="err-photos" class="hidden text-xs text-cyber-coral mt-2 flex items-center gap-1.5">
+                    <i class="fas fa-exclamation-circle"></i> Veuillez ajouter au moins une photo de l'espace à débarrasser ou nettoyer.
+                  </p>
+                </div>
+
+                <p id="err-fields" class="hidden text-xs text-cyber-coral flex items-center gap-1.5">
+                  <i class="fas fa-exclamation-circle"></i> Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*).
+                </p>
+
+                <button type="submit" class="w-full btn-neon-coral text-white font-semibold py-4 rounded-full text-base flex items-center justify-center gap-2.5 mt-2">
+                  <i class="fas fa-paper-plane"></i>
+                  <span>Envoyer ma demande de devis</span>
+                </button>
+
+                <p class="text-center text-xs text-slate-400 flex items-center justify-center gap-1.5 pt-1">
+                  <i class="fas fa-lock text-cyber-cyan"></i> Vos données restent confidentielles. Devis 100% gratuit et sans engagement.
+                </p>
+              </div>
+
+              <!-- Écran de confirmation -->
+              <div id="form-success" class="hidden text-center py-10 px-4">
+                <div class="w-20 h-20 mx-auto rounded-full bg-cyber-cyan/15 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-3xl mb-6 shadow-[0_0_30px_rgba(0,245,212,0.3)]">
+                  <i class="fas fa-check"></i>
+                </div>
+                <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mb-3">Demande envoyée !</h3>
+                <p class="text-slate-300 max-w-md mx-auto leading-relaxed mb-8">
+                  Merci pour votre demande. Notre équipe analyse vos photos et vous recontacte <strong class="text-cyber-cyan">sous 24h</strong>.<br /><br />
+                  Un doute ? Appelez-nous au <a href="tel:+33758695823" class="text-cyber-cyan font-semibold hover:underline">07 58 69 58 23</a> ou écrivez-nous sur <a href="https://wa.me/33758695823" target="_blank" class="text-emerald-400 font-semibold hover:underline">WhatsApp</a>.
+                </p>
+                <button type="button" onclick="resetQuoteForm()" class="btn-neon-cyan text-sm font-semibold px-6 py-3 rounded-full">
+                  Faire une nouvelle demande
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== LIGHTBOX GALERIE ==================== -->
+  <div id="lightbox" onclick="closeLightbox()" class="fixed inset-0 z-50 bg-cyber-bg/90 hidden items-center justify-center p-4 sm:p-8">
+    <button onclick="closeLightbox()" aria-label="Fermer" class="absolute top-6 right-6 w-11 h-11 rounded-full glass-panel text-white hover:text-cyber-coral flex items-center justify-center text-xl transition-colors">
+      <i class="fas fa-times"></i>
+    </button>
+    <div onclick="event.stopPropagation()" class="max-w-5xl max-h-[88vh] flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="Agrandissement" class="max-h-[78vh] w-auto rounded-2xl border border-white/15 shadow-2xl" />
+      <p id="lightbox-caption" class="font-display text-white text-base sm:text-lg mt-4"></p>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="relative z-10 border-t border-white/[0.08] bg-[#04060E]/90 backdrop-blur-xl pt-16 pb-10 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/[0.07]">
+        <!-- Marque -->
+        <div class="lg:col-span-5">
+          <button onclick="navigateTo('accueil')" class="text-left mb-4 block focus:outline-none">
+            <span class="font-display text-xl font-bold text-white block leading-none">Net <span class="text-cyber-cyan">&</span> Net</span>
+            <span class="text-[10px] uppercase tracking-[0.26em] text-cyber-cyan/80 font-semibold block mt-1">
+              Débarras & Nettoyage
+            </span>
+          </button>
+          <p class="text-sm text-slate-400 max-w-sm leading-relaxed">
+            On libère vos espaces, vous respirez. Débarras et nettoyage professionnels dans toute l'Île-de-France. Devis gratuit sous 24h.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="lg:col-span-2">
+          <h4 class="font-display text-sm font-bold uppercase tracking-wider text-white mb-4">Navigation</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><button onclick="navigateTo('accueil')" class="hover:text-cyber-cyan transition-colors">Accueil</button></li>
+            <li><button onclick="navigateTo('services')" class="hover:text-cyber-cyan transition-colors">Services</button></li>
+            <li><button onclick="navigateTo('galerie')" class="hover:text-cyber-cyan transition-colors">Galerie</button></li>
+            <li><button onclick="navigateTo('apropos')" class="hover:text-cyber-cyan transition-colors">À propos</button></li>
+            <li><button onclick="navigateTo('devis')" class="hover:text-cyber-cyan transition-colors">Devis gratuit</button></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="lg:col-span-2">
+          <h4 class="font-display text-sm font-bold uppercase tracking-wider text-white mb-4">Services</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><button onclick="navigateTo('services')" class="hover:text-cyber-cyan transition-colors">Débarras maison</button></li>
+            <li><button onclick="navigateTo('services')" class="hover:text-cyber-cyan transition-colors">Cave, grenier, garage</button></li>
+            <li><button onclick="navigateTo('services')" class="hover:text-cyber-cyan transition-colors">Locaux professionnels</button></li>
+            <li><button onclick="navigateTo('services')" class="hover:text-cyber-cyan transition-colors">Nettoyage</button></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="lg:col-span-3">
+          <h4 class="font-display text-sm font-bold uppercase tracking-wider text-white mb-4">Contact</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li>
+              <a href="tel:+33758695823" class="hover:text-cyber-cyan transition-colors flex items-center gap-2.5">
+                <i class="fas fa-phone text-cyber-cyan w-4"></i> 07 58 69 58 23
+              </a>
+            </li>
+            <li>
+              <a href="mailto:contact@net-et-net.fr" class="hover:text-cyber-cyan transition-colors flex items-center gap-2.5">
+                <i class="fas fa-envelope text-cyber-blue w-4"></i> contact@net-et-net.fr
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/33758695823" target="_blank" class="hover:text-emerald-400 transition-colors flex items-center gap-2.5">
+                <i class="fab fa-whatsapp text-emerald-400 w-4"></i> WhatsApp
+              </a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fas fa-map-marker-alt text-cyber-coral w-4"></i> Île-de-France
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <span>© 2026 Net & Net — Tous droits réservés | net-et-net.fr</span>
+        <div class="flex items-center gap-3">
+          <a href="https://wa.me/33758695823" target="_blank" title="WhatsApp" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:border-emerald-400/40 transition-all">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="tel:+33758695823" title="Téléphone" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-cyber-cyan hover:border-cyber-cyan/40 transition-all">
+            <i class="fas fa-phone"></i>
+          </a>
+          <a href="mailto:contact@net-et-net.fr" title="Email" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-cyber-blue hover:border-cyber-blue/40 transition-all">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== BOUTON WHATSAPP FLOTTANT ==================== -->
+  <a href="https://wa.me/33758695823" target="_blank" aria-label="Discuter sur WhatsApp" class="wa-float fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center text-2xl shadow-lg hover:scale-110 transition-transform group">
+    <i class="fab fa-whatsapp"></i>
+    <span class="hidden sm:block absolute right-16 px-3.5 py-1.5 rounded-xl glass-panel text-xs font-medium text-white whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity border border-white/15">
+      Une question ? Écrivez-nous !
+    </span>
+  </a>
+
+  <!-- ==================== BOUTON RETOUR EN HAUT ==================== -->
+  <button id="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Retour en haut" class="fixed bottom-24 right-7 z-40 w-11 h-11 rounded-full glass-panel text-cyber-cyan border border-cyber-cyan/30 flex items-center justify-center opacity-0 pointer-events-none translate-y-3 transition-all duration-300 hover:bg-cyber-cyan hover:text-cyber-bg">
+    <i class="fas fa-arrow-up text-sm"></i>
+  </button>
+
+  <!-- ==================== SCRIPTS INTERACTIFS ==================== -->
+  <script>
+    // 1. Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const pre = document.getElementById('preloader');
+        if (pre) pre.classList.add('done');
+      }, 450);
+      initScrollAnimations();
+    });
+
+    // 2. Navigation entre les 6 vues
+    function navigateTo(pageId) {
+      document.querySelectorAll('.page-view').forEach(section => {
+        section.classList.remove('active');
+      });
+      const target = document.getElementById('page-' + pageId);
+      if (target) target.classList.add('active');
+
+      // Mise à jour de l'état actif dans la barre de navigation
+      document.querySelectorAll('.nav-link').forEach(btn => {
+        const isActive = btn.dataset.nav === pageId;
+        btn.classList.toggle('active', isActive);
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('bg-white/10', isActive);
+        btn.classList.toggle('text-slate-300', !isActive);
+      });
+
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      setTimeout(() => {
+        initScrollAnimations();
+      }, 60);
+    }
+
+    // 3. Menu Mobile
+    let mobileMenuOpen = false;
+    function toggleMobileMenu() {
+      mobileMenuOpen = !mobileMenuOpen;
+      const menu = document.getElementById('mobile-menu');
+      const l1 = document.getElementById('b-line-1');
+      const l2 = document.getElementById('b-line-2');
+      const l3 = document.getElementById('b-line-3');
+
+      if (mobileMenuOpen) {
+        menu.classList.remove('opacity-0', 'pointer-events-none');
+        l1.style.transform = 'translateY(8px) rotate(45deg)';
+        l2.style.opacity = '0';
+        l3.style.transform = 'translateY(-8px) rotate(-45deg)';
+      } else {
+        menu.classList.add('opacity-0', 'pointer-events-none');
+        l1.style.transform = '';
+        l2.style.opacity = '1';
+        l3.style.transform = '';
+      }
+    }
+
+    // 4. Barre de progression au scroll, Header glass, Parallaxe & Bouton retour en haut
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById('scroll-progress').style.width = progress + '%';
+
+      // Effet glassmorphism sur le header au défilement
+      const headerContainer = document.getElementById('header-container');
+      if (scrollTop > 40) {
+        headerContainer.classList.add('glass-panel', 'shadow-[0_10px_40px_rgba(0,0,0,0.6)]', 'border', 'border-white/10');
+      } else {
+        headerContainer.classList.remove('glass-panel', 'shadow-[0_10px_40px_rgba(0,0,0,0.6)]', 'border', 'border-white/10');
+      }
+
+      // Bouton retour en haut
+      const topBtn = document.getElementById('scroll-top-btn');
+      if (scrollTop > 400) {
+        topBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+      } else {
+        topBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+      }
+
+      // Léger parallaxe sur le visuel principal
+      const heroVis = document.getElementById('hero-parallax');
+      if (heroVis && scrollTop < 900) {
+        heroVis.style.transform = `translateY(${scrollTop * 0.08}px)`;
+      }
+    }, { passive: true });
+
+    // 5. Boîtes Interactives : Spotlight dynamique + Effet Tilt 3D au survol
+    document.querySelectorAll('.spotlight-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+
+        // Tilt 3D léger sur les cartes équipées de .tilt-card
+        if (card.classList.contains('tilt-card')) {
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -4.5;
+          const rotateY = ((x - centerX) / centerX) * 4.5;
+          card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (card.classList.contains('tilt-card')) {
+          card.style.transform = '';
+        }
+      });
+    });
+
+    // 6. Apparition & Disparition bidirectionnelle au scroll (IntersectionObserver)
+    let scrollObserver;
+    function initScrollAnimations() {
+      if (scrollObserver) scrollObserver.disconnect();
+
+      scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const el = entry.target;
+          if (entry.isIntersecting) {
+            el.classList.add('in-view');
+            el.classList.remove('out-top');
+
+            // Déclenchement des compteurs si la section est visible
+            if (el.id === 'counters-section') {
+              animateCounters();
+            }
+          } else {
+            el.classList.remove('in-view');
+            // Si l'élément sort par le haut de l'écran, on applique une disparition douce vers le haut
+            if (entry.boundingClientRect.top < 0) {
+              el.classList.add('out-top');
+            } else {
+              el.classList.remove('out-top');
+            }
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.page-view.active .scroll-node').forEach(node => {
+        scrollObserver.observe(node);
+      });
+    }
+
+    // 7. Compteurs animés
+    let countersAnimated = false;
+    function animateCounters() {
+      if (countersAnimated) return;
+      countersAnimated = true;
+
+      document.querySelectorAll('.counter-val').forEach(counter => {
+        const target = parseInt(counter.dataset.target, 10);
+        const prefix = counter.dataset.prefix || '';
+        const suffix = counter.dataset.suffix || '';
+        let current = 0;
+        const duration = 1500;
+        const stepTime = 24;
+        const steps = Math.ceil(duration / stepTime);
+        const increment = target / steps;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          counter.textContent = prefix + Math.round(current) + suffix;
+        }, stepTime);
+      });
+    }
+
+    // 8. Carrousel de témoignages interactif
+    let currentSlide = 0;
+    const track = document.getElementById('testimonial-track');
+    const totalSlides = track ? track.children.length : 0;
+    const dotsContainer = document.getElementById('testimonial-dots');
+
+    if (dotsContainer && totalSlides > 0) {
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.setAttribute('aria-label', `Avis ${i + 1}`);
+        dot.className = `h-2.5 rounded-full transition-all duration-300 ${i === 0 ? 'w-8 bg-cyber-cyan' : 'w-2.5 bg-white/20 hover:bg-white/40'}`;
+        dot.onclick = () => goToSlide(i);
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateCarousel() {
+      if (!track) return;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      Array.from(dotsContainer.children).forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.className = 'h-2.5 w-8 rounded-full bg-cyber-cyan transition-all duration-300 shadow-[0_0_10px_rgba(0,245,212,0.6)]';
+        } else {
+          dot.className = 'h-2.5 w-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300';
+        }
+      });
+    }
+
+    function goToSlide(idx) {
+      currentSlide = idx;
+      updateCarousel();
+    }
+
+    function nextTestimonial() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function prevTestimonial() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    setInterval(nextTestimonial, 5500);
+
+    // 9. Lightbox Galerie
+    function openLightbox(cardEl) {
+      const img = cardEl.querySelector('img');
+      const title = cardEl.querySelector('span');
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-caption').textContent = title ? title.textContent : '';
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.add('hidden');
+      lb.classList.remove('flex');
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // 10. Upload & Prévisualisation de photos + Validation du formulaire de devis
+    let uploadedPhotos = [];
+    const fileInput = document.getElementById('f-photos');
+    const previewsContainer = document.getElementById('photo-previews');
+    const dropZone = document.getElementById('drop-zone');
+
+    if (dropZone) {
+      ['dragenter', 'dragover'].forEach(evt => {
+        dropZone.addEventListener(evt, e => {
+          e.preventDefault();
+          dropZone.classList.add('border-cyber-cyan', 'bg-cyber-cyan/10');
+        });
+      });
+      ['dragleave', 'drop'].forEach(evt => {
+        dropZone.addEventListener(evt, e => {
+          e.preventDefault();
+          dropZone.classList.remove('border-cyber-cyan', 'bg-cyber-cyan/10');
+        });
+      });
+    }
+
+    if (fileInput) {
+      fileInput.addEventListener('change', function () {
+        const files = Array.from(this.files);
+        files.forEach(file => {
+          if (uploadedPhotos.length >= 8) return;
+          if (!file.type.startsWith('image/')) return;
+          const reader = new FileReader();
+          reader.onload = e => {
+            uploadedPhotos.push(e.target.result);
+            renderPhotoPreviews();
+            document.getElementById('err-photos').classList.add('hidden');
+          };
+          reader.readAsDataURL(file);
+        });
+        this.value = '';
+      });
+    }
+
+    function renderPhotoPreviews() {
+      previewsContainer.innerHTML = '';
+      uploadedPhotos.forEach((src, index) => {
+        const item = document.createElement('div');
+        item.className = 'relative w-20 h-20 rounded-xl overflow-hidden border border-cyber-cyan/30 group shadow-lg';
+        item.innerHTML = `
+          <img src="${src}" alt="Aperçu ${index + 1}" class="w-full h-full object-cover" />
+          <button type="button" onclick="removePhoto(${index})" aria-label="Supprimer" class="absolute top-1 right-1 w-5 h-5 rounded-full bg-cyber-coral text-white text-[10px] flex items-center justify-center shadow hover:scale-110 transition-transform">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+        previewsContainer.appendChild(item);
+      });
+    }
+
+    function removePhoto(index) {
+      uploadedPhotos.splice(index, 1);
+      renderPhotoPreviews();
+    }
+
+    const quoteForm = document.getElementById('quote-form');
+    if (quoteForm) {
+      quoteForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let isValid = true;
+        const requiredIds = ['f-nom', 'f-tel', 'f-email', 'f-ville', 'f-type'];
+
+        requiredIds.forEach(id => {
+          const input = document.getElementById(id);
+          if (!input.value.trim()) {
+            isValid = false;
+            input.classList.add('border-cyber-coral');
+          } else {
+            input.classList.remove('border-cyber-coral');
+          }
+        });
+
+        const errFields = document.getElementById('err-fields');
+        errFields.classList.toggle('hidden', isValid);
+
+        const errPhotos = document.getElementById('err-photos');
+        if (uploadedPhotos.length === 0) {
+          errPhotos.classList.remove('hidden');
+          isValid = false;
+        } else {
+          errPhotos.classList.add('hidden');
+        }
+
+        if (!isValid) return;
+
+        document.getElementById('form-fields-wrapper').classList.add('hidden');
+        document.getElementById('form-success').classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    function resetQuoteForm() {
+      quoteForm.reset();
+      uploadedPhotos = [];
+      renderPhotoPreviews();
+      document.getElementById('form-success').classList.add('hidden');
+      document.getElementById('form-fields-wrapper').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

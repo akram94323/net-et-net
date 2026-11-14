@@ -11,35 +11,2195 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome pour les icônes -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+@layer properties;
+@layer theme, base, components, utilities;
+@layer theme {
+:root, :host {
+--font-sans: "Plus Jakarta Sans", sans-serif;
+--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+"Courier New", monospace;
+--color-amber-400: oklch(82.8% 0.189 84.429);
+--color-amber-500: oklch(76.9% 0.188 70.08);
+--color-emerald-400: oklch(76.5% 0.177 163.223);
+--color-emerald-500: oklch(69.6% 0.17 162.48);
+--color-slate-100: oklch(96.8% 0.007 247.896);
+--color-slate-200: oklch(92.9% 0.013 255.508);
+--color-slate-300: oklch(86.9% 0.022 252.894);
+--color-slate-400: oklch(70.4% 0.04 256.788);
+--color-slate-500: oklch(55.4% 0.046 257.417);
+--color-white: #fff;
+--spacing: 0.25rem;
+--container-sm: 24rem;
+--container-md: 28rem;
+--container-xl: 36rem;
+--container-2xl: 42rem;
+--container-3xl: 48rem;
+--container-4xl: 56rem;
+--container-5xl: 64rem;
+--container-6xl: 72rem;
+--container-7xl: 80rem;
+--text-xs: 0.75rem;
+--text-xs--line-height: calc(1 / 0.75);
+--text-sm: 0.875rem;
+--text-sm--line-height: calc(1.25 / 0.875);
+--text-base: 1rem;
+--text-base--line-height: calc(1.5 / 1);
+--text-lg: 1.125rem;
+--text-lg--line-height: calc(1.75 / 1.125);
+--text-xl: 1.25rem;
+--text-xl--line-height: calc(1.75 / 1.25);
+--text-2xl: 1.5rem;
+--text-2xl--line-height: calc(2 / 1.5);
+--text-3xl: 1.875rem;
+--text-3xl--line-height: calc(2.25 / 1.875);
+--text-4xl: 2.25rem;
+--text-4xl--line-height: calc(2.5 / 2.25);
+--text-5xl: 3rem;
+--text-5xl--line-height: 1;
+--font-weight-light: 300;
+--font-weight-normal: 400;
+--font-weight-medium: 500;
+--font-weight-semibold: 600;
+--font-weight-bold: 700;
+--tracking-tight: -0.025em;
+--tracking-wide: 0.025em;
+--tracking-wider: 0.05em;
+--tracking-widest: 0.1em;
+--leading-relaxed: 1.625;
+--radius-xl: 0.75rem;
+--radius-2xl: 1rem;
+--radius-3xl: 1.5rem;
+--ease-out: cubic-bezier(0, 0, 0.2, 1);
+--animate-spin: spin 1s linear infinite;
+--animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+--blur-md: 12px;
+--blur-xl: 24px;
+--blur-2xl: 40px;
+--default-transition-duration: 150ms;
+--default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+--default-font-family: var(--font-sans);
+--default-mono-font-family: var(--font-mono);
+--font-display: "Space Grotesk", sans-serif;
+--color-cyber-bg: #050811;
+--color-cyber-surface: #0A0F1D;
+--color-cyber-cyan: #00F5D4;
+--color-cyber-blue: #00BBF9;
+--color-cyber-coral: #FF4D6D;
+}
+}
+@layer base {
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+border: 0 solid;
+}
+html, :host {
+line-height: 1.5;
+-webkit-text-size-adjust: 100%;
+tab-size: 4;
+font-family: var(--default-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+font-feature-settings: var(--default-font-feature-settings, normal);
+font-variation-settings: var(--default-font-variation-settings, normal);
+-webkit-tap-highlight-color: transparent;
+}
+hr {
+height: 0;
+color: inherit;
+border-top-width: 1px;
+}
+abbr:where([title]) {
+-webkit-text-decoration: underline dotted;
+text-decoration: underline dotted;
+}
+h1, h2, h3, h4, h5, h6 {
+font-size: inherit;
+font-weight: inherit;
+}
+a {
+color: inherit;
+-webkit-text-decoration: inherit;
+text-decoration: inherit;
+}
+b, strong {
+font-weight: bolder;
+}
+code, kbd, samp, pre {
+font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+font-feature-settings: var(--default-mono-font-feature-settings, normal);
+font-variation-settings: var(--default-mono-font-variation-settings, normal);
+font-size: 1em;
+}
+small {
+font-size: 80%;
+}
+sub, sup {
+font-size: 75%;
+line-height: 0;
+position: relative;
+vertical-align: baseline;
+}
+sub {
+bottom: -0.25em;
+}
+sup {
+top: -0.5em;
+}
+table {
+text-indent: 0;
+border-color: inherit;
+border-collapse: collapse;
+}
+:-moz-focusring:where(:not(iframe)) {
+outline: auto;
+}
+progress {
+vertical-align: baseline;
+}
+summary {
+display: list-item;
+}
+ol, ul, menu {
+list-style: none;
+}
+img, svg, video, canvas, audio, iframe, embed, object {
+display: block;
+vertical-align: middle;
+}
+img, video {
+max-width: 100%;
+height: auto;
+}
+button, input, select, optgroup, textarea, ::file-selector-button {
+font: inherit;
+font-feature-settings: inherit;
+font-variation-settings: inherit;
+letter-spacing: inherit;
+color: inherit;
+border-radius: 0;
+background-color: transparent;
+opacity: 1;
+}
+:where(select:is([multiple], [size])) optgroup {
+font-weight: bolder;
+}
+:where(select:is([multiple], [size])) optgroup option {
+padding-inline-start: 20px;
+}
+::file-selector-button {
+margin-inline-end: 4px;
+}
+::placeholder {
+opacity: 1;
+}
+@supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+::placeholder {
+color: currentcolor;
+@supports (color: color-mix(in lab, red, red)) {
+color: color-mix(in oklab, currentcolor 50%, transparent);
+}
+}
+}
+textarea {
+resize: vertical;
+}
+::-webkit-search-decoration {
+-webkit-appearance: none;
+}
+::-webkit-date-and-time-value {
+min-height: 1lh;
+text-align: inherit;
+}
+::-webkit-datetime-edit {
+display: inline-flex;
+}
+::-webkit-datetime-edit-fields-wrapper {
+padding: 0;
+}
+::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+padding-block: 0;
+}
+::-webkit-calendar-picker-indicator {
+line-height: 1;
+}
+:-moz-ui-invalid {
+box-shadow: none;
+}
+button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
+appearance: button;
+}
+::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+height: auto;
+}
+[hidden]:where(:not([hidden="until-found"])) {
+display: none !important;
+}
+}
+@layer utilities {
+.pointer-events-none {
+pointer-events: none;
+}
+.visible {
+visibility: visible;
+}
+.absolute {
+position: absolute;
+}
+.fixed {
+position: fixed;
+}
+.relative {
+position: relative;
+}
+.-inset-2 {
+inset: calc(var(--spacing) * -2);
+}
+.inset-0 {
+inset: 0px;
+}
+.-top-24 {
+top: calc(var(--spacing) * -24);
+}
+.-top-40 {
+top: calc(var(--spacing) * -40);
+}
+.top-0 {
+top: 0px;
+}
+.top-1 {
+top: var(--spacing);
+}
+.top-1\/3 {
+top: calc(1 / 3 * 100%);
+}
+.top-6 {
+top: calc(var(--spacing) * 6);
+}
+.-right-24 {
+right: calc(var(--spacing) * -24);
+}
+.-right-48 {
+right: calc(var(--spacing) * -48);
+}
+.right-0 {
+right: 0px;
+}
+.right-1 {
+right: var(--spacing);
+}
+.right-4 {
+right: calc(var(--spacing) * 4);
+}
+.right-6 {
+right: calc(var(--spacing) * 6);
+}
+.right-7 {
+right: calc(var(--spacing) * 7);
+}
+.right-16 {
+right: calc(var(--spacing) * 16);
+}
+.-bottom-5 {
+bottom: calc(var(--spacing) * -5);
+}
+.-bottom-24 {
+bottom: calc(var(--spacing) * -24);
+}
+.bottom-0 {
+bottom: 0px;
+}
+.bottom-4 {
+bottom: calc(var(--spacing) * 4);
+}
+.bottom-6 {
+bottom: calc(var(--spacing) * 6);
+}
+.bottom-24 {
+bottom: calc(var(--spacing) * 24);
+}
+.-left-24 {
+left: calc(var(--spacing) * -24);
+}
+.-left-40 {
+left: calc(var(--spacing) * -40);
+}
+.left-0 {
+left: 0px;
+}
+.left-1\/3 {
+left: calc(1 / 3 * 100%);
+}
+.left-4 {
+left: calc(var(--spacing) * 4);
+}
+.z-0 {
+z-index: 0;
+}
+.z-10 {
+z-index: 10;
+}
+.z-40 {
+z-index: 40;
+}
+.z-50 {
+z-index: 50;
+}
+.order-1 {
+order: 1;
+}
+.order-2 {
+order: 2;
+}
+.mx-1\.5 {
+margin-inline: calc(var(--spacing) * 1.5);
+}
+.mx-auto {
+margin-inline: auto;
+}
+.mt-0\.5 {
+margin-top: calc(var(--spacing) * 0.5);
+}
+.mt-1 {
+margin-top: var(--spacing);
+}
+.mt-2 {
+margin-top: calc(var(--spacing) * 2);
+}
+.mt-4 {
+margin-top: calc(var(--spacing) * 4);
+}
+.mt-8 {
+margin-top: calc(var(--spacing) * 8);
+}
+.mb-2 {
+margin-bottom: calc(var(--spacing) * 2);
+}
+.mb-2\.5 {
+margin-bottom: calc(var(--spacing) * 2.5);
+}
+.mb-3 {
+margin-bottom: calc(var(--spacing) * 3);
+}
+.mb-4 {
+margin-bottom: calc(var(--spacing) * 4);
+}
+.mb-5 {
+margin-bottom: calc(var(--spacing) * 5);
+}
+.mb-6 {
+margin-bottom: calc(var(--spacing) * 6);
+}
+.mb-7 {
+margin-bottom: calc(var(--spacing) * 7);
+}
+.mb-8 {
+margin-bottom: calc(var(--spacing) * 8);
+}
+.mb-10 {
+margin-bottom: calc(var(--spacing) * 10);
+}
+.mb-14 {
+margin-bottom: calc(var(--spacing) * 14);
+}
+.mb-16 {
+margin-bottom: calc(var(--spacing) * 16);
+}
+.block {
+display: block;
+}
+.flex {
+display: flex;
+}
+.grid {
+display: grid;
+}
+.hidden {
+display: none;
+}
+.inline-block {
+display: inline-block;
+}
+.inline-flex {
+display: inline-flex;
+}
+.aspect-\[4\/3\] {
+aspect-ratio: 4/3;
+}
+.h-0\.5 {
+height: calc(var(--spacing) * 0.5);
+}
+.h-2 {
+height: calc(var(--spacing) * 2);
+}
+.h-2\.5 {
+height: calc(var(--spacing) * 2.5);
+}
+.h-5 {
+height: calc(var(--spacing) * 5);
+}
+.h-8 {
+height: calc(var(--spacing) * 8);
+}
+.h-9 {
+height: calc(var(--spacing) * 9);
+}
+.h-10 {
+height: calc(var(--spacing) * 10);
+}
+.h-11 {
+height: calc(var(--spacing) * 11);
+}
+.h-12 {
+height: calc(var(--spacing) * 12);
+}
+.h-14 {
+height: calc(var(--spacing) * 14);
+}
+.h-16 {
+height: calc(var(--spacing) * 16);
+}
+.h-20 {
+height: calc(var(--spacing) * 20);
+}
+.h-72 {
+height: calc(var(--spacing) * 72);
+}
+.h-80 {
+height: calc(var(--spacing) * 80);
+}
+.h-\[380px\] {
+height: 380px;
+}
+.h-\[400px\] {
+height: 400px;
+}
+.h-\[480px\] {
+height: 480px;
+}
+.h-\[520px\] {
+height: 520px;
+}
+.h-full {
+height: 100%;
+}
+.max-h-\[78vh\] {
+max-height: 78vh;
+}
+.max-h-\[88vh\] {
+max-height: 88vh;
+}
+.min-h-screen {
+min-height: 100vh;
+}
+.w-2 {
+width: calc(var(--spacing) * 2);
+}
+.w-2\.5 {
+width: calc(var(--spacing) * 2.5);
+}
+.w-4 {
+width: calc(var(--spacing) * 4);
+}
+.w-5 {
+width: calc(var(--spacing) * 5);
+}
+.w-8 {
+width: calc(var(--spacing) * 8);
+}
+.w-9 {
+width: calc(var(--spacing) * 9);
+}
+.w-10 {
+width: calc(var(--spacing) * 10);
+}
+.w-11 {
+width: calc(var(--spacing) * 11);
+}
+.w-12 {
+width: calc(var(--spacing) * 12);
+}
+.w-14 {
+width: calc(var(--spacing) * 14);
+}
+.w-16 {
+width: calc(var(--spacing) * 16);
+}
+.w-20 {
+width: calc(var(--spacing) * 20);
+}
+.w-72 {
+width: calc(var(--spacing) * 72);
+}
+.w-\[480px\] {
+width: 480px;
+}
+.w-\[500px\] {
+width: 500px;
+}
+.w-\[520px\] {
+width: 520px;
+}
+.w-auto {
+width: auto;
+}
+.w-full {
+width: 100%;
+}
+.max-w-2xl {
+max-width: var(--container-2xl);
+}
+.max-w-3xl {
+max-width: var(--container-3xl);
+}
+.max-w-4xl {
+max-width: var(--container-4xl);
+}
+.max-w-5xl {
+max-width: var(--container-5xl);
+}
+.max-w-6xl {
+max-width: var(--container-6xl);
+}
+.max-w-7xl {
+max-width: var(--container-7xl);
+}
+.max-w-md {
+max-width: var(--container-md);
+}
+.max-w-sm {
+max-width: var(--container-sm);
+}
+.max-w-xl {
+max-width: var(--container-xl);
+}
+.min-w-full {
+min-width: 100%;
+}
+.translate-y-3 {
+--tw-translate-y: calc(var(--spacing) * 3);
+translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.transform {
+transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+}
+.animate-ping {
+animation: var(--animate-ping);
+}
+.animate-spin {
+animation: var(--animate-spin);
+}
+.cursor-pointer {
+cursor: pointer;
+}
+.cursor-wait {
+cursor: wait;
+}
+.resize-y {
+resize: vertical;
+}
+.grid-cols-1 {
+grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.grid-cols-2 {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.flex-col {
+flex-direction: column;
+}
+.flex-wrap {
+flex-wrap: wrap;
+}
+.items-center {
+align-items: center;
+}
+.items-start {
+align-items: flex-start;
+}
+.justify-between {
+justify-content: space-between;
+}
+.justify-center {
+justify-content: center;
+}
+.gap-1 {
+gap: var(--spacing);
+}
+.gap-1\.5 {
+gap: calc(var(--spacing) * 1.5);
+}
+.gap-2 {
+gap: calc(var(--spacing) * 2);
+}
+.gap-2\.5 {
+gap: calc(var(--spacing) * 2.5);
+}
+.gap-3 {
+gap: calc(var(--spacing) * 3);
+}
+.gap-3\.5 {
+gap: calc(var(--spacing) * 3.5);
+}
+.gap-4 {
+gap: calc(var(--spacing) * 4);
+}
+.gap-5 {
+gap: calc(var(--spacing) * 5);
+}
+.gap-6 {
+gap: calc(var(--spacing) * 6);
+}
+.gap-8 {
+gap: calc(var(--spacing) * 8);
+}
+.gap-10 {
+gap: calc(var(--spacing) * 10);
+}
+.gap-12 {
+gap: calc(var(--spacing) * 12);
+}
+:where(.space-y-1 > :not(:last-child)) {
+--tw-space-y-reverse: 0;
+margin-block-start: calc(var(--spacing) * var(--tw-space-y-reverse));
+margin-block-end: calc(var(--spacing) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(.space-y-2\.5 > :not(:last-child)) {
+--tw-space-y-reverse: 0;
+margin-block-start: calc(calc(var(--spacing) * 2.5) * var(--tw-space-y-reverse));
+margin-block-end: calc(calc(var(--spacing) * 2.5) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(.space-y-3 > :not(:last-child)) {
+--tw-space-y-reverse: 0;
+margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
+margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(.space-y-3\.5 > :not(:last-child)) {
+--tw-space-y-reverse: 0;
+margin-block-start: calc(calc(var(--spacing) * 3.5) * var(--tw-space-y-reverse));
+margin-block-end: calc(calc(var(--spacing) * 3.5) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(.space-y-5 > :not(:last-child)) {
+--tw-space-y-reverse: 0;
+margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));
+margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(.space-y-6 > :not(:last-child)) {
+--tw-space-y-reverse: 0;
+margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
+margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(.space-y-12 > :not(:last-child)) {
+--tw-space-y-reverse: 0;
+margin-block-start: calc(calc(var(--spacing) * 12) * var(--tw-space-y-reverse));
+margin-block-end: calc(calc(var(--spacing) * 12) * calc(1 - var(--tw-space-y-reverse)));
+}
+:where(.space-y-24 > :not(:last-child)) {
+--tw-space-y-reverse: 0;
+margin-block-start: calc(calc(var(--spacing) * 24) * var(--tw-space-y-reverse));
+margin-block-end: calc(calc(var(--spacing) * 24) * calc(1 - var(--tw-space-y-reverse)));
+}
+.overflow-hidden {
+overflow: hidden;
+}
+.scroll-smooth {
+scroll-behavior: smooth;
+}
+.rounded-2xl {
+border-radius: var(--radius-2xl);
+}
+.rounded-3xl {
+border-radius: var(--radius-3xl);
+}
+.rounded-\[24px\] {
+border-radius: 24px;
+}
+.rounded-\[28px\] {
+border-radius: 28px;
+}
+.rounded-full {
+border-radius: calc(infinity * 1px);
+}
+.rounded-xl {
+border-radius: var(--radius-xl);
+}
+.border {
+border-style: var(--tw-border-style);
+border-width: 1px;
+}
+.border-2 {
+border-style: var(--tw-border-style);
+border-width: 2px;
+}
+.border-t {
+border-top-style: var(--tw-border-style);
+border-top-width: 1px;
+}
+.border-b {
+border-bottom-style: var(--tw-border-style);
+border-bottom-width: 1px;
+}
+.border-l-2 {
+border-left-style: var(--tw-border-style);
+border-left-width: 2px;
+}
+.border-dashed {
+--tw-border-style: dashed;
+border-style: dashed;
+}
+.border-cyber-blue\/25 {
+border-color: color-mix(in srgb, #00BBF9 25%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-cyber-blue) 25%, transparent);
+}
+}
+.border-cyber-blue\/30 {
+border-color: color-mix(in srgb, #00BBF9 30%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-cyber-blue) 30%, transparent);
+}
+}
+.border-cyber-blue\/40 {
+border-color: color-mix(in srgb, #00BBF9 40%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-cyber-blue) 40%, transparent);
+}
+}
+.border-cyber-coral\/25 {
+border-color: color-mix(in srgb, #FF4D6D 25%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-cyber-coral) 25%, transparent);
+}
+}
+.border-cyber-coral\/30 {
+border-color: color-mix(in srgb, #FF4D6D 30%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-cyber-coral) 30%, transparent);
+}
+}
+.border-cyber-coral\/40 {
+border-color: color-mix(in srgb, #FF4D6D 40%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-cyber-coral) 40%, transparent);
+}
+}
+.border-cyber-cyan {
+border-color: var(--color-cyber-cyan);
+}
+.border-cyber-cyan\/20 {
+border-color: color-mix(in srgb, #00F5D4 20%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-cyber-cyan) 20%, transparent);
+}
+}
+.border-cyber-cyan\/25 {
+border-color: color-mix(in srgb, #00F5D4 25%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-cyber-cyan) 25%, transparent);
+}
+}
+.border-cyber-cyan\/30 {
+border-color: color-mix(in srgb, #00F5D4 30%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-cyber-cyan) 30%, transparent);
+}
+}
+.border-cyber-cyan\/40 {
+border-color: color-mix(in srgb, #00F5D4 40%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-cyber-cyan) 40%, transparent);
+}
+}
+.border-emerald-400\/35 {
+border-color: color-mix(in srgb, oklch(76.5% 0.177 163.223) 35%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-emerald-400) 35%, transparent);
+}
+}
+.border-white\/5 {
+border-color: color-mix(in srgb, #fff 5%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-white) 5%, transparent);
+}
+}
+.border-white\/10 {
+border-color: color-mix(in srgb, #fff 10%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-white) 10%, transparent);
+}
+}
+.border-white\/15 {
+border-color: color-mix(in srgb, #fff 15%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-white) 15%, transparent);
+}
+}
+.border-white\/\[0\.06\] {
+border-color: color-mix(in srgb, #fff 6%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-white) 6%, transparent);
+}
+}
+.border-white\/\[0\.07\] {
+border-color: color-mix(in srgb, #fff 7.000000000000001%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-white) 7.000000000000001%, transparent);
+}
+}
+.border-white\/\[0\.08\] {
+border-color: color-mix(in srgb, #fff 8%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+border-color: color-mix(in oklab, var(--color-white) 8%, transparent);
+}
+}
+.bg-\[\#25D366\] {
+background-color: #25D366;
+}
+.bg-\[\#04060E\]\/90 {
+background-color: color-mix(in oklab, #04060E 90%, transparent);
+}
+.bg-cyber-bg\/90 {
+background-color: color-mix(in srgb, #050811 90%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-cyber-bg) 90%, transparent);
+}
+}
+.bg-cyber-bg\/95 {
+background-color: color-mix(in srgb, #050811 95%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-cyber-bg) 95%, transparent);
+}
+}
+.bg-cyber-blue {
+background-color: var(--color-cyber-blue);
+}
+.bg-cyber-blue\/10 {
+background-color: color-mix(in srgb, #00BBF9 10%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-cyber-blue) 10%, transparent);
+}
+}
+.bg-cyber-coral {
+background-color: var(--color-cyber-coral);
+}
+.bg-cyber-coral\/5 {
+background-color: color-mix(in srgb, #FF4D6D 5%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-cyber-coral) 5%, transparent);
+}
+}
+.bg-cyber-coral\/10 {
+background-color: color-mix(in srgb, #FF4D6D 10%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-cyber-coral) 10%, transparent);
+}
+}
+.bg-cyber-coral\/20 {
+background-color: color-mix(in srgb, #FF4D6D 20%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-cyber-coral) 20%, transparent);
+}
+}
+.bg-cyber-cyan {
+background-color: var(--color-cyber-cyan);
+}
+.bg-cyber-cyan\/10 {
+background-color: color-mix(in srgb, #00F5D4 10%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-cyber-cyan) 10%, transparent);
+}
+}
+.bg-cyber-cyan\/15 {
+background-color: color-mix(in srgb, #00F5D4 15%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-cyber-cyan) 15%, transparent);
+}
+}
+.bg-cyber-cyan\/20 {
+background-color: color-mix(in srgb, #00F5D4 20%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-cyber-cyan) 20%, transparent);
+}
+}
+.bg-cyber-surface {
+background-color: var(--color-cyber-surface);
+}
+.bg-emerald-500\/15 {
+background-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 15%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-emerald-500) 15%, transparent);
+}
+}
+.bg-white {
+background-color: var(--color-white);
+}
+.bg-white\/10 {
+background-color: color-mix(in srgb, #fff 10%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-white) 10%, transparent);
+}
+}
+.bg-white\/20 {
+background-color: color-mix(in srgb, #fff 20%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
+}
+}
+.bg-white\/\[0\.02\] {
+background-color: color-mix(in srgb, #fff 2%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-white) 2%, transparent);
+}
+}
+.bg-white\/\[0\.03\] {
+background-color: color-mix(in srgb, #fff 3%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+background-color: color-mix(in oklab, var(--color-white) 3%, transparent);
+}
+}
+.bg-gradient-to-br {
+--tw-gradient-position: to bottom right in oklab;
+background-image: linear-gradient(var(--tw-gradient-stops));
+}
+.bg-gradient-to-t {
+--tw-gradient-position: to top in oklab;
+background-image: linear-gradient(var(--tw-gradient-stops));
+}
+.bg-gradient-to-tr {
+--tw-gradient-position: to top right in oklab;
+background-image: linear-gradient(var(--tw-gradient-stops));
+}
+.from-\[\#0D192E\] {
+--tw-gradient-from: #0D192E;
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.from-cyber-bg {
+--tw-gradient-from: var(--color-cyber-bg);
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.from-cyber-blue {
+--tw-gradient-from: var(--color-cyber-blue);
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.from-cyber-blue\/20 {
+--tw-gradient-from: color-mix(in srgb, #00BBF9 20%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+--tw-gradient-from: color-mix(in oklab, var(--color-cyber-blue) 20%, transparent);
+}
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.from-cyber-coral {
+--tw-gradient-from: var(--color-cyber-coral);
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.from-cyber-coral\/20 {
+--tw-gradient-from: color-mix(in srgb, #FF4D6D 20%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+--tw-gradient-from: color-mix(in oklab, var(--color-cyber-coral) 20%, transparent);
+}
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.from-cyber-cyan {
+--tw-gradient-from: var(--color-cyber-cyan);
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.from-cyber-cyan\/20 {
+--tw-gradient-from: color-mix(in srgb, #00F5D4 20%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+--tw-gradient-from: color-mix(in oklab, var(--color-cyber-cyan) 20%, transparent);
+}
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.from-cyber-cyan\/30 {
+--tw-gradient-from: color-mix(in srgb, #00F5D4 30%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+--tw-gradient-from: color-mix(in oklab, var(--color-cyber-cyan) 30%, transparent);
+}
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.via-\[\#091224\] {
+--tw-gradient-via: #091224;
+--tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+--tw-gradient-stops: var(--tw-gradient-via-stops);
+}
+.via-cyber-bg\/20 {
+--tw-gradient-via: color-mix(in srgb, #050811 20%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+--tw-gradient-via: color-mix(in oklab, var(--color-cyber-bg) 20%, transparent);
+}
+--tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+--tw-gradient-stops: var(--tw-gradient-via-stops);
+}
+.via-cyber-blue\/20 {
+--tw-gradient-via: color-mix(in srgb, #00BBF9 20%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+--tw-gradient-via: color-mix(in oklab, var(--color-cyber-blue) 20%, transparent);
+}
+--tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+--tw-gradient-stops: var(--tw-gradient-via-stops);
+}
+.via-transparent {
+--tw-gradient-via: transparent;
+--tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+--tw-gradient-stops: var(--tw-gradient-via-stops);
+}
+.to-\[\#130D24\] {
+--tw-gradient-to: #130D24;
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.to-amber-500 {
+--tw-gradient-to: var(--color-amber-500);
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.to-cyber-blue {
+--tw-gradient-to: var(--color-cyber-blue);
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.to-cyber-blue\/10 {
+--tw-gradient-to: color-mix(in srgb, #00BBF9 10%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+--tw-gradient-to: color-mix(in oklab, var(--color-cyber-blue) 10%, transparent);
+}
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.to-cyber-coral {
+--tw-gradient-to: var(--color-cyber-coral);
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.to-cyber-coral\/30 {
+--tw-gradient-to: color-mix(in srgb, #FF4D6D 30%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+--tw-gradient-to: color-mix(in oklab, var(--color-cyber-coral) 30%, transparent);
+}
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.to-cyber-cyan\/10 {
+--tw-gradient-to: color-mix(in srgb, #00F5D4 10%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+--tw-gradient-to: color-mix(in oklab, var(--color-cyber-cyan) 10%, transparent);
+}
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.to-emerald-400 {
+--tw-gradient-to: var(--color-emerald-400);
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.to-transparent {
+--tw-gradient-to: transparent;
+--tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+}
+.object-cover {
+object-fit: cover;
+}
+.p-4 {
+padding: calc(var(--spacing) * 4);
+}
+.p-6 {
+padding: calc(var(--spacing) * 6);
+}
+.p-7 {
+padding: calc(var(--spacing) * 7);
+}
+.p-8 {
+padding: calc(var(--spacing) * 8);
+}
+.p-10 {
+padding: calc(var(--spacing) * 10);
+}
+.px-2 {
+padding-inline: calc(var(--spacing) * 2);
+}
+.px-3 {
+padding-inline: calc(var(--spacing) * 3);
+}
+.px-3\.5 {
+padding-inline: calc(var(--spacing) * 3.5);
+}
+.px-4 {
+padding-inline: calc(var(--spacing) * 4);
+}
+.px-5 {
+padding-inline: calc(var(--spacing) * 5);
+}
+.px-6 {
+padding-inline: calc(var(--spacing) * 6);
+}
+.px-8 {
+padding-inline: calc(var(--spacing) * 8);
+}
+.px-9 {
+padding-inline: calc(var(--spacing) * 9);
+}
+.py-1 {
+padding-block: var(--spacing);
+}
+.py-1\.5 {
+padding-block: calc(var(--spacing) * 1.5);
+}
+.py-2 {
+padding-block: calc(var(--spacing) * 2);
+}
+.py-2\.5 {
+padding-block: calc(var(--spacing) * 2.5);
+}
+.py-3 {
+padding-block: calc(var(--spacing) * 3);
+}
+.py-3\.5 {
+padding-block: calc(var(--spacing) * 3.5);
+}
+.py-4 {
+padding-block: calc(var(--spacing) * 4);
+}
+.py-10 {
+padding-block: calc(var(--spacing) * 10);
+}
+.py-12 {
+padding-block: calc(var(--spacing) * 12);
+}
+.py-24 {
+padding-block: calc(var(--spacing) * 24);
+}
+.pt-1 {
+padding-top: var(--spacing);
+}
+.pt-4 {
+padding-top: calc(var(--spacing) * 4);
+}
+.pt-8 {
+padding-top: calc(var(--spacing) * 8);
+}
+.pt-16 {
+padding-top: calc(var(--spacing) * 16);
+}
+.pt-28 {
+padding-top: calc(var(--spacing) * 28);
+}
+.pt-36 {
+padding-top: calc(var(--spacing) * 36);
+}
+.pb-10 {
+padding-bottom: calc(var(--spacing) * 10);
+}
+.pb-12 {
+padding-bottom: calc(var(--spacing) * 12);
+}
+.pb-14 {
+padding-bottom: calc(var(--spacing) * 14);
+}
+.pb-16 {
+padding-bottom: calc(var(--spacing) * 16);
+}
+.pb-20 {
+padding-bottom: calc(var(--spacing) * 20);
+}
+.pb-24 {
+padding-bottom: calc(var(--spacing) * 24);
+}
+.pl-4 {
+padding-left: calc(var(--spacing) * 4);
+}
+.text-center {
+text-align: center;
+}
+.text-left {
+text-align: left;
+}
+.text-right {
+text-align: right;
+}
+.font-display {
+font-family: var(--font-display);
+}
+.text-2xl {
+font-size: var(--text-2xl);
+line-height: var(--tw-leading, var(--text-2xl--line-height));
+}
+.text-3xl {
+font-size: var(--text-3xl);
+line-height: var(--tw-leading, var(--text-3xl--line-height));
+}
+.text-4xl {
+font-size: var(--text-4xl);
+line-height: var(--tw-leading, var(--text-4xl--line-height));
+}
+.text-base {
+font-size: var(--text-base);
+line-height: var(--tw-leading, var(--text-base--line-height));
+}
+.text-lg {
+font-size: var(--text-lg);
+line-height: var(--tw-leading, var(--text-lg--line-height));
+}
+.text-sm {
+font-size: var(--text-sm);
+line-height: var(--tw-leading, var(--text-sm--line-height));
+}
+.text-xl {
+font-size: var(--text-xl);
+line-height: var(--tw-leading, var(--text-xl--line-height));
+}
+.text-xs {
+font-size: var(--text-xs);
+line-height: var(--tw-leading, var(--text-xs--line-height));
+}
+.text-\[10px\] {
+font-size: 10px;
+}
+.leading-\[1\.08\] {
+--tw-leading: 1.08;
+line-height: 1.08;
+}
+.leading-none {
+--tw-leading: 1;
+line-height: 1;
+}
+.leading-relaxed {
+--tw-leading: var(--leading-relaxed);
+line-height: var(--leading-relaxed);
+}
+.font-bold {
+--tw-font-weight: var(--font-weight-bold);
+font-weight: var(--font-weight-bold);
+}
+.font-light {
+--tw-font-weight: var(--font-weight-light);
+font-weight: var(--font-weight-light);
+}
+.font-medium {
+--tw-font-weight: var(--font-weight-medium);
+font-weight: var(--font-weight-medium);
+}
+.font-normal {
+--tw-font-weight: var(--font-weight-normal);
+font-weight: var(--font-weight-normal);
+}
+.font-semibold {
+--tw-font-weight: var(--font-weight-semibold);
+font-weight: var(--font-weight-semibold);
+}
+.tracking-\[0\.3em\] {
+--tw-tracking: 0.3em;
+letter-spacing: 0.3em;
+}
+.tracking-\[0\.25em\] {
+--tw-tracking: 0.25em;
+letter-spacing: 0.25em;
+}
+.tracking-\[0\.26em\] {
+--tw-tracking: 0.26em;
+letter-spacing: 0.26em;
+}
+.tracking-tight {
+--tw-tracking: var(--tracking-tight);
+letter-spacing: var(--tracking-tight);
+}
+.tracking-wide {
+--tw-tracking: var(--tracking-wide);
+letter-spacing: var(--tracking-wide);
+}
+.tracking-wider {
+--tw-tracking: var(--tracking-wider);
+letter-spacing: var(--tracking-wider);
+}
+.tracking-widest {
+--tw-tracking: var(--tracking-widest);
+letter-spacing: var(--tracking-widest);
+}
+.whitespace-nowrap {
+white-space: nowrap;
+}
+.text-amber-400 {
+color: var(--color-amber-400);
+}
+.text-cyber-bg {
+color: var(--color-cyber-bg);
+}
+.text-cyber-blue {
+color: var(--color-cyber-blue);
+}
+.text-cyber-coral {
+color: var(--color-cyber-coral);
+}
+.text-cyber-cyan {
+color: var(--color-cyber-cyan);
+}
+.text-cyber-cyan\/80 {
+color: color-mix(in srgb, #00F5D4 80%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+color: color-mix(in oklab, var(--color-cyber-cyan) 80%, transparent);
+}
+}
+.text-emerald-400 {
+color: var(--color-emerald-400);
+}
+.text-slate-200 {
+color: var(--color-slate-200);
+}
+.text-slate-300 {
+color: var(--color-slate-300);
+}
+.text-slate-300\/90 {
+color: color-mix(in srgb, oklch(86.9% 0.022 252.894) 90%, transparent);
+@supports (color: color-mix(in lab, red, red)) {
+color: color-mix(in oklab, var(--color-slate-300) 90%, transparent);
+}
+}
+.text-slate-400 {
+color: var(--color-slate-400);
+}
+.text-slate-500 {
+color: var(--color-slate-500);
+}
+.text-white {
+color: var(--color-white);
+}
+.normal-case {
+text-transform: none;
+}
+.uppercase {
+text-transform: uppercase;
+}
+.italic {
+font-style: italic;
+}
+.underline {
+text-decoration-line: underline;
+}
+.underline-offset-2 {
+text-underline-offset: 2px;
+}
+.antialiased {
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+.opacity-0 {
+opacity: 0%;
+}
+.opacity-70 {
+opacity: 70%;
+}
+.opacity-80 {
+opacity: 80%;
+}
+.shadow {
+--tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.shadow-2xl {
+--tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.shadow-\[0_0_10px_rgba\(0\,245\,212\,0\.6\)\] {
+--tw-shadow: 0 0 10px var(--tw-shadow-color, rgba(0,245,212,0.6));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.shadow-\[0_0_20px_rgba\(0\,187\,249\,0\.15\)\] {
+--tw-shadow: 0 0 20px var(--tw-shadow-color, rgba(0,187,249,0.15));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.shadow-\[0_0_20px_rgba\(0\,245\,212\,0\.15\)\] {
+--tw-shadow: 0 0 20px var(--tw-shadow-color, rgba(0,245,212,0.15));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.shadow-\[0_0_25px_rgba\(0\,245\,212\,0\.15\)\] {
+--tw-shadow: 0 0 25px var(--tw-shadow-color, rgba(0,245,212,0.15));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.shadow-\[0_0_30px_rgba\(0\,245\,212\,0\.3\)\] {
+--tw-shadow: 0 0 30px var(--tw-shadow-color, rgba(0,245,212,0.3));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.shadow-\[0_0_50px_rgba\(0\,245\,212\,0\.06\)\] {
+--tw-shadow: 0 0 50px var(--tw-shadow-color, rgba(0,245,212,0.06));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.shadow-\[0_10px_30px_rgba\(0\,245\,212\,0\.2\)\] {
+--tw-shadow: 0 10px 30px var(--tw-shadow-color, rgba(0,245,212,0.2));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.shadow-\[0_10px_40px_rgba\(0\,0\,0\,0\.6\)\] {
+--tw-shadow: 0 10px 40px var(--tw-shadow-color, rgba(0,0,0,0.6));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.shadow-lg {
+--tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.blur-\[90px\] {
+--tw-blur: blur(90px);
+filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+}
+.blur-\[130px\] {
+--tw-blur: blur(130px);
+filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+}
+.blur-\[140px\] {
+--tw-blur: blur(140px);
+filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+}
+.blur-xl {
+--tw-blur: blur(var(--blur-xl));
+filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+}
+.filter {
+filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+}
+.backdrop-blur-2xl {
+--tw-backdrop-blur: blur(var(--blur-2xl));
+-webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+}
+.backdrop-blur-md {
+--tw-backdrop-blur: blur(var(--blur-md));
+-webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+}
+.backdrop-blur-xl {
+--tw-backdrop-blur: blur(var(--blur-xl));
+-webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+}
+.transition {
+transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
+transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+.transition-all {
+transition-property: all;
+transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+.transition-colors {
+transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+.transition-opacity {
+transition-property: opacity;
+transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+.transition-transform {
+transition-property: transform, translate, scale, rotate;
+transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+.duration-300 {
+--tw-duration: 300ms;
+transition-duration: 300ms;
+}
+.duration-500 {
+--tw-duration: 500ms;
+transition-duration: 500ms;
+}
+.duration-700 {
+--tw-duration: 700ms;
+transition-duration: 700ms;
+}
+.ease-out {
+--tw-ease: var(--ease-out);
+transition-timing-function: var(--ease-out);
+}
+@media (hover: hover) {
+.group-hover\:scale-105:is(:where(.group):hover *) {
+--tw-scale-x: 105%;
+--tw-scale-y: 105%;
+--tw-scale-z: 105%;
+scale: var(--tw-scale-x) var(--tw-scale-y);
+}
+.group-hover\:scale-110:is(:where(.group):hover *) {
+--tw-scale-x: 110%;
+--tw-scale-y: 110%;
+--tw-scale-z: 110%;
+scale: var(--tw-scale-x) var(--tw-scale-y);
+}
+.group-hover\:bg-cyber-blue:is(:where(.group):hover *) {
+background-color: var(--color-cyber-blue);
+}
+.group-hover\:bg-cyber-coral:is(:where(.group):hover *) {
+background-color: var(--color-cyber-coral);
+}
+.group-hover\:bg-cyber-cyan:is(:where(.group):hover *) {
+background-color: var(--color-cyber-cyan);
+}
+.group-hover\:text-cyber-bg:is(:where(.group):hover *) {
+color: var(--color-cyber-bg);
+}
+.group-hover\:text-cyber-blue:is(:where(.group):hover *) {
+color: var(--color-cyber-blue);
+}
+.group-hover\:text-cyber-coral:is(:where(.group):hover *) {
+color: var(--color-cyber-coral);
+}
+.group-hover\:text-cyber-cyan:is(:where(.group):hover *) {
+color: var(--color-cyber-cyan);
+}
+.group-hover\:text-slate-100:is(:where(.group):hover *) {
+color: var(--color-slate-100);
+}
+.group-hover\:text-white:is(:where(.group):hover *) {
+color: var(--color-white);
+}
+.group-hover\:opacity-90:is(:where(.group):hover *) {
+opacity: 90%;
+}
+.group-hover\:opacity-100:is(:where(.group):hover *) {
+opacity: 100%;
+}
+.group-hover\:shadow-\[0_0_25px_rgba\(0\,187\,249\,0\.4\)\]:is(:where(.group):hover *) {
+--tw-shadow: 0 0 25px var(--tw-shadow-color, rgba(0,187,249,0.4));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.group-hover\:shadow-\[0_0_25px_rgba\(0\,245\,212\,0\.4\)\]:is(:where(.group):hover *) {
+--tw-shadow: 0 0 25px var(--tw-shadow-color, rgba(0,245,212,0.4));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.group-hover\:shadow-\[0_0_25px_rgba\(255\,77\,109\,0\.4\)\]:is(:where(.group):hover *) {
+--tw-shadow: 0 0 25px var(--tw-shadow-color, rgba(255,77,109,0.4));
+box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+}
+.selection\:bg-cyber-cyan ::selection {
+background-color: var(--color-cyber-cyan);
+}
+.selection\:bg-cyber-cyan::selection {
+background-color: var(--color-cyber-cyan);
+}
+.selection\:text-cyber-bg ::selection {
+color: var(--color-cyber-bg);
+}
+.selection\:text-cyber-bg::selection {
+color: var(--color-cyber-bg);
+}
+@media (hover: hover) {
+.hover\:scale-105:hover {
+--tw-scale-x: 105%;
+--tw-scale-y: 105%;
+--tw-scale-z: 105%;
+scale: var(--tw-scale-x) var(--tw-scale-y);
+}
+.hover\:scale-110:hover {
+--tw-scale-x: 110%;
+--tw-scale-y: 110%;
+--tw-scale-z: 110%;
+scale: var(--tw-scale-x) var(--tw-scale-y);
+}
+.hover\:border-cyber-blue\/40:hover {
+border-color: color-mix(in srgb, #00BBF9 40%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+.hover\:border-cyber-blue\/40:hover {
+border-color: color-mix(in oklab, var(--color-cyber-blue) 40%, transparent);
+}
+}
+.hover\:border-cyber-cyan\/40:hover {
+border-color: color-mix(in srgb, #00F5D4 40%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+.hover\:border-cyber-cyan\/40:hover {
+border-color: color-mix(in oklab, var(--color-cyber-cyan) 40%, transparent);
+}
+}
+.hover\:border-cyber-cyan\/50:hover {
+border-color: color-mix(in srgb, #00F5D4 50%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+.hover\:border-cyber-cyan\/50:hover {
+border-color: color-mix(in oklab, var(--color-cyber-cyan) 50%, transparent);
+}
+}
+.hover\:border-cyber-cyan\/60:hover {
+border-color: color-mix(in srgb, #00F5D4 60%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+.hover\:border-cyber-cyan\/60:hover {
+border-color: color-mix(in oklab, var(--color-cyber-cyan) 60%, transparent);
+}
+}
+.hover\:border-emerald-400\/40:hover {
+border-color: color-mix(in srgb, oklch(76.5% 0.177 163.223) 40%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+.hover\:border-emerald-400\/40:hover {
+border-color: color-mix(in oklab, var(--color-emerald-400) 40%, transparent);
+}
+}
+.hover\:bg-cyber-cyan:hover {
+background-color: var(--color-cyber-cyan);
+}
+.hover\:bg-cyber-cyan\/\[0\.04\]:hover {
+background-color: color-mix(in srgb, #00F5D4 4%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+.hover\:bg-cyber-cyan\/\[0\.04\]:hover {
+background-color: color-mix(in oklab, var(--color-cyber-cyan) 4%, transparent);
+}
+}
+.hover\:bg-white\/5:hover {
+background-color: color-mix(in srgb, #fff 5%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+.hover\:bg-white\/5:hover {
+background-color: color-mix(in oklab, var(--color-white) 5%, transparent);
+}
+}
+.hover\:bg-white\/40:hover {
+background-color: color-mix(in srgb, #fff 40%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+.hover\:bg-white\/40:hover {
+background-color: color-mix(in oklab, var(--color-white) 40%, transparent);
+}
+}
+.hover\:text-cyber-bg:hover {
+color: var(--color-cyber-bg);
+}
+.hover\:text-cyber-blue:hover {
+color: var(--color-cyber-blue);
+}
+.hover\:text-cyber-coral:hover {
+color: var(--color-cyber-coral);
+}
+.hover\:text-cyber-cyan:hover {
+color: var(--color-cyber-cyan);
+}
+.hover\:text-emerald-400:hover {
+color: var(--color-emerald-400);
+}
+.hover\:text-white:hover {
+color: var(--color-white);
+}
+.hover\:underline:hover {
+text-decoration-line: underline;
+}
+}
+.focus\:outline-none:focus {
+--tw-outline-style: none;
+outline-style: none;
+}
+@media (width >= 40rem) {
+.sm\:right-8 {
+right: calc(var(--spacing) * 8);
+}
+.sm\:block {
+display: block;
+}
+.sm\:inline-flex {
+display: inline-flex;
+}
+.sm\:h-\[450px\] {
+height: 450px;
+}
+.sm\:w-auto {
+width: auto;
+}
+.sm\:grid-cols-2 {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.sm\:flex-row {
+flex-direction: row;
+}
+.sm\:p-8 {
+padding: calc(var(--spacing) * 8);
+}
+.sm\:p-10 {
+padding: calc(var(--spacing) * 10);
+}
+.sm\:p-12 {
+padding: calc(var(--spacing) * 12);
+}
+.sm\:p-16 {
+padding: calc(var(--spacing) * 16);
+}
+.sm\:px-6 {
+padding-inline: calc(var(--spacing) * 6);
+}
+.sm\:text-left {
+text-align: left;
+}
+.sm\:text-2xl {
+font-size: var(--text-2xl);
+line-height: var(--tw-leading, var(--text-2xl--line-height));
+}
+.sm\:text-3xl {
+font-size: var(--text-3xl);
+line-height: var(--tw-leading, var(--text-3xl--line-height));
+}
+.sm\:text-4xl {
+font-size: var(--text-4xl);
+line-height: var(--tw-leading, var(--text-4xl--line-height));
+}
+.sm\:text-5xl {
+font-size: var(--text-5xl);
+line-height: var(--tw-leading, var(--text-5xl--line-height));
+}
+.sm\:text-base {
+font-size: var(--text-base);
+line-height: var(--tw-leading, var(--text-base--line-height));
+}
+.sm\:text-lg {
+font-size: var(--text-lg);
+line-height: var(--tw-leading, var(--text-lg--line-height));
+}
+.sm\:text-sm {
+font-size: var(--text-sm);
+line-height: var(--tw-leading, var(--text-sm--line-height));
+}
+.sm\:text-xl {
+font-size: var(--text-xl);
+line-height: var(--tw-leading, var(--text-xl--line-height));
+}
+}
+@media (width >= 48rem) {
+.md\:grid-cols-2 {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.md\:grid-cols-3 {
+grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+}
+@media (width >= 64rem) {
+.lg\:order-1 {
+order: 1;
+}
+.lg\:order-2 {
+order: 2;
+}
+.lg\:col-span-2 {
+grid-column: span 2 / span 2;
+}
+.lg\:col-span-3 {
+grid-column: span 3 / span 3;
+}
+.lg\:col-span-5 {
+grid-column: span 5 / span 5;
+}
+.lg\:col-span-6 {
+grid-column: span 6 / span 6;
+}
+.lg\:col-span-7 {
+grid-column: span 7 / span 7;
+}
+.lg\:mx-0 {
+margin-inline: 0px;
+}
+.lg\:flex {
+display: flex;
+}
+.lg\:hidden {
+display: none;
+}
+.lg\:grid-cols-3 {
+grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.lg\:grid-cols-4 {
+grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.lg\:grid-cols-12 {
+grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+.lg\:justify-start {
+justify-content: flex-start;
+}
+.lg\:gap-10 {
+gap: calc(var(--spacing) * 10);
+}
+.lg\:text-left {
+text-align: left;
+}
+.lg\:text-5xl {
+font-size: var(--text-5xl);
+line-height: var(--tw-leading, var(--text-5xl--line-height));
+}
+.lg\:text-\[4rem\] {
+font-size: 4rem;
+}
+}
+}
+@layer base {
+button:not(:disabled), [role="button"]:not(:disabled) {
+cursor: pointer;
+}
+html {
+-webkit-text-size-adjust: 100%;
+}
+}
+@layer components {
+.ic {
+display: inline-block;
+width: 1em;
+height: 1em;
+fill: currentColor;
+vertical-align: -0.125em;
+flex-shrink: 0;
+overflow: visible;
+}
+}
+@property --tw-translate-x {
+syntax: "*";
+inherits: false;
+initial-value: 0;
+}
+@property --tw-translate-y {
+syntax: "*";
+inherits: false;
+initial-value: 0;
+}
+@property --tw-translate-z {
+syntax: "*";
+inherits: false;
+initial-value: 0;
+}
+@property --tw-rotate-x {
+syntax: "*";
+inherits: false;
+}
+@property --tw-rotate-y {
+syntax: "*";
+inherits: false;
+}
+@property --tw-rotate-z {
+syntax: "*";
+inherits: false;
+}
+@property --tw-skew-x {
+syntax: "*";
+inherits: false;
+}
+@property --tw-skew-y {
+syntax: "*";
+inherits: false;
+}
+@property --tw-space-y-reverse {
+syntax: "*";
+inherits: false;
+initial-value: 0;
+}
+@property --tw-border-style {
+syntax: "*";
+inherits: false;
+initial-value: solid;
+}
+@property --tw-gradient-position {
+syntax: "*";
+inherits: false;
+}
+@property --tw-gradient-from {
+syntax: "<color>";
+inherits: false;
+initial-value: #0000;
+}
+@property --tw-gradient-via {
+syntax: "<color>";
+inherits: false;
+initial-value: #0000;
+}
+@property --tw-gradient-to {
+syntax: "<color>";
+inherits: false;
+initial-value: #0000;
+}
+@property --tw-gradient-stops {
+syntax: "*";
+inherits: false;
+}
+@property --tw-gradient-via-stops {
+syntax: "*";
+inherits: false;
+}
+@property --tw-gradient-from-position {
+syntax: "<length-percentage>";
+inherits: false;
+initial-value: 0%;
+}
+@property --tw-gradient-via-position {
+syntax: "<length-percentage>";
+inherits: false;
+initial-value: 50%;
+}
+@property --tw-gradient-to-position {
+syntax: "<length-percentage>";
+inherits: false;
+initial-value: 100%;
+}
+@property --tw-leading {
+syntax: "*";
+inherits: false;
+}
+@property --tw-font-weight {
+syntax: "*";
+inherits: false;
+}
+@property --tw-tracking {
+syntax: "*";
+inherits: false;
+}
+@property --tw-shadow {
+syntax: "*";
+inherits: false;
+initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+syntax: "*";
+inherits: false;
+}
+@property --tw-shadow-alpha {
+syntax: "<percentage>";
+inherits: false;
+initial-value: 100%;
+}
+@property --tw-inset-shadow {
+syntax: "*";
+inherits: false;
+initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+syntax: "*";
+inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+syntax: "<percentage>";
+inherits: false;
+initial-value: 100%;
+}
+@property --tw-ring-color {
+syntax: "*";
+inherits: false;
+}
+@property --tw-ring-shadow {
+syntax: "*";
+inherits: false;
+initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+syntax: "*";
+inherits: false;
+}
+@property --tw-inset-ring-shadow {
+syntax: "*";
+inherits: false;
+initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+syntax: "*";
+inherits: false;
+}
+@property --tw-ring-offset-width {
+syntax: "<length>";
+inherits: false;
+initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+syntax: "*";
+inherits: false;
+initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+syntax: "*";
+inherits: false;
+initial-value: 0 0 #0000;
+}
+@property --tw-blur {
+syntax: "*";
+inherits: false;
+}
+@property --tw-brightness {
+syntax: "*";
+inherits: false;
+}
+@property --tw-contrast {
+syntax: "*";
+inherits: false;
+}
+@property --tw-grayscale {
+syntax: "*";
+inherits: false;
+}
+@property --tw-hue-rotate {
+syntax: "*";
+inherits: false;
+}
+@property --tw-invert {
+syntax: "*";
+inherits: false;
+}
+@property --tw-opacity {
+syntax: "*";
+inherits: false;
+}
+@property --tw-saturate {
+syntax: "*";
+inherits: false;
+}
+@property --tw-sepia {
+syntax: "*";
+inherits: false;
+}
+@property --tw-drop-shadow {
+syntax: "*";
+inherits: false;
+}
+@property --tw-drop-shadow-color {
+syntax: "*";
+inherits: false;
+}
+@property --tw-drop-shadow-alpha {
+syntax: "<percentage>";
+inherits: false;
+initial-value: 100%;
+}
+@property --tw-drop-shadow-size {
+syntax: "*";
+inherits: false;
+}
+@property --tw-backdrop-blur {
+syntax: "*";
+inherits: false;
+}
+@property --tw-backdrop-brightness {
+syntax: "*";
+inherits: false;
+}
+@property --tw-backdrop-contrast {
+syntax: "*";
+inherits: false;
+}
+@property --tw-backdrop-grayscale {
+syntax: "*";
+inherits: false;
+}
+@property --tw-backdrop-hue-rotate {
+syntax: "*";
+inherits: false;
+}
+@property --tw-backdrop-invert {
+syntax: "*";
+inherits: false;
+}
+@property --tw-backdrop-opacity {
+syntax: "*";
+inherits: false;
+}
+@property --tw-backdrop-saturate {
+syntax: "*";
+inherits: false;
+}
+@property --tw-backdrop-sepia {
+syntax: "*";
+inherits: false;
+}
+@property --tw-duration {
+syntax: "*";
+inherits: false;
+}
+@property --tw-ease {
+syntax: "*";
+inherits: false;
+}
+@property --tw-scale-x {
+syntax: "*";
+inherits: false;
+initial-value: 1;
+}
+@property --tw-scale-y {
+syntax: "*";
+inherits: false;
+initial-value: 1;
+}
+@property --tw-scale-z {
+syntax: "*";
+inherits: false;
+initial-value: 1;
+}
+@keyframes spin {
+to {
+transform: rotate(360deg);
+}
+}
+@keyframes ping {
+75%, 100% {
+transform: scale(2);
+opacity: 0;
+}
+}
+@layer properties {
+@supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+*, ::before, ::after, ::backdrop {
+--tw-translate-x: 0;
+--tw-translate-y: 0;
+--tw-translate-z: 0;
+--tw-rotate-x: initial;
+--tw-rotate-y: initial;
+--tw-rotate-z: initial;
+--tw-skew-x: initial;
+--tw-skew-y: initial;
+--tw-space-y-reverse: 0;
+--tw-border-style: solid;
+--tw-gradient-position: initial;
+--tw-gradient-from: #0000;
+--tw-gradient-via: #0000;
+--tw-gradient-to: #0000;
+--tw-gradient-stops: initial;
+--tw-gradient-via-stops: initial;
+--tw-gradient-from-position: 0%;
+--tw-gradient-via-position: 50%;
+--tw-gradient-to-position: 100%;
+--tw-leading: initial;
+--tw-font-weight: initial;
+--tw-tracking: initial;
+--tw-shadow: 0 0 #0000;
+--tw-shadow-color: initial;
+--tw-shadow-alpha: 100%;
+--tw-inset-shadow: 0 0 #0000;
+--tw-inset-shadow-color: initial;
+--tw-inset-shadow-alpha: 100%;
+--tw-ring-color: initial;
+--tw-ring-shadow: 0 0 #0000;
+--tw-inset-ring-color: initial;
+--tw-inset-ring-shadow: 0 0 #0000;
+--tw-ring-inset: initial;
+--tw-ring-offset-width: 0px;
+--tw-ring-offset-color: #fff;
+--tw-ring-offset-shadow: 0 0 #0000;
+--tw-blur: initial;
+--tw-brightness: initial;
+--tw-contrast: initial;
+--tw-grayscale: initial;
+--tw-hue-rotate: initial;
+--tw-invert: initial;
+--tw-opacity: initial;
+--tw-saturate: initial;
+--tw-sepia: initial;
+--tw-drop-shadow: initial;
+--tw-drop-shadow-color: initial;
+--tw-drop-shadow-alpha: 100%;
+--tw-drop-shadow-size: initial;
+--tw-backdrop-blur: initial;
+--tw-backdrop-brightness: initial;
+--tw-backdrop-contrast: initial;
+--tw-backdrop-grayscale: initial;
+--tw-backdrop-hue-rotate: initial;
+--tw-backdrop-invert: initial;
+--tw-backdrop-opacity: initial;
+--tw-backdrop-saturate: initial;
+--tw-backdrop-sepia: initial;
+--tw-duration: initial;
+--tw-ease: initial;
+--tw-scale-x: 1;
+--tw-scale-y: 1;
+--tw-scale-z: 1;
+}
+}
+}
+  </style>
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif'],
-          },
-          colors: {
-            cyber: {
-              bg: '#050811',
-              surface: '#0A0F1D',
-              card: 'rgba(14, 21, 38, 0.65)',
-              cyan: '#00F5D4',
-              blue: '#00BBF9',
-              coral: '#FF4D6D',
-              coralDark: '#E03555',
-            }
-          }
-        }
-      }
-    };
-  </script>
+  <!-- Sans JavaScript : on rend le contenu visible et on retire le préchargeur -->
+  <noscript>
+    <style>
+      #preloader { display: none !important; }
+      .scroll-node { opacity: 1 !important; filter: none !important; transform: none !important; }
+    </style>
+  </noscript>
 
   <style>
     :root {
@@ -243,6 +2403,16 @@
       transform: translateY(-28px) scale(0.97);
     }
 
+    /* Correctif : l'effet tilt au survol doit être réactif (la transition de révélation est plus lente) */
+    .tilt-card.in-view:hover {
+      transition:
+        opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.15s ease-out,
+        filter 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
     /* Navigation entre vues */
     .page-view {
       display: none;
@@ -302,6 +2472,10 @@
     .cyber-input::placeholder {
       color: #64748B;
     }
+    /* Correctif : état d'erreur fiable (ne dépend plus de l'ordre des feuilles de style) */
+    .cyber-input.input-error {
+      border-color: #FF4D6D;
+    }
 
     /* Pulse WhatsApp */
     @keyframes waPulse {
@@ -332,9 +2506,28 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #00F5D4;
     }
+
+    /* Accessibilité : respect de la préférence « réduire les animations » */
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-node,
+      .scroll-node.out-top,
+      .scroll-node.from-left,
+      .scroll-node.from-right {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .page-view { animation: none; }
+      .wa-float { animation: none; }
+      .loader-ring { animation-duration: 2.5s; }
+      html { scroll-behavior: auto !important; }
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-cyber-cyan selection:text-cyber-bg relative">
+  <!-- Icônes intégrées (aucune ressource externe) -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="i-arrow-left" viewBox="0 0 448 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></symbol><symbol id="i-arrow-right" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></symbol><symbol id="i-arrow-up" viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2 160 448c0 17.7 14.3 32 32 32s32-14.3 32-32l0-306.7L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path></symbol><symbol id="i-bolt" viewBox="0 0 448 512"><path d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288l111.5 0L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7l-111.5 0L349.4 44.6z"></path></symbol><symbol id="i-boxes" viewBox="0 0 576 512"><path d="M248 0L208 0c-26.5 0-48 21.5-48 48l0 112c0 35.3 28.7 64 64 64l128 0c35.3 0 64-28.7 64-64l0-112c0-26.5-21.5-48-48-48L328 0l0 80c0 8.8-7.2 16-16 16l-48 0c-8.8 0-16-7.2-16-16l0-80zM64 256c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l160 0c35.3 0 64-28.7 64-64l0-128c0-35.3-28.7-64-64-64l-40 0 0 80c0 8.8-7.2 16-16 16l-48 0c-8.8 0-16-7.2-16-16l0-80-40 0zM352 512l160 0c35.3 0 64-28.7 64-64l0-128c0-35.3-28.7-64-64-64l-40 0 0 80c0 8.8-7.2 16-16 16l-48 0c-8.8 0-16-7.2-16-16l0-80-40 0c-15 0-28.8 5.1-39.7 13.8c4.9 10.4 7.7 22 7.7 34.2l0 160c0 12.2-2.8 23.8-7.7 34.2C323.2 506.9 337 512 352 512z"></path></symbol><symbol id="i-briefcase" viewBox="0 0 512 512"><path d="M184 48l144 0c4.4 0 8 3.6 8 8l0 40L176 96l0-40c0-4.4 3.6-8 8-8zm-56 8l0 40L64 96C28.7 96 0 124.7 0 160l0 96 192 0 128 0 192 0 0-96c0-35.3-28.7-64-64-64l-64 0 0-40c0-30.9-25.1-56-56-56L184 0c-30.9 0-56 25.1-56 56zM512 288l-192 0 0 32c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32l0-32L0 288 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-128z"></path></symbol><symbol id="i-building" viewBox="0 0 384 512"><path d="M48 0C21.5 0 0 21.5 0 48L0 464c0 26.5 21.5 48 48 48l96 0 0-80c0-26.5 21.5-48 48-48s48 21.5 48 48l0 80 96 0c26.5 0 48-21.5 48-48l0-416c0-26.5-21.5-48-48-48L48 0zM64 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm112-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM80 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM272 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z"></path></symbol><symbol id="i-check" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></symbol><symbol id="i-check-circle" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path></symbol><symbol id="i-chevron-left" viewBox="0 0 320 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"></path></symbol><symbol id="i-chevron-right" viewBox="0 0 320 512"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></symbol><symbol id="i-clock" viewBox="0 0 512 512"><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"></path></symbol><symbol id="i-cloud-upload-alt" viewBox="0 0 640 512"><path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128l-368 0zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39L296 392c0 13.3 10.7 24 24 24s24-10.7 24-24l0-134.1 39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"></path></symbol><symbol id="i-envelope" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"></path></symbol><symbol id="i-exclamation-circle" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path></symbol><symbol id="i-exclamation-triangle" viewBox="0 0 512 512"><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path></symbol><symbol id="i-expand" viewBox="0 0 448 512"><path d="M32 32C14.3 32 0 46.3 0 64l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7 14.3 32 32 32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0 0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32l-96 0zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l96 0c17.7 0 32-14.3 32-32l0-96z"></path></symbol><symbol id="i-file-alt" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-288-128 0c-17.7 0-32-14.3-32-32L224 0 64 0zM256 0l0 128 128 0L256 0zM112 256l160 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-160 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l160 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-160 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l160 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-160 0c-8.8 0-16-7.2-16-16s7.2-16 16-16z"></path></symbol><symbol id="i-file-invoice" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-288-128 0c-17.7 0-32-14.3-32-32L224 0 64 0zM256 0l0 128 128 0L256 0zM80 64l64 0c8.8 0 16 7.2 16 16s-7.2 16-16 16L80 96c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l64 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-64 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm16 96l192 0c17.7 0 32 14.3 32 32l0 64c0 17.7-14.3 32-32 32L96 352c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32zm0 32l0 64 192 0 0-64L96 256zM240 416l64 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-64 0c-8.8 0-16-7.2-16-16s7.2-16 16-16z"></path></symbol><symbol id="i-home" viewBox="0 0 576 512"><path d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"></path></symbol><symbol id="i-industry" viewBox="0 0 576 512"><path d="M64 32C46.3 32 32 46.3 32 64l0 240 0 48 0 80c0 26.5 21.5 48 48 48l416 0c26.5 0 48-21.5 48-48l0-128 0-151.8c0-18.2-19.4-29.7-35.4-21.1L352 215.4l0-63.2c0-18.2-19.4-29.7-35.4-21.1L160 215.4 160 64c0-17.7-14.3-32-32-32L64 32z"></path></symbol><symbol id="i-info-circle" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336l24 0 0-64-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 88 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"></path></symbol><symbol id="i-leaf" viewBox="0 0 512 512"><path d="M272 96c-78.6 0-145.1 51.5-167.7 122.5c33.6-17 71.5-26.5 111.7-26.5l88 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-16 0-72 0s0 0 0 0c-16.6 0-32.7 1.9-48.3 5.4c-25.9 5.9-49.9 16.4-71.4 30.7c0 0 0 0 0 0C38.3 298.8 0 364.9 0 440l0 16c0 13.3 10.7 24 24 24s24-10.7 24-24l0-16c0-48.7 20.7-92.5 53.8-123.2C121.6 392.3 190.3 448 272 448l1 0c132.1-.7 239-130.9 239-291.4c0-42.6-7.5-83.1-21.1-119.6c-2.6-6.9-12.7-6.6-16.2-.1C455.9 72.1 418.7 96 376 96L272 96z"></path></symbol><symbol id="i-lock" viewBox="0 0 448 512"><path d="M144 144l0 48 160 0 0-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192l0-48C80 64.5 144.5 0 224 0s144 64.5 144 144l0 48 16 0c35.3 0 64 28.7 64 64l0 192c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 256c0-35.3 28.7-64 64-64l16 0z"></path></symbol><symbol id="i-map-marker-alt" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></symbol><symbol id="i-paper-plane" viewBox="0 0 512 512"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480l0-83.6c0-4 1.5-7.8 4.2-10.8L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"></path></symbol><symbol id="i-phone" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path></symbol><symbol id="i-recycle" viewBox="0 0 512 512"><path d="M174.7 45.1C192.2 17 223 0 256 0s63.8 17 81.3 45.1l38.6 61.7 27-15.6c8.4-4.9 18.9-4.2 26.6 1.7s11.1 15.9 8.6 25.3l-23.4 87.4c-3.4 12.8-16.6 20.4-29.4 17l-87.4-23.4c-9.4-2.5-16.3-10.4-17.6-20s3.4-19.1 11.8-23.9l28.4-16.4L283 79c-5.8-9.3-16-15-27-15s-21.2 5.7-27 15l-17.5 28c-9.2 14.8-28.6 19.5-43.6 10.5c-15.3-9.2-20.2-29.2-10.7-44.4l17.5-28zM429.5 251.9c15-9 34.4-4.3 43.6 10.5l24.4 39.1c9.4 15.1 14.4 32.4 14.6 50.2c.3 53.1-42.7 96.4-95.8 96.4L320 448l0 32c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-64-64c-9.4-9.4-9.4-24.6 0-33.9l64-64c6.9-6.9 17.2-8.9 26.2-5.2s14.8 12.5 14.8 22.2l0 32 96.2 0c17.6 0 31.9-14.4 31.8-32c0-5.9-1.7-11.7-4.8-16.7l-24.4-39.1c-9.5-15.2-4.7-35.2 10.7-44.4zm-364.6-31L36 204.2c-8.4-4.9-13.1-14.3-11.8-23.9s8.2-17.5 17.6-20l87.4-23.4c12.8-3.4 26 4.2 29.4 17L182 241.2c2.5 9.4-.9 19.3-8.6 25.3s-18.2 6.6-26.6 1.7l-26.5-15.3L68.8 335.3c-3.1 5-4.8 10.8-4.8 16.7c-.1 17.6 14.2 32 31.8 32l32.2 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-32.2 0C42.7 448-.3 404.8 0 351.6c.1-17.8 5.1-35.1 14.6-50.2l50.3-80.5z"></path></symbol><symbol id="i-shield-alt" viewBox="0 0 512 512"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0zm0 66.8l0 378.1C394 378 431.1 230.1 432 141.4L256 66.8s0 0 0 0z"></path></symbol><symbol id="i-spinner" viewBox="0 0 512 512"><path d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z"></path></symbol><symbol id="i-spray-can-sparkles" viewBox="0 0 512 512"><path d="M96 32l0 96 128 0 0-96c0-17.7-14.3-32-32-32L128 0C110.3 0 96 14.3 96 32zm0 128c-53 0-96 43-96 96L0 464c0 26.5 21.5 48 48 48l224 0c26.5 0 48-21.5 48-48l0-208c0-53-43-96-96-96L96 160zm64 96a80 80 0 1 1 0 160 80 80 0 1 1 0-160zM384 48c0-1.4-1-3-2.2-3.6L352 32 339.6 2.2C339 1 337.4 0 336 0s-3 1-3.6 2.2L320 32 290.2 44.4C289 45 288 46.6 288 48c0 1.4 1 3 2.2 3.6L320 64l12.4 29.8C333 95 334.6 96 336 96s3-1 3.6-2.2L352 64l29.8-12.4C383 51 384 49.4 384 48zm76.4 45.8C461 95 462.6 96 464 96s3-1 3.6-2.2L480 64l29.8-12.4C511 51 512 49.4 512 48c0-1.4-1-3-2.2-3.6L480 32 467.6 2.2C467 1 465.4 0 464 0s-3 1-3.6 2.2L448 32 418.2 44.4C417 45 416 46.6 416 48c0 1.4 1 3 2.2 3.6L448 64l12.4 29.8zm7.2 100.4c-.6-1.2-2.2-2.2-3.6-2.2s-3 1-3.6 2.2L448 224l-29.8 12.4c-1.2 .6-2.2 2.2-2.2 3.6c0 1.4 1 3 2.2 3.6L448 256l12.4 29.8c.6 1.2 2.2 2.2 3.6 2.2s3-1 3.6-2.2L480 256l29.8-12.4c1.2-.6 2.2-2.2 2.2-3.6c0-1.4-1-3-2.2-3.6L480 224l-12.4-29.8zM448 144c0-1.4-1-3-2.2-3.6L416 128 403.6 98.2C403 97 401.4 96 400 96s-3 1-3.6 2.2L384 128l-29.8 12.4c-1.2 .6-2.2 2.2-2.2 3.6c0 1.4 1 3 2.2 3.6L384 160l12.4 29.8c.6 1.2 2.2 2.2 3.6 2.2s3-1 3.6-2.2L416 160l29.8-12.4c1.2-.6 2.2-2.2 2.2-3.6z"></path></symbol><symbol id="i-star" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path></symbol><symbol id="i-star-half-alt" viewBox="0 0 576 512"><path d="M288 376.4l.1-.1 26.4 14.1 85.2 45.5-16.5-97.6-4.8-28.7 20.7-20.5 70.1-69.3-96.1-14.2-29.3-4.3-12.9-26.6L288.1 86.9l-.1 .3 0 289.2zm175.1 98.3c2 12-3 24.2-12.9 31.3s-23 8-33.8 2.3L288.1 439.8 159.8 508.3C149 514 135.9 513.1 126 506s-14.9-19.3-12.9-31.3L137.8 329 33.6 225.9c-8.6-8.5-11.7-21.2-7.9-32.7s13.7-19.9 25.7-21.7L195 150.3 259.4 18c5.4-11 16.5-18 28.8-18s23.4 7 28.8 18l64.3 132.3 143.6 21.2c12 1.8 22 10.2 25.7 21.7s.7 24.2-7.9 32.7L438.5 329l24.6 145.7z"></path></symbol><symbol id="i-times" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"></path></symbol><symbol id="i-warehouse" viewBox="0 0 640 512"><path d="M0 488L0 171.3c0-26.2 15.9-49.7 40.2-59.4L308.1 4.8c7.6-3.1 16.1-3.1 23.8 0L599.8 111.9c24.3 9.7 40.2 33.3 40.2 59.4L640 488c0 13.3-10.7 24-24 24l-48 0c-13.3 0-24-10.7-24-24l0-264c0-17.7-14.3-32-32-32l-384 0c-17.7 0-32 14.3-32 32l0 264c0 13.3-10.7 24-24 24l-48 0c-13.3 0-24-10.7-24-24zm488 24l-336 0c-13.3 0-24-10.7-24-24l0-56 384 0 0 56c0 13.3-10.7 24-24 24zM128 400l0-64 384 0 0 64-384 0zm0-96l0-80 384 0 0 80-384 0z"></path></symbol><symbol id="i-whatsapp" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></symbol></defs></svg>
 
   <!-- Barre de progression de scroll -->
   <div id="scroll-progress"></div>
@@ -381,7 +2574,7 @@
       <!-- CTA Header & Burger -->
       <div class="flex items-center gap-3">
         <button onclick="navigateTo('devis')" class="hidden sm:inline-flex items-center gap-2 btn-neon-coral text-white text-sm font-semibold px-5 py-2.5 rounded-full">
-          <i class="fas fa-bolt text-xs"></i>
+          <svg class="ic text-xs" aria-hidden="true" focusable="false"><use href="#i-bolt"/></svg>
           <span>Devis Gratuit</span>
         </button>
 
@@ -402,7 +2595,7 @@
     <button onclick="navigateTo('apropos'); toggleMobileMenu()" class="text-2xl font-display font-bold text-white hover:text-cyber-cyan py-2 transition-colors">À propos</button>
     <button onclick="navigateTo('contact'); toggleMobileMenu()" class="text-2xl font-display font-bold text-white hover:text-cyber-cyan py-2 transition-colors">Contact</button>
     <button onclick="navigateTo('devis'); toggleMobileMenu()" class="mt-4 btn-neon-coral text-white font-semibold px-8 py-3.5 rounded-full text-lg flex items-center gap-2">
-      <i class="fas fa-file-invoice"></i> Devis Gratuit sous 24h
+      <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-file-invoice"/></svg> Devis Gratuit sous 24h
     </button>
   </div>
 
@@ -436,28 +2629,28 @@
             <!-- Badges interactifs -->
             <div class="scroll-node in-view flex flex-wrap justify-center lg:justify-start gap-2.5 mb-10">
               <div class="px-3.5 py-2 rounded-xl glass-panel text-xs sm:text-sm text-slate-200 flex items-center gap-2 hover:border-cyber-cyan/40 transition-colors">
-                <i class="fas fa-check-circle text-cyber-cyan"></i> Devis sous 24h
+                <svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg> Devis sous 24h
               </div>
               <div class="px-3.5 py-2 rounded-xl glass-panel text-xs sm:text-sm text-slate-200 flex items-center gap-2 hover:border-cyber-cyan/40 transition-colors">
-                <i class="fas fa-shield-alt text-cyber-blue"></i> Équipe assurée
+                <svg class="ic text-cyber-blue" aria-hidden="true" focusable="false"><use href="#i-shield-alt"/></svg> Équipe assurée
               </div>
               <div class="px-3.5 py-2 rounded-xl glass-panel text-xs sm:text-sm text-slate-200 flex items-center gap-2 hover:border-cyber-cyan/40 transition-colors">
-                <i class="fas fa-map-marker-alt text-cyber-coral"></i> Île-de-France
+                <svg class="ic text-cyber-coral" aria-hidden="true" focusable="false"><use href="#i-map-marker-alt"/></svg> Île-de-France
               </div>
               <div class="px-3.5 py-2 rounded-xl glass-panel text-xs sm:text-sm text-slate-200 flex items-center gap-2 hover:border-cyber-cyan/40 transition-colors">
-                <i class="fas fa-leaf text-cyber-cyan"></i> Tri & Recyclage
+                <svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-leaf"/></svg> Tri & Recyclage
               </div>
             </div>
 
             <!-- Boutons d'action -->
             <div class="scroll-node in-view flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <button onclick="navigateTo('devis')" class="w-full sm:w-auto btn-neon-coral text-white font-semibold px-8 py-4 rounded-full text-base flex items-center justify-center gap-3">
-                <i class="fas fa-file-alt"></i>
+                <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-file-alt"/></svg>
                 <span>Demander un devis</span>
               </button>
               <button onclick="navigateTo('services')" class="w-full sm:w-auto btn-neon-cyan font-semibold px-8 py-4 rounded-full text-base flex items-center justify-center gap-3">
                 <span>Nos services</span>
-                <i class="fas fa-arrow-right text-sm"></i>
+                <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
               </button>
             </div>
           </div>
@@ -473,7 +2666,6 @@
                   src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=85" 
                   alt="Nettoyage professionnel Net & Net" 
                   class="w-full h-[380px] sm:h-[450px] object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  onerror="this.src='https://placehold.co/800x600/0A0F1D/00F5D4?text=Net+%26+Net'"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-transparent to-transparent opacity-80"></div>
                 
@@ -481,16 +2673,16 @@
                 <div class="absolute bottom-4 left-4 right-4 glass-panel rounded-2xl p-4 flex items-center justify-between border border-white/15">
                   <div class="flex items-center gap-3">
                     <div class="w-11 h-11 rounded-xl bg-cyber-cyan/15 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan">
-                      <i class="fas fa-check-double text-lg"></i>
+                      <svg class="ic text-lg" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
                     </div>
                     <div>
-                      <div class="font-display text-xl font-bold text-white leading-none">+500</div>
-                      <div class="text-xs text-slate-300 mt-1">Interventions réalisées</div>
+                      <div class="font-display text-xl font-bold text-white leading-none">24h</div>
+                      <div class="text-xs text-slate-300 mt-1">Pour recevoir votre devis</div>
                     </div>
                   </div>
                   <div class="text-right">
                     <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyber-cyan bg-cyber-cyan/10 px-3 py-1 rounded-full border border-cyber-cyan/20">
-                      <i class="fas fa-star text-[10px]"></i> 98% Satisfaits
+                      <svg class="ic text-[10px]" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Devis gratuit
                     </span>
                   </div>
                 </div>
@@ -521,7 +2713,7 @@
             <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
               <div class="spotlight-content">
                 <div class="w-14 h-14 rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/25 flex items-center justify-center text-cyber-cyan text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-cyan group-hover:text-cyber-bg transition-all duration-300 shadow-[0_0_20px_rgba(0,245,212,0.15)]">
-                  <i class="fas fa-home"></i>
+                  <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-home"/></svg>
                 </div>
                 <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-cyan transition-colors">Débarras Maison</h3>
                 <p class="text-sm text-slate-400 leading-relaxed">Libérez votre maison de tout ce qui l'encombre. Tri, évacuation et recyclage inclus.</p>
@@ -532,7 +2724,7 @@
             <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
               <div class="spotlight-content">
                 <div class="w-14 h-14 rounded-2xl bg-cyber-blue/10 border border-cyber-blue/25 flex items-center justify-center text-cyber-blue text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-blue group-hover:text-cyber-bg transition-all duration-300 shadow-[0_0_20px_rgba(0,187,249,0.15)]">
-                  <i class="fas fa-building"></i>
+                  <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-building"/></svg>
                 </div>
                 <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-blue transition-colors">Débarras Appartement</h3>
                 <p class="text-sm text-slate-400 leading-relaxed">Idéal avant une vente, une location ou un déménagement. Rapide et discret.</p>
@@ -543,7 +2735,7 @@
             <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
               <div class="spotlight-content">
                 <div class="w-14 h-14 rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/25 flex items-center justify-center text-cyber-cyan text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-cyan group-hover:text-cyber-bg transition-all duration-300">
-                  <i class="fas fa-boxes"></i>
+                  <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-boxes"/></svg>
                 </div>
                 <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-cyan transition-colors">Cave & Grenier</h3>
                 <p class="text-sm text-slate-400 leading-relaxed">Nous vidons, trions et évacuons tout en respectant les normes de recyclage.</p>
@@ -554,7 +2746,7 @@
             <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
               <div class="spotlight-content">
                 <div class="w-14 h-14 rounded-2xl bg-cyber-coral/10 border border-cyber-coral/25 flex items-center justify-center text-cyber-coral text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-coral group-hover:text-white transition-all duration-300">
-                  <i class="fas fa-warehouse"></i>
+                  <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-warehouse"/></svg>
                 </div>
                 <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-coral transition-colors">Garage & Remise</h3>
                 <p class="text-sm text-slate-400 leading-relaxed">Nous vidons et nettoyons pour vous offrir un espace prêt à être réutilisé.</p>
@@ -565,7 +2757,7 @@
             <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
               <div class="spotlight-content">
                 <div class="w-14 h-14 rounded-2xl bg-cyber-blue/10 border border-cyber-blue/25 flex items-center justify-center text-cyber-blue text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-blue group-hover:text-cyber-bg transition-all duration-300">
-                  <i class="fas fa-briefcase"></i>
+                  <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-briefcase"/></svg>
                 </div>
                 <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-blue transition-colors">Locaux Professionnels</h3>
                 <p class="text-sm text-slate-400 leading-relaxed">Bureaux, commerces, entrepôts : intervention discrète et dans les délais.</p>
@@ -576,7 +2768,7 @@
             <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
               <div class="spotlight-content">
                 <div class="w-14 h-14 rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/25 flex items-center justify-center text-cyber-cyan text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-cyan group-hover:text-cyber-bg transition-all duration-300">
-                  <i class="fas fa-spray-can-sparkles"></i>
+                  <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-spray-can-sparkles"/></svg>
                 </div>
                 <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-cyan transition-colors">Nettoyage Particulier</h3>
                 <p class="text-sm text-slate-400 leading-relaxed">Nettoyage en profondeur de votre logement : sols, vitres, sanitaires, cuisine.</p>
@@ -587,7 +2779,7 @@
             <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
               <div class="spotlight-content">
                 <div class="w-14 h-14 rounded-2xl bg-cyber-coral/10 border border-cyber-coral/25 flex items-center justify-center text-cyber-coral text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-coral group-hover:text-white transition-all duration-300">
-                  <i class="fas fa-industry"></i>
+                  <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-industry"/></svg>
                 </div>
                 <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-coral transition-colors">Nettoyage Professionnel</h3>
                 <p class="text-sm text-slate-400 leading-relaxed">Nettoyage régulier ou ponctuel de vos locaux, bureaux et espaces communs.</p>
@@ -598,7 +2790,7 @@
             <div class="spotlight-card tilt-card scroll-node p-7 group cursor-pointer" onclick="navigateTo('services')">
               <div class="spotlight-content">
                 <div class="w-14 h-14 rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/25 flex items-center justify-center text-cyber-cyan text-xl mb-6 group-hover:scale-110 group-hover:bg-cyber-cyan group-hover:text-cyber-bg transition-all duration-300">
-                  <i class="fas fa-recycle"></i>
+                  <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-recycle"/></svg>
                 </div>
                 <h3 class="font-display text-xl font-bold text-white mb-2.5 group-hover:text-cyber-cyan transition-colors">Tri & Recyclage</h3>
                 <p class="text-sm text-slate-400 leading-relaxed">Chaque objet est orienté vers la filière de recyclage ou de don appropriée.</p>
@@ -669,20 +2861,20 @@
         <div id="counters-section" class="max-w-6xl mx-auto glass-panel rounded-3xl p-8 sm:p-12 border border-cyber-cyan/20 shadow-[0_0_50px_rgba(0,245,212,0.06)] scroll-node">
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div>
-              <div class="counter-val font-display text-4xl sm:text-5xl font-bold text-gradient-cyan mb-2" data-target="500" data-prefix="+">0</div>
-              <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">Interventions réalisées</div>
-            </div>
-            <div>
-              <div class="counter-val font-display text-4xl sm:text-5xl font-bold text-white mb-2" data-target="98" data-suffix="%">0</div>
-              <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">De clients satisfaits</div>
-            </div>
-            <div>
-              <div class="counter-val font-display text-4xl sm:text-5xl font-bold text-cyber-blue mb-2" data-target="24" data-suffix="h">0</div>
+              <div class="counter-val font-display text-4xl sm:text-5xl font-bold text-gradient-cyan mb-2" data-target="24" data-suffix="h">0</div>
               <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">Pour un devis gratuit</div>
             </div>
             <div>
-              <div class="counter-val font-display text-4xl sm:text-5xl font-bold text-cyber-coral mb-2" data-target="8">0</div>
+              <div class="counter-val font-display text-4xl sm:text-5xl font-bold text-white mb-2" data-target="8">0</div>
               <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">Départements couverts</div>
+            </div>
+            <div>
+              <div class="counter-val font-display text-4xl sm:text-5xl font-bold text-cyber-blue mb-2" data-target="6" data-suffix="j/7">0</div>
+              <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">Du lundi au samedi</div>
+            </div>
+            <div>
+              <div class="counter-val font-display text-4xl sm:text-5xl font-bold text-cyber-coral mb-2" data-target="100" data-suffix="%">0</div>
+              <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">Devis gratuit et sans engagement</div>
             </div>
           </div>
         </div>
@@ -706,7 +2898,7 @@
                   <div class="spotlight-card p-8 sm:p-12 text-center">
                     <div class="spotlight-content">
                       <div class="flex justify-center gap-1.5 text-amber-400 text-base mb-6">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg>
                       </div>
                       <p class="text-lg sm:text-xl text-slate-200 italic leading-relaxed mb-8">
                         "Équipe très professionnelle et ponctuelle. Ils ont vidé toute ma cave en une journée. Le résultat est impeccable, je recommande vivement !"
@@ -727,7 +2919,7 @@
                   <div class="spotlight-card p-8 sm:p-12 text-center">
                     <div class="spotlight-content">
                       <div class="flex justify-center gap-1.5 text-amber-400 text-base mb-6">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg>
                       </div>
                       <p class="text-lg sm:text-xl text-slate-200 italic leading-relaxed mb-8">
                         "Devis reçu en moins de 24h comme promis. Tarifs très compétitifs et travail soigné. Mon appartement était prêt pour la vente en 2 jours."
@@ -748,7 +2940,7 @@
                   <div class="spotlight-card p-8 sm:p-12 text-center">
                     <div class="spotlight-content">
                       <div class="flex justify-center gap-1.5 text-amber-400 text-base mb-6">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg>
                       </div>
                       <p class="text-lg sm:text-xl text-slate-200 italic leading-relaxed mb-8">
                         "Nous avons fait appel à Net & Net pour le débarras de nos bureaux avant déménagement. Travail rapide, propre et sans stress. Merci !"
@@ -769,7 +2961,7 @@
                   <div class="spotlight-card p-8 sm:p-12 text-center">
                     <div class="spotlight-content">
                       <div class="flex justify-center gap-1.5 text-amber-400 text-base mb-6">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star-half-alt"/></svg>
                       </div>
                       <p class="text-lg sm:text-xl text-slate-200 italic leading-relaxed mb-8">
                         "Service au top du début à la fin. Le nettoyage de mon garage et le tri ont été faits avec beaucoup de soin. Je les recontacterai sans hésiter."
@@ -790,11 +2982,11 @@
             <!-- Contrôles Carrousel -->
             <div class="flex items-center justify-center gap-4 mt-8">
               <button onclick="prevTestimonial()" aria-label="Précédent" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-cyber-cyan hover:border-cyber-cyan/50 transition-all">
-                <i class="fas fa-chevron-left text-xs"></i>
+                <svg class="ic text-xs" aria-hidden="true" focusable="false"><use href="#i-chevron-left"/></svg>
               </button>
               <div id="testimonial-dots" class="flex items-center gap-2.5"></div>
               <button onclick="nextTestimonial()" aria-label="Suivant" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-cyber-cyan hover:border-cyber-cyan/50 transition-all">
-                <i class="fas fa-chevron-right text-xs"></i>
+                <svg class="ic text-xs" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg>
               </button>
             </div>
           </div>
@@ -815,7 +3007,7 @@
               Obtenez votre devis gratuit en moins de 24h. Sans engagement.
             </p>
             <button onclick="navigateTo('devis')" class="btn-neon-coral text-white font-semibold px-9 py-4 rounded-full text-base inline-flex items-center gap-3">
-              <i class="fas fa-paper-plane"></i>
+              <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-paper-plane"/></svg>
               <span>Demander mon devis gratuit</span>
             </button>
           </div>
@@ -848,10 +3040,10 @@
               Déménagement, succession, vente ou simple envie d'espace : nous vidons et nettoyons votre logement en profondeur.
             </p>
             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Vidage complet ou partiel</li>
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Tri et évacuation des encombrants</li>
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Recyclage et don des objets réutilisables</li>
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Nettoyage final inclus</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Vidage complet ou partiel</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Tri et évacuation des encombrants</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Recyclage et don des objets réutilisables</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Nettoyage final inclus</li>
             </ul>
           </div>
         </div>
@@ -865,10 +3057,10 @@
               Ces espaces accumulent des années d'objets. Nous les vidons, trions et nettoyons pour un résultat prêt à l'emploi.
             </p>
             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-blue"></i> Vidage complet de l'espace</li>
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-blue"></i> Tri sélectif des matériaux</li>
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-blue"></i> Évacuation en filière agréée</li>
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-blue"></i> Nettoyage des sols et surfaces</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-blue" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Vidage complet de l'espace</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-blue" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Tri sélectif des matériaux</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-blue" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Évacuation vers déchetteries et filières de tri</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-blue" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Nettoyage des sols et surfaces</li>
             </ul>
           </div>
           <div class="lg:col-span-5 lg:order-2 order-1 overflow-hidden rounded-2xl border border-white/10">
@@ -888,10 +3080,10 @@
               Bureaux, commerces, entrepôts : nous gérons le débarras de vos espaces pro en toute discrétion.
             </p>
             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-coral"></i> Intervention hors horaires d'ouverture possible</li>
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-coral"></i> Gestion des déchets professionnels</li>
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-coral"></i> Intervention ponctuelle ou contrat</li>
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-coral"></i> Facturation adaptée aux entreprises</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-coral" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Intervention hors horaires d'ouverture possible</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-coral" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Gestion des déchets professionnels</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-coral" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Intervention ponctuelle ou contrat</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-coral" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Facturation adaptée aux entreprises</li>
             </ul>
           </div>
         </div>
@@ -905,10 +3097,10 @@
               Un intérieur ou un local impeccable sans effort, en prestation ponctuelle ou régulière.
             </p>
             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Nettoyage complet (sols, vitres, sanitaires, cuisine)</li>
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Nettoyage après travaux</li>
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Nettoyage de fin de bail</li>
-              <li class="flex items-center gap-2.5"><i class="fas fa-check text-cyber-cyan"></i> Produits écologiques disponibles</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Nettoyage complet (sols, vitres, sanitaires, cuisine)</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Nettoyage après travaux</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Nettoyage de fin de bail</li>
+              <li class="flex items-center gap-2.5"><svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check"/></svg> Produits écologiques disponibles</li>
             </ul>
           </div>
           <div class="lg:col-span-5 lg:order-2 order-1 overflow-hidden rounded-2xl border border-white/10">
@@ -921,7 +3113,7 @@
           <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mb-3">Un projet de débarras ou de nettoyage ?</h2>
           <p class="text-slate-300 mb-7">Contactez-nous pour un devis gratuit et sans engagement sous 24h.</p>
           <button onclick="navigateTo('devis')" class="btn-neon-coral text-white font-semibold px-8 py-4 rounded-full inline-flex items-center gap-2.5">
-            <i class="fas fa-paper-plane"></i> Obtenir mon devis
+            <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-paper-plane"/></svg> Obtenir mon devis
           </button>
         </div>
       </div>
@@ -933,92 +3125,92 @@
     <section id="page-galerie" class="page-view">
       <div class="pt-36 pb-14 px-4 sm:px-6 text-center">
         <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-cyber-cyan bg-cyber-cyan/10 border border-cyber-cyan/25 px-4 py-1.5 rounded-full mb-4">
-          Nos Réalisations
+          Exemples de prestations
         </span>
         <h1 class="font-display text-4xl sm:text-5xl font-bold text-white mb-3">Galerie Photos</h1>
-        <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto">Découvrez nos interventions en Île-de-France. Cliquez sur une photo pour l'agrandir.</p>
+        <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto">Un aperçu de nos prestations de débarras et de nettoyage en Île-de-France. Photos d'illustration : cliquez pour agrandir.</p>
       </div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pb-24">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Nettoyage professionnel – Paris" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Nettoyage professionnel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <span class="font-display font-semibold text-white text-sm sm:text-base">Nettoyage professionnel – Paris</span>
-              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Nettoyage professionnel</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span>
             </div>
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Débarras maison – Versailles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Débarras maison" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <span class="font-display font-semibold text-white text-sm sm:text-base">Débarras maison – Versailles</span>
-              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Débarras maison</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span>
             </div>
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Vidage cave – Créteil" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Vidage de cave" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <span class="font-display font-semibold text-white text-sm sm:text-base">Vidage cave – Créteil</span>
-              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Vidage de cave</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span>
             </div>
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Bureaux – Boulogne" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Locaux professionnels" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <span class="font-display font-semibold text-white text-sm sm:text-base">Bureaux – Boulogne</span>
-              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Locaux professionnels</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span>
             </div>
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80" alt="Nettoyage cuisine – Montreuil" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80" alt="Nettoyage de cuisine" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <span class="font-display font-semibold text-white text-sm sm:text-base">Nettoyage cuisine – Montreuil</span>
-              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Nettoyage de cuisine</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span>
             </div>
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="Intérieur rénové – Nanterre" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="Logement prêt à l'emploi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <span class="font-display font-semibold text-white text-sm sm:text-base">Intérieur rénové – Nanterre</span>
-              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Logement prêt à l'emploi</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span>
             </div>
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Notre équipe en action" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Débarras en équipe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <span class="font-display font-semibold text-white text-sm sm:text-base">Notre équipe en action</span>
-              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Débarras en équipe</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span>
             </div>
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80" alt="Nettoyage sols – Levallois" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80" alt="Nettoyage des sols" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <span class="font-display font-semibold text-white text-sm sm:text-base">Nettoyage sols – Levallois</span>
-              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Nettoyage des sols</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span>
             </div>
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1527515637462-cff94d1184a?w=800&q=80" alt="Rangement & tri – Ivry" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=800&q=80" alt="Rangement et tri" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <span class="font-display font-semibold text-white text-sm sm:text-base">Rangement & tri – Ivry</span>
-              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><i class="fas fa-expand"></i></span>
+              <span class="font-display font-semibold text-white text-sm sm:text-base">Rangement et tri</span>
+              <span class="w-8 h-8 rounded-full bg-cyber-cyan/20 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs"><svg class="ic " aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span>
             </div>
           </div>
         </div>
@@ -1042,11 +3234,11 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div class="lg:col-span-6 relative scroll-node from-left">
             <div class="rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
-              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=850&q=80" alt="Équipe Net & Net" class="w-full h-[380px] object-cover" />
+              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=850&q=80" alt="Équipe de débarras et nettoyage (photo d'illustration)" class="w-full h-[380px] object-cover" />
             </div>
             <div class="absolute -bottom-5 right-4 sm:right-8 glass-panel border border-cyber-cyan/40 rounded-2xl px-6 py-4 shadow-[0_10px_30px_rgba(0,245,212,0.2)]">
-              <div class="font-display text-2xl font-bold text-cyber-cyan">+500</div>
-              <div class="text-xs text-slate-300">Interventions réussies</div>
+              <div class="font-display text-2xl font-bold text-cyber-cyan">24h</div>
+              <div class="text-xs text-slate-300">Pour votre devis gratuit</div>
             </div>
           </div>
 
@@ -1066,22 +3258,22 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div class="glass-panel rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-white">
-                <i class="fas fa-check-circle text-cyber-cyan"></i> Devis gratuit sous 24h
+                <svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg> Devis gratuit sous 24h
               </div>
               <div class="glass-panel rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-white">
-                <i class="fas fa-check-circle text-cyber-cyan"></i> Équipe assurée
+                <svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg> Équipe assurée
               </div>
               <div class="glass-panel rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-white">
-                <i class="fas fa-check-circle text-cyber-cyan"></i> Tri & recyclage
+                <svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg> Tri & recyclage
               </div>
               <div class="glass-panel rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-white">
-                <i class="fas fa-check-circle text-cyber-cyan"></i> Tarifs compétitifs
+                <svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg> Tarifs compétitifs
               </div>
               <div class="glass-panel rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-white">
-                <i class="fas fa-check-circle text-cyber-cyan"></i> Ponctualité garantie
+                <svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg> Ponctualité garantie
               </div>
               <div class="glass-panel rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-white">
-                <i class="fas fa-check-circle text-cyber-cyan"></i> Satisfait ou refait
+                <svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg> Satisfait ou refait
               </div>
             </div>
           </div>
@@ -1153,7 +3345,7 @@
           <div class="spotlight-card tilt-card scroll-node p-8 text-center group">
             <div class="spotlight-content">
               <div class="w-16 h-16 mx-auto rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan text-2xl mb-5 group-hover:scale-110 transition-transform">
-                <i class="fas fa-phone"></i>
+                <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>
               </div>
               <h4 class="font-display text-xl font-bold text-white mb-2">Téléphone</h4>
               <p class="text-sm text-slate-400 mb-4">Du lundi au samedi, 8h – 20h</p>
@@ -1167,7 +3359,7 @@
           <div class="spotlight-card tilt-card scroll-node p-8 text-center group">
             <div class="spotlight-content">
               <div class="w-16 h-16 mx-auto rounded-2xl bg-cyber-blue/10 border border-cyber-blue/30 flex items-center justify-center text-cyber-blue text-2xl mb-5 group-hover:scale-110 transition-transform">
-                <i class="fas fa-envelope"></i>
+                <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-envelope"/></svg>
               </div>
               <h4 class="font-display text-xl font-bold text-white mb-2">Email</h4>
               <p class="text-sm text-slate-400 mb-4">Réponse sous 24h ouvrées</p>
@@ -1181,11 +3373,11 @@
           <div class="spotlight-card tilt-card scroll-node p-8 text-center group">
             <div class="spotlight-content">
               <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-500/15 border border-emerald-400/35 flex items-center justify-center text-emerald-400 text-2xl mb-5 group-hover:scale-110 transition-transform">
-                <i class="fab fa-whatsapp"></i>
+                <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
               </div>
               <h4 class="font-display text-xl font-bold text-white mb-2">WhatsApp</h4>
               <p class="text-sm text-slate-400 mb-4">Envoyez-nous vos photos directement</p>
-              <a href="https://wa.me/33758695823" target="_blank" class="inline-block font-display text-lg font-bold text-emerald-400 hover:underline">
+              <a href="https://wa.me/33758695823" target="_blank" rel="noopener" class="inline-block font-display text-lg font-bold text-emerald-400 hover:underline">
                 Discuter sur WhatsApp
               </a>
             </div>
@@ -1197,7 +3389,7 @@
           <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mb-3">Besoin d'un devis ?</h2>
           <p class="text-slate-300 mb-7">Remplissez notre formulaire avec photos : réponse garantie sous 24h.</p>
           <button onclick="navigateTo('devis')" class="btn-neon-coral text-white font-semibold px-8 py-4 rounded-full inline-flex items-center gap-2.5">
-            <i class="fas fa-file-invoice"></i> Formulaire de devis
+            <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-file-invoice"/></svg> Formulaire de devis
           </button>
         </div>
       </div>
@@ -1225,13 +3417,13 @@
                     <label for="f-nom" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
                       Nom complet <span class="text-cyber-coral">*</span>
                     </label>
-                    <input type="text" id="f-nom" placeholder="Votre nom" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
+                    <input type="text" id="f-nom" autocomplete="name" placeholder="Votre nom" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
                   </div>
                   <div>
                     <label for="f-tel" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
                       Téléphone <span class="text-cyber-coral">*</span>
                     </label>
-                    <input type="tel" id="f-tel" placeholder="06 12 34 56 78" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
+                    <input type="tel" id="f-tel" autocomplete="tel" placeholder="06 12 34 56 78" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
                   </div>
                 </div>
 
@@ -1240,13 +3432,13 @@
                     <label for="f-email" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
                       Email <span class="text-cyber-coral">*</span>
                     </label>
-                    <input type="email" id="f-email" placeholder="votre@email.fr" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
+                    <input type="email" id="f-email" autocomplete="email" placeholder="votre@email.fr" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
                   </div>
                   <div>
                     <label for="f-ville" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
                       Ville / Code postal <span class="text-cyber-coral">*</span>
                     </label>
-                    <input type="text" id="f-ville" placeholder="75011 Paris" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
+                    <input type="text" id="f-ville" autocomplete="postal-code" placeholder="75011 Paris" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
                   </div>
                 </div>
 
@@ -1272,7 +3464,7 @@
                     <label for="f-surf" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
                       Surface approximative (m²)
                     </label>
-                    <input type="text" id="f-surf" placeholder="Ex : 80" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
+                    <input type="text" id="f-surf" inputmode="numeric" placeholder="Ex : 80" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" />
                   </div>
                 </div>
 
@@ -1292,7 +3484,7 @@
                   <div id="drop-zone" class="relative rounded-2xl border-2 border-dashed border-white/15 hover:border-cyber-cyan/60 bg-white/[0.02] hover:bg-cyber-cyan/[0.04] transition-all p-8 text-center cursor-pointer group">
                     <input type="file" id="f-photos" accept="image/*" multiple class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
                     <div class="w-12 h-12 mx-auto rounded-xl bg-cyber-cyan/10 border border-cyber-cyan/25 flex items-center justify-center text-cyber-cyan text-xl mb-3 group-hover:scale-110 transition-transform">
-                      <i class="fas fa-cloud-upload-alt"></i>
+                      <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-cloud-upload-alt"/></svg>
                     </div>
                     <p class="text-sm text-slate-200">
                       Glissez vos photos ici ou <strong class="text-cyber-cyan">cliquez pour parcourir</strong>
@@ -1303,34 +3495,52 @@
                   <!-- Prévisualisations -->
                   <div id="photo-previews" class="flex flex-wrap gap-3 mt-4 justify-center"></div>
 
+                  <p id="info-photos" class="hidden text-xs text-amber-400 mt-2 flex items-center gap-1.5">
+                    <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-info-circle"/></svg> Maximum 8 photos : les photos en trop n'ont pas été ajoutées.
+                  </p>
+
                   <p id="err-photos" class="hidden text-xs text-cyber-coral mt-2 flex items-center gap-1.5">
-                    <i class="fas fa-exclamation-circle"></i> Veuillez ajouter au moins une photo de l'espace à débarrasser ou nettoyer.
+                    <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-exclamation-circle"/></svg> Veuillez ajouter au moins une photo de l'espace à débarrasser ou nettoyer.
                   </p>
                 </div>
 
+                <!-- Champ piège anti-spam (invisible pour les humains) -->
+                <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+                  <label for="f-company">Ne pas remplir ce champ</label>
+                  <input type="text" id="f-company" name="company_site" tabindex="-1" autocomplete="off" />
+                </div>
+
                 <p id="err-fields" class="hidden text-xs text-cyber-coral flex items-center gap-1.5">
-                  <i class="fas fa-exclamation-circle"></i> Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*).
+                  <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-exclamation-circle"/></svg> <span id="err-fields-text">Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*).</span>
+                </p>
+
+                <p id="err-submit" role="alert" class="hidden text-sm text-cyber-coral bg-cyber-coral/10 border border-cyber-coral/30 rounded-xl px-4 py-3 flex items-start gap-2.5">
+                  <svg class="ic mt-0.5" aria-hidden="true" focusable="false"><use href="#i-exclamation-triangle"/></svg> <span id="err-submit-text"></span>
                 </p>
 
                 <button type="submit" class="w-full btn-neon-coral text-white font-semibold py-4 rounded-full text-base flex items-center justify-center gap-2.5 mt-2">
-                  <i class="fas fa-paper-plane"></i>
+                  <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-paper-plane"/></svg>
                   <span>Envoyer ma demande de devis</span>
                 </button>
 
                 <p class="text-center text-xs text-slate-400 flex items-center justify-center gap-1.5 pt-1">
-                  <i class="fas fa-lock text-cyber-cyan"></i> Vos données restent confidentielles. Devis 100% gratuit et sans engagement.
+                  <svg class="ic text-cyber-cyan" aria-hidden="true" focusable="false"><use href="#i-lock"/></svg> Vos données restent confidentielles. Devis 100% gratuit et sans engagement.
+                </p>
+                <p class="text-center text-xs text-slate-500 leading-relaxed">
+                  Les informations saisies servent uniquement à répondre à votre demande de devis. Évitez de photographier des personnes ou des documents personnels.
+                  Plus d'informations dans nos <button type="button" onclick="navigateTo('mentions')" class="text-cyber-cyan hover:underline">mentions légales</button>.
                 </p>
               </div>
 
               <!-- Écran de confirmation -->
               <div id="form-success" class="hidden text-center py-10 px-4">
                 <div class="w-20 h-20 mx-auto rounded-full bg-cyber-cyan/15 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-3xl mb-6 shadow-[0_0_30px_rgba(0,245,212,0.3)]">
-                  <i class="fas fa-check"></i>
+                  <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-check"/></svg>
                 </div>
                 <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mb-3">Demande envoyée !</h3>
                 <p class="text-slate-300 max-w-md mx-auto leading-relaxed mb-8">
                   Merci pour votre demande. Notre équipe analyse vos photos et vous recontacte <strong class="text-cyber-cyan">sous 24h</strong>.<br /><br />
-                  Un doute ? Appelez-nous au <a href="tel:+33758695823" class="text-cyber-cyan font-semibold hover:underline">07 58 69 58 23</a> ou écrivez-nous sur <a href="https://wa.me/33758695823" target="_blank" class="text-emerald-400 font-semibold hover:underline">WhatsApp</a>.
+                  Un doute ? Appelez-nous au <a href="tel:+33758695823" class="text-cyber-cyan font-semibold hover:underline">07 58 69 58 23</a> ou écrivez-nous sur <a href="https://wa.me/33758695823" target="_blank" rel="noopener" class="text-emerald-400 font-semibold hover:underline">WhatsApp</a>.
                 </p>
                 <button type="button" onclick="resetQuoteForm()" class="btn-neon-cyan text-sm font-semibold px-6 py-3 rounded-full">
                   Faire une nouvelle demande
@@ -1342,15 +3552,110 @@
       </div>
     </section>
 
+    <!-- ========================================================== -->
+    <!-- PAGE 7 : MENTIONS LÉGALES                                  -->
+    <!-- ========================================================== -->
+    <section id="page-mentions" class="page-view">
+      <div class="pt-36 pb-12 px-4 sm:px-6 text-center">
+        <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-cyber-cyan bg-cyber-cyan/10 border border-cyber-cyan/25 px-4 py-1.5 rounded-full mb-4">
+          Informations légales
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-white mb-3">Mentions légales</h1>
+        <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">Dernière mise à jour : 14 novembre 2026</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 pb-24 space-y-6">
+
+        <!-- 1. Éditeur -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+          <h2 class="font-display text-xl sm:text-2xl font-bold text-white mb-4"><span class="text-cyber-cyan">01</span> · Éditeur du site</h2>
+          <ul class="space-y-2.5 text-sm text-slate-300 leading-relaxed">
+            <li><strong class="text-white">Nom commercial :</strong> Net &amp; Net</li>
+            <li><strong class="text-white">Éditeur :</strong> Akram Karoui, entrepreneur individuel (EI), micro-entrepreneur</li>
+            <li><strong class="text-white">SIREN :</strong> 909 806 309</li>
+            <li><strong class="text-white">SIRET :</strong> 909 806 309 00029</li>
+            <li><strong class="text-white">Adresse :</strong> 13 avenue du Docteur Antoine Lacroix, 94270 Le Kremlin-Bicêtre</li>
+            <li><strong class="text-white">Activité :</strong> services de débarras et de nettoyage pour particuliers et professionnels</li>
+            <li><strong class="text-white">TVA :</strong> non applicable, article 293 B du Code général des impôts</li>
+            <li><strong class="text-white">Téléphone :</strong> <a href="tel:+33758695823" class="text-cyber-cyan hover:underline">07 58 69 58 23</a></li>
+            <li><strong class="text-white">Email :</strong> <a href="mailto:contact@net-et-net.fr" class="text-cyber-cyan hover:underline">contact@net-et-net.fr</a></li>
+            <li><strong class="text-white">Directeur de la publication :</strong> Akram Karoui</li>
+            <li><strong class="text-white">Assurance :</strong> responsabilité civile professionnelle souscrite auprès d'Allianz</li>
+          </ul>
+        </div>
+
+        <!-- 2. Hébergement -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+          <h2 class="font-display text-xl sm:text-2xl font-bold text-white mb-4"><span class="text-cyber-cyan">02</span> · Hébergement et nom de domaine</h2>
+          <ul class="space-y-2.5 text-sm text-slate-300 leading-relaxed">
+            <li><strong class="text-white">Hébergeur :</strong> GitHub, Inc. (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis — <a href="https://pages.github.com" target="_blank" rel="noopener" class="text-cyber-cyan hover:underline">pages.github.com</a></li>
+            <li><strong class="text-white">Nom de domaine :</strong> net-et-net.fr, enregistré auprès d'IONOS SARL — <a href="https://www.ionos.fr" target="_blank" rel="noopener" class="text-cyber-cyan hover:underline">www.ionos.fr</a></li>
+          </ul>
+        </div>
+
+        <!-- 3. Propriété intellectuelle -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+          <h2 class="font-display text-xl sm:text-2xl font-bold text-white mb-4"><span class="text-cyber-cyan">03</span> · Propriété intellectuelle</h2>
+          <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
+            <p>Les textes, la structure, la charte graphique et le nom « Net &amp; Net » sont la propriété de l'éditeur, sauf mention contraire. Toute reproduction, représentation ou réutilisation, totale ou partielle, sans autorisation écrite préalable, est interdite.</p>
+            <p>Les photographies d'illustration proviennent notamment de la banque d'images Unsplash et sont utilisées conformément à sa licence.</p>
+          </div>
+        </div>
+
+        <!-- 4. Données personnelles -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+          <h2 class="font-display text-xl sm:text-2xl font-bold text-white mb-4"><span class="text-cyber-cyan">04</span> · Données personnelles (RGPD)</h2>
+          <ul class="space-y-3.5 text-sm text-slate-300 leading-relaxed">
+            <li><strong class="text-white">Responsable du traitement :</strong> Akram Karoui, Net &amp; Net (coordonnées ci-dessus).</li>
+            <li><strong class="text-white">Données collectées :</strong> via le formulaire de devis, votre nom, téléphone, email, ville ou code postal, le type de prestation, la surface, votre message et les photos de l'espace concerné. Nous vous invitons à éviter de photographier des personnes ou des documents personnels.</li>
+            <li><strong class="text-white">Finalité et base légale :</strong> répondre à votre demande de devis et, le cas échéant, préparer l'intervention (mesures précontractuelles prises à votre demande, article 6.1.b du RGPD).</li>
+            <li><strong class="text-white">Destinataires :</strong> l'éditeur uniquement. Pour recevoir et conserver les demandes, il utilise des prestataires techniques : Google (messagerie et stockage Google Drive) et Telegram (notification interne, limitée aux informations essentielles). Ces prestataires peuvent traiter des données en dehors de l'Union européenne, dans les conditions prévues par le RGPD.</li>
+            <li><strong class="text-white">Durée de conservation :</strong> 12 mois à compter de la demande lorsqu'elle n'aboutit pas à une prestation, puis suppression. En cas de prestation, les données nécessaires à la facturation et à la comptabilité sont conservées pendant les durées légales.</li>
+            <li><strong class="text-white">Vos droits :</strong> accès, rectification, effacement, limitation, opposition et portabilité de vos données, en écrivant à <a href="mailto:contact@net-et-net.fr" class="text-cyber-cyan hover:underline">contact@net-et-net.fr</a>. Vous pouvez aussi introduire une réclamation auprès de la CNIL (<a href="https://www.cnil.fr" target="_blank" rel="noopener" class="text-cyber-cyan hover:underline">www.cnil.fr</a>).</li>
+            <li><strong class="text-white">Cookies et ressources tierces :</strong> ce site n'utilise ni cookie de suivi, ni outil de mesure d'audience. Pour s'afficher, il charge des ressources hébergées par des tiers (polices Google Fonts et photos d'illustration Unsplash) : votre adresse IP est alors transmise à ces services.</li>
+          </ul>
+        </div>
+
+        <!-- 5. Médiation -->
+        <!-- À valider une fois l'adhésion à la CM2C finalisée (cm2c.net) -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+          <h2 class="font-display text-xl sm:text-2xl font-bold text-white mb-4"><span class="text-cyber-cyan">05</span> · Médiation de la consommation</h2>
+          <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
+            <p>En cas de litige avec un client consommateur, une réclamation écrite peut d'abord être adressée à <a href="mailto:contact@net-et-net.fr" class="text-cyber-cyan hover:underline">contact@net-et-net.fr</a>. Si le litige n'est pas résolu, le consommateur peut saisir gratuitement le médiateur de la consommation :</p>
+            <p class="pl-4 border-l-2 border-cyber-cyan/40">
+              <strong class="text-white">CM2C – Centre de la médiation de la consommation de conciliateurs de justice</strong><br />
+              49 rue de Ponthieu, 75008 Paris<br />
+              <a href="https://www.cm2c.net" target="_blank" rel="noopener" class="text-cyber-cyan hover:underline">www.cm2c.net</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- 6. Responsabilité -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+          <h2 class="font-display text-xl sm:text-2xl font-bold text-white mb-4"><span class="text-cyber-cyan">06</span> · Responsabilité et droit applicable</h2>
+          <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
+            <p>L'éditeur s'efforce de fournir des informations exactes et à jour, mais ne peut garantir l'absence d'erreur. Les informations du site sont données à titre indicatif ; seul un devis accepté engage les parties.</p>
+            <p>Le site peut contenir des liens vers des sites tiers (par exemple WhatsApp), dont l'éditeur n'est pas responsable du contenu. Le présent site est soumis au droit français.</p>
+          </div>
+        </div>
+
+        <div class="text-center pt-4">
+          <button onclick="navigateTo('accueil')" class="btn-neon-cyan text-sm font-semibold px-6 py-3 rounded-full inline-flex items-center gap-2">
+            <svg class="ic text-xs" aria-hidden="true" focusable="false"><use href="#i-arrow-left"/></svg> Retour à l'accueil
+          </button>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ==================== LIGHTBOX GALERIE ==================== -->
   <div id="lightbox" onclick="closeLightbox()" class="fixed inset-0 z-50 bg-cyber-bg/90 hidden items-center justify-center p-4 sm:p-8">
     <button onclick="closeLightbox()" aria-label="Fermer" class="absolute top-6 right-6 w-11 h-11 rounded-full glass-panel text-white hover:text-cyber-coral flex items-center justify-center text-xl transition-colors">
-      <i class="fas fa-times"></i>
+      <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-times"/></svg>
     </button>
     <div onclick="event.stopPropagation()" class="max-w-5xl max-h-[88vh] flex flex-col items-center">
-      <img id="lightbox-img" src="" alt="Agrandissement" class="max-h-[78vh] w-auto rounded-2xl border border-white/15 shadow-2xl" />
+      <img id="lightbox-img" alt="Agrandissement" class="max-h-[78vh] w-auto rounded-2xl border border-white/15 shadow-2xl" />
       <p id="lightbox-caption" class="font-display text-white text-base sm:text-lg mt-4"></p>
     </div>
   </div>
@@ -1381,6 +3686,7 @@
             <li><button onclick="navigateTo('galerie')" class="hover:text-cyber-cyan transition-colors">Galerie</button></li>
             <li><button onclick="navigateTo('apropos')" class="hover:text-cyber-cyan transition-colors">À propos</button></li>
             <li><button onclick="navigateTo('devis')" class="hover:text-cyber-cyan transition-colors">Devis gratuit</button></li>
+            <li><button onclick="navigateTo('mentions')" class="hover:text-cyber-cyan transition-colors">Mentions légales</button></li>
           </ul>
         </div>
 
@@ -1401,37 +3707,44 @@
           <ul class="space-y-2.5 text-sm text-slate-400">
             <li>
               <a href="tel:+33758695823" class="hover:text-cyber-cyan transition-colors flex items-center gap-2.5">
-                <i class="fas fa-phone text-cyber-cyan w-4"></i> 07 58 69 58 23
+                <svg class="ic text-cyber-cyan w-4" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg> 07 58 69 58 23
               </a>
             </li>
             <li>
               <a href="mailto:contact@net-et-net.fr" class="hover:text-cyber-cyan transition-colors flex items-center gap-2.5">
-                <i class="fas fa-envelope text-cyber-blue w-4"></i> contact@net-et-net.fr
+                <svg class="ic text-cyber-blue w-4" aria-hidden="true" focusable="false"><use href="#i-envelope"/></svg> contact@net-et-net.fr
               </a>
             </li>
             <li>
-              <a href="https://wa.me/33758695823" target="_blank" class="hover:text-emerald-400 transition-colors flex items-center gap-2.5">
-                <i class="fab fa-whatsapp text-emerald-400 w-4"></i> WhatsApp
+              <a href="https://wa.me/33758695823" target="_blank" rel="noopener" class="hover:text-emerald-400 transition-colors flex items-center gap-2.5">
+                <svg class="ic text-emerald-400 w-4" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg> WhatsApp
               </a>
             </li>
             <li class="flex items-center gap-2.5">
-              <i class="fas fa-map-marker-alt text-cyber-coral w-4"></i> Île-de-France
+              <svg class="ic text-cyber-coral w-4" aria-hidden="true" focusable="false"><use href="#i-map-marker-alt"/></svg> Île-de-France
             </li>
           </ul>
         </div>
       </div>
 
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-        <span>© 2026 Net & Net — Tous droits réservés | net-et-net.fr</span>
+        <div class="text-center sm:text-left space-y-1">
+          <div>© 2026 Net &amp; Net — Akram Karoui, EI · SIRET 909 806 309 00029</div>
+          <div>
+            <button onclick="navigateTo('mentions')" class="hover:text-cyber-cyan transition-colors underline-offset-2 hover:underline">Mentions légales</button>
+            <span class="mx-1.5">·</span>
+            <span>net-et-net.fr</span>
+          </div>
+        </div>
         <div class="flex items-center gap-3">
-          <a href="https://wa.me/33758695823" target="_blank" title="WhatsApp" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:border-emerald-400/40 transition-all">
-            <i class="fab fa-whatsapp"></i>
+          <a href="https://wa.me/33758695823" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:border-emerald-400/40 transition-all">
+            <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
           </a>
-          <a href="tel:+33758695823" title="Téléphone" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-cyber-cyan hover:border-cyber-cyan/40 transition-all">
-            <i class="fas fa-phone"></i>
+          <a href="tel:+33758695823" title="Téléphone" aria-label="Téléphone" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-cyber-cyan hover:border-cyber-cyan/40 transition-all">
+            <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>
           </a>
-          <a href="mailto:contact@net-et-net.fr" title="Email" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-cyber-blue hover:border-cyber-blue/40 transition-all">
-            <i class="fas fa-envelope"></i>
+          <a href="mailto:contact@net-et-net.fr" title="Email" aria-label="Email" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center text-slate-300 hover:text-cyber-blue hover:border-cyber-blue/40 transition-all">
+            <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-envelope"/></svg>
           </a>
         </div>
       </div>
@@ -1439,8 +3752,8 @@
   </footer>
 
   <!-- ==================== BOUTON WHATSAPP FLOTTANT ==================== -->
-  <a href="https://wa.me/33758695823" target="_blank" aria-label="Discuter sur WhatsApp" class="wa-float fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center text-2xl shadow-lg hover:scale-110 transition-transform group">
-    <i class="fab fa-whatsapp"></i>
+  <a href="https://wa.me/33758695823" target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp" class="wa-float fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center text-2xl shadow-lg hover:scale-110 transition-transform group">
+    <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
     <span class="hidden sm:block absolute right-16 px-3.5 py-1.5 rounded-xl glass-panel text-xs font-medium text-white whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity border border-white/15">
       Une question ? Écrivez-nous !
     </span>
@@ -1448,22 +3761,59 @@
 
   <!-- ==================== BOUTON RETOUR EN HAUT ==================== -->
   <button id="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Retour en haut" class="fixed bottom-24 right-7 z-40 w-11 h-11 rounded-full glass-panel text-cyber-cyan border border-cyber-cyan/30 flex items-center justify-center opacity-0 pointer-events-none translate-y-3 transition-all duration-300 hover:bg-cyber-cyan hover:text-cyber-bg">
-    <i class="fas fa-arrow-up text-sm"></i>
+    <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
   <!-- ==================== SCRIPTS INTERACTIFS ==================== -->
   <script>
-    // 1. Preloader
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const pre = document.getElementById('preloader');
-        if (pre) pre.classList.add('done');
-      }, 450);
-      initScrollAnimations();
-    });
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // 2. Navigation entre les 6 vues
-    function navigateTo(pageId) {
+    // 0. Image de secours (intégrée) si une photo ne charge pas
+    const FALLBACK_IMG = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">' +
+      '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0D192E"/><stop offset="1" stop-color="#130D24"/></linearGradient>' +
+      '<radialGradient id="r" cx="0.3" cy="0.25" r="0.7"><stop offset="0" stop-color="#00F5D4" stop-opacity="0.28"/><stop offset="1" stop-color="#00F5D4" stop-opacity="0"/></radialGradient></defs>' +
+      '<rect width="800" height="600" fill="url(#g)"/><rect width="800" height="600" fill="url(#r)"/>' +
+      '<g fill="none" stroke="#00F5D4" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">' +
+      '<path d="M300 270 L400 180 L500 270"/><path d="M325 250 V325 H475 V250"/></g>' +
+      '<text x="400" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#E2E8F0">Net &amp; Net</text>' +
+      '<text x="400" y="428" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" letter-spacing="5" fill="#00F5D4">DÉBARRAS &amp; NETTOYAGE</text></svg>');
+
+    function applyImageFallback(img) {
+      if (img && !img.dataset.fallback) {
+        img.dataset.fallback = '1';
+        img.removeAttribute('srcset');
+        img.src = FALLBACK_IMG;
+      }
+    }
+    document.addEventListener('error', e => {
+      if (e.target && e.target.tagName === 'IMG') applyImageFallback(e.target);
+    }, true);
+    // Les images qui ont déjà échoué avant l'exécution du script
+    function checkBrokenImages() {
+      document.querySelectorAll('img').forEach(img => {
+        if (img.complete && img.naturalWidth === 0 && img.src && !img.src.startsWith('data:')) applyImageFallback(img);
+      });
+    }
+
+    // 1. Preloader (avec garde-fou : il disparaît même si une ressource externe est lente)
+    function hidePreloader() {
+      const pre = document.getElementById('preloader');
+      if (pre) pre.classList.add('done');
+    }
+    window.addEventListener('load', () => {
+      setTimeout(hidePreloader, 450);
+      initScrollAnimations();
+      checkBrokenImages();
+    });
+    setTimeout(hidePreloader, 3500);
+
+    // 2. Navigation entre les vues (avec adresse #page : le bouton Retour fonctionne)
+    const PAGES = ['accueil', 'services', 'galerie', 'apropos', 'contact', 'devis', 'mentions'];
+
+    function showPage(pageId) {
+      if (!PAGES.includes(pageId)) pageId = 'accueil';
+
       document.querySelectorAll('.page-view').forEach(section => {
         section.classList.remove('active');
       });
@@ -1484,6 +3834,18 @@
         initScrollAnimations();
       }, 60);
     }
+
+    function navigateTo(pageId) {
+      if (location.hash === '#' + pageId) {
+        showPage(pageId);
+      } else {
+        location.hash = pageId; // déclenche 'hashchange' -> showPage
+      }
+    }
+
+    window.addEventListener('hashchange', () => {
+      showPage(location.hash.slice(1));
+    });
 
     // 3. Menu Mobile
     let mobileMenuOpen = false;
@@ -1532,7 +3894,7 @@
 
       // Léger parallaxe sur le visuel principal
       const heroVis = document.getElementById('hero-parallax');
-      if (heroVis && scrollTop < 900) {
+      if (heroVis && !prefersReducedMotion && scrollTop < 900) {
         heroVis.style.transform = `translateY(${scrollTop * 0.08}px)`;
       }
     }, { passive: true });
@@ -1548,7 +3910,7 @@
         card.style.setProperty('--mouse-y', `${y}px`);
 
         // Tilt 3D léger sur les cartes équipées de .tilt-card
-        if (card.classList.contains('tilt-card')) {
+        if (!prefersReducedMotion && card.classList.contains('tilt-card')) {
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
           const rotateX = ((y - centerY) / centerY) * -4.5;
@@ -1610,6 +3972,12 @@
         const target = parseInt(counter.dataset.target, 10);
         const prefix = counter.dataset.prefix || '';
         const suffix = counter.dataset.suffix || '';
+
+        if (prefersReducedMotion) {
+          counter.textContent = prefix + target + suffix;
+          return;
+        }
+
         let current = 0;
         const duration = 1500;
         const stepTime = 24;
@@ -1670,14 +4038,20 @@
       updateCarousel();
     }
 
-    setInterval(nextTestimonial, 5500);
+    // Défilement automatique (désactivé si l'utilisateur préfère réduire les animations)
+    if (!prefersReducedMotion) {
+      setInterval(nextTestimonial, 5500);
+    }
 
     // 9. Lightbox Galerie
     function openLightbox(cardEl) {
       const img = cardEl.querySelector('img');
       const title = cardEl.querySelector('span');
       const lb = document.getElementById('lightbox');
-      document.getElementById('lightbox-img').src = img.src;
+      const lbImg = document.getElementById('lightbox-img');
+      lbImg.removeAttribute('data-fallback');
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || 'Agrandissement';
       document.getElementById('lightbox-caption').textContent = title ? title.textContent : '';
       lb.classList.remove('hidden');
       lb.classList.add('flex');
@@ -1693,11 +4067,43 @@
       if (e.key === 'Escape') closeLightbox();
     });
 
+    // Galerie accessible au clavier (Entrée / Espace)
+    document.querySelectorAll('#page-galerie .spotlight-card').forEach(card => {
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(card);
+        }
+      });
+    });
+
     // 10. Upload & Prévisualisation de photos + Validation du formulaire de devis
-    let uploadedPhotos = [];
+    const MAX_PHOTOS = 8;
+    let uploadedPhotos = []; // { file, url }
     const fileInput = document.getElementById('f-photos');
     const previewsContainer = document.getElementById('photo-previews');
     const dropZone = document.getElementById('drop-zone');
+
+    function addFiles(fileList) {
+      const files = Array.from(fileList || []).filter(f => f.type.startsWith('image/'));
+      let skipped = 0;
+
+      files.forEach(file => {
+        if (uploadedPhotos.length >= MAX_PHOTOS) {
+          skipped++;
+          return;
+        }
+        uploadedPhotos.push({ file: file, url: URL.createObjectURL(file) });
+      });
+
+      renderPhotoPreviews();
+      document.getElementById('info-photos').classList.toggle('hidden', skipped === 0);
+      if (uploadedPhotos.length > 0) {
+        document.getElementById('err-photos').classList.add('hidden');
+      }
+    }
 
     if (dropZone) {
       ['dragenter', 'dragover'].forEach(evt => {
@@ -1706,41 +4112,36 @@
           dropZone.classList.add('border-cyber-cyan', 'bg-cyber-cyan/10');
         });
       });
-      ['dragleave', 'drop'].forEach(evt => {
-        dropZone.addEventListener(evt, e => {
-          e.preventDefault();
-          dropZone.classList.remove('border-cyber-cyan', 'bg-cyber-cyan/10');
-        });
+      dropZone.addEventListener('dragleave', e => {
+        e.preventDefault();
+        dropZone.classList.remove('border-cyber-cyan', 'bg-cyber-cyan/10');
+      });
+      // Correctif : on récupère réellement les fichiers déposés
+      dropZone.addEventListener('drop', e => {
+        e.preventDefault();
+        dropZone.classList.remove('border-cyber-cyan', 'bg-cyber-cyan/10');
+        if (e.dataTransfer && e.dataTransfer.files) {
+          addFiles(e.dataTransfer.files);
+        }
       });
     }
 
     if (fileInput) {
       fileInput.addEventListener('change', function () {
-        const files = Array.from(this.files);
-        files.forEach(file => {
-          if (uploadedPhotos.length >= 8) return;
-          if (!file.type.startsWith('image/')) return;
-          const reader = new FileReader();
-          reader.onload = e => {
-            uploadedPhotos.push(e.target.result);
-            renderPhotoPreviews();
-            document.getElementById('err-photos').classList.add('hidden');
-          };
-          reader.readAsDataURL(file);
-        });
+        addFiles(this.files);
         this.value = '';
       });
     }
 
     function renderPhotoPreviews() {
       previewsContainer.innerHTML = '';
-      uploadedPhotos.forEach((src, index) => {
+      uploadedPhotos.forEach((photo, index) => {
         const item = document.createElement('div');
         item.className = 'relative w-20 h-20 rounded-xl overflow-hidden border border-cyber-cyan/30 group shadow-lg';
         item.innerHTML = `
-          <img src="${src}" alt="Aperçu ${index + 1}" class="w-full h-full object-cover" />
-          <button type="button" onclick="removePhoto(${index})" aria-label="Supprimer" class="absolute top-1 right-1 w-5 h-5 rounded-full bg-cyber-coral text-white text-[10px] flex items-center justify-center shadow hover:scale-110 transition-transform">
-            <i class="fas fa-times"></i>
+          <img src="${photo.url}" alt="Aperçu ${index + 1}" class="w-full h-full object-cover" />
+          <button type="button" onclick="removePhoto(${index})" aria-label="Supprimer la photo ${index + 1}" class="absolute top-1 right-1 w-5 h-5 rounded-full bg-cyber-coral text-white text-[10px] flex items-center justify-center shadow hover:scale-110 transition-transform">
+            <svg class="ic " aria-hidden="true" focusable="false"><use href="#i-times"/></svg>
           </button>
         `;
         previewsContainer.appendChild(item);
@@ -1748,29 +4149,170 @@
     }
 
     function removePhoto(index) {
-      uploadedPhotos.splice(index, 1);
+      const removed = uploadedPhotos.splice(index, 1)[0];
+      if (removed) URL.revokeObjectURL(removed.url);
       renderPhotoPreviews();
+      document.getElementById('info-photos').classList.add('hidden');
     }
 
+    // ===== Envoi du formulaire : Google Apps Script + Drive + Telegram =====
+    // Colle ici l'URL de déploiement de ton Apps Script (elle se termine par /exec) :
+    const QUOTE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyAFIKw9khzPvTUfzfGm1O-ABLQxMSO70dcqC0eldzH1mnUNAhnU8t6rVOTeXqE1hEsIw/exec';
+    const formStartedAt = Date.now();
     const quoteForm = document.getElementById('quote-form');
+    let isSending = false;
+
+    function endpointReady() {
+      return /^https:\/\/script\.google\.com\/macros\/s\/[^\s]+\/exec$/.test(QUOTE_ENDPOINT);
+    }
+
+    // Réduit une photo (JPEG, côté max limité) pour un envoi rapide et léger
+    function compressImage(file, maxSide, quality) {
+      return new Promise((resolve, reject) => {
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = () => {
+          const scale = Math.min(1, maxSide / Math.max(img.width, img.height));
+          const w = Math.max(1, Math.round(img.width * scale));
+          const h = Math.max(1, Math.round(img.height * scale));
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, w, h);
+          ctx.drawImage(img, 0, 0, w, h);
+          URL.revokeObjectURL(url);
+          canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('PHOTO_FORMAT')), 'image/jpeg', quality);
+        };
+        img.onerror = () => {
+          URL.revokeObjectURL(url);
+          reject(new Error('PHOTO_FORMAT'));
+        };
+        img.src = url;
+      });
+    }
+
+    function blobToBase64(blob) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result).split(',')[1]);
+        reader.onerror = () => reject(new Error('PHOTO_READ'));
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    // Compresse toutes les photos ; si le total reste trop lourd, on réessaie en plus petit
+    async function buildPhotoPayload() {
+      const presets = [[1600, 0.75], [1280, 0.65], [1000, 0.55]];
+      const LIMIT = 9 * 1024 * 1024; // 9 Mo au total
+      for (let p = 0; p < presets.length; p++) {
+        const result = [];
+        let total = 0;
+        for (let i = 0; i < uploadedPhotos.length; i++) {
+          const blob = await compressImage(uploadedPhotos[i].file, presets[p][0], presets[p][1]);
+          total += blob.size;
+          result.push({ name: 'photo-' + (i + 1) + '.jpg', type: 'image/jpeg', data: await blobToBase64(blob) });
+        }
+        if (total <= LIMIT) return result;
+      }
+      throw new Error('PHOTOS_TOO_LARGE');
+    }
+
+    function showFieldsError(message) {
+      document.getElementById('err-fields-text').textContent = message;
+      document.getElementById('err-fields').classList.remove('hidden');
+    }
+    function hideFieldsError() {
+      document.getElementById('err-fields').classList.add('hidden');
+    }
+    function showSubmitError(html) {
+      document.getElementById('err-submit-text').innerHTML = html;
+      document.getElementById('err-submit').classList.remove('hidden');
+    }
+    function hideSubmitError() {
+      document.getElementById('err-submit').classList.add('hidden');
+    }
+
+    const CONTACT_FALLBACK = `contactez-nous au <a href="tel:+33758695823" class="underline font-semibold">07 58 69 58 23</a> ou sur <a href="https://wa.me/33758695823" target="_blank" rel="noopener" class="underline font-semibold">WhatsApp</a>`;
+
+    function submitErrorMessage(code) {
+      switch (code) {
+        case 'PHOTO_FORMAT':
+          return "Une photo n'a pas pu être lue (format non pris en charge). Utilisez des photos JPG ou PNG, ou " + CONTACT_FALLBACK + '.';
+        case 'PHOTOS_TOO_LARGE':
+          return 'Vos photos sont trop volumineuses. Essayez avec moins de photos, ou ' + CONTACT_FALLBACK + '.';
+        case 'RATE_LIMIT':
+          return 'Beaucoup de demandes en ce moment. Réessayez dans quelques minutes, ou ' + CONTACT_FALLBACK + '.';
+        case 'INVALID':
+          return 'Certaines informations semblent invalides. Vérifiez le formulaire, ou ' + CONTACT_FALLBACK + '.';
+        default:
+          return "L'envoi a échoué. Vérifiez votre connexion et réessayez, ou " + CONTACT_FALLBACK + '.';
+      }
+    }
+
+    function showQuoteSuccess() {
+      document.getElementById('form-fields-wrapper').classList.add('hidden');
+      document.getElementById('form-success').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     if (quoteForm) {
-      quoteForm.addEventListener('submit', function (e) {
+      const requiredIds = ['f-nom', 'f-tel', 'f-email', 'f-ville', 'f-type'];
+
+      // L'erreur disparaît dès que l'utilisateur corrige un champ
+      requiredIds.forEach(id => {
+        const el = document.getElementById(id);
+        el.addEventListener('input', () => el.classList.remove('input-error'));
+        el.addEventListener('change', () => el.classList.remove('input-error'));
+      });
+
+      quoteForm.addEventListener('submit', async function (e) {
         e.preventDefault();
+        if (isSending) return;
+        hideSubmitError();
+
+        // Anti-spam : champ piège rempli => on simule un succès (le robot ne le saura pas)
+        const trap = document.getElementById('f-company');
+        if (trap && trap.value.trim() !== '') {
+          showQuoteSuccess();
+          return;
+        }
+
+        // --- Validation ---
         let isValid = true;
-        const requiredIds = ['f-nom', 'f-tel', 'f-email', 'f-ville', 'f-type'];
+        let fieldsMessage = "Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*).";
 
         requiredIds.forEach(id => {
           const input = document.getElementById(id);
           if (!input.value.trim()) {
             isValid = false;
-            input.classList.add('border-cyber-coral');
+            input.classList.add('input-error');
           } else {
-            input.classList.remove('border-cyber-coral');
+            input.classList.remove('input-error');
           }
         });
 
-        const errFields = document.getElementById('err-fields');
-        errFields.classList.toggle('hidden', isValid);
+        if (isValid) {
+          const emailInput = document.getElementById('f-email');
+          const telInput = document.getElementById('f-tel');
+          const telDigits = telInput.value.replace(/\D/g, '');
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailInput.value.trim())) {
+            isValid = false;
+            emailInput.classList.add('input-error');
+            fieldsMessage = 'Veuillez saisir une adresse email valide.';
+          } else if (telDigits.length < 9 || telDigits.length > 15) {
+            isValid = false;
+            telInput.classList.add('input-error');
+            fieldsMessage = 'Veuillez saisir un numéro de téléphone valide.';
+          }
+        }
+
+        if (isValid) {
+          hideFieldsError();
+        } else {
+          showFieldsError(fieldsMessage);
+        }
 
         const errPhotos = document.getElementById('err-photos');
         if (uploadedPhotos.length === 0) {
@@ -1782,19 +4324,83 @@
 
         if (!isValid) return;
 
-        document.getElementById('form-fields-wrapper').classList.add('hidden');
-        document.getElementById('form-success').classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Tant que l'URL du script n'est pas renseignée, on n'affiche JAMAIS un faux succès
+        if (!endpointReady()) {
+          showSubmitError("Le formulaire n'est pas encore activé. Merci de " + CONTACT_FALLBACK + '.');
+          return;
+        }
+
+        // --- Envoi ---
+        const submitBtn = quoteForm.querySelector('button[type="submit"]');
+        const originalBtn = submitBtn.innerHTML;
+        isSending = true;
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-70', 'cursor-wait');
+        submitBtn.innerHTML = '<svg class="ic animate-spin" aria-hidden="true" focusable="false"><use href="#i-spinner"/></svg><span>Envoi en cours…</span>';
+
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 90000);
+
+        try {
+          const photos = await buildPhotoPayload();
+          const payload = {
+            nom: document.getElementById('f-nom').value.trim(),
+            tel: document.getElementById('f-tel').value.trim(),
+            email: document.getElementById('f-email').value.trim(),
+            ville: document.getElementById('f-ville').value.trim(),
+            prestation: document.getElementById('f-type').value,
+            surface: document.getElementById('f-surf').value.trim(),
+            message: document.getElementById('f-msg').value.trim(),
+            company: '',
+            elapsed: Date.now() - formStartedAt,
+            photos: photos
+          };
+
+          // text/plain évite la requête "preflight" que Google Apps Script n'accepte pas
+          const response = await fetch(QUOTE_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload),
+            signal: controller.signal
+          });
+          const result = await response.json();
+
+          if (result && result.success) {
+            showQuoteSuccess();
+          } else {
+            throw new Error((result && result.error) || 'SERVER');
+          }
+        } catch (err) {
+          showSubmitError(submitErrorMessage(err && err.message));
+        } finally {
+          clearTimeout(timeout);
+          isSending = false;
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('opacity-70', 'cursor-wait');
+          submitBtn.innerHTML = originalBtn;
+        }
       });
     }
 
     function resetQuoteForm() {
       quoteForm.reset();
+      uploadedPhotos.forEach(p => URL.revokeObjectURL(p.url));
       uploadedPhotos = [];
       renderPhotoPreviews();
+      document.querySelectorAll('#quote-form .input-error').forEach(el => el.classList.remove('input-error'));
+      hideFieldsError();
+      hideSubmitError();
+      document.getElementById('err-photos').classList.add('hidden');
+      document.getElementById('info-photos').classList.add('hidden');
       document.getElementById('form-success').classList.add('hidden');
       document.getElementById('form-fields-wrapper').classList.remove('hidden');
     }
+
+    // 11. Ouverture directe d'une page via l'adresse (ex. net-et-net.fr/#mentions)
+    (function initFromHash() {
+      const id = location.hash.slice(1);
+      if (PAGES.includes(id)) showPage(id);
+    })();
   </script>
 </body>
 </html>

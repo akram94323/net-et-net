@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://net-et-net.fr/sitemap.xml

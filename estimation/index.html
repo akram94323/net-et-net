@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <!-- Consentement cookies : aucun appel à Google avant l'accord du visiteur -->
   <link rel="stylesheet" href="/assets/consent.css?v=20261119" />
-  <script src="/assets/consent.js?v=20261121b" defer></script>
+  <script src="/assets/consent.js?v=20261119" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Estimation de prix en ligne | Net&amp;Net Débarras &amp; Nettoyage</title>
+  <title>Estimation de prix débarras et nettoyage en ligne | Net &amp; Net</title>
   <meta name="description" content="Estimez en 1 minute le prix indicatif de votre débarras ou nettoyage en Île-de-France. Estimation sous réserve, devis précis et gratuit sous 24 h." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://net-et-net.fr/estimation/" />
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Net &amp; Net" />
   <meta property="og:locale" content="fr_FR" />
-  <meta property="og:title" content="Estimation de prix en ligne | Net&amp;Net Débarras &amp; Nettoyage" />
+  <meta property="og:title" content="Estimation de prix débarras et nettoyage en ligne | Net &amp; Net" />
   <meta property="og:description" content="Estimez en 1 minute le prix indicatif de votre débarras ou nettoyage en Île-de-France." />
   <meta property="og:url" content="https://net-et-net.fr/estimation/" />
   <meta property="og:image" content="https://net-et-net.fr/assets/og-image.png" />
@@ -23,11 +23,8 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="icon" href="/favicon.ico?v=20261121" sizes="48x48" />
-  <link rel="icon" href="/assets/favicon-48x48.png?v=20261121" type="image/png" sizes="48x48" />
-  <link rel="icon" href="/assets/favicon-96x96.png?v=20261121" type="image/png" sizes="96x96" />
-  <link rel="icon" href="/assets/favicon-192x192.png?v=20261121" type="image/png" sizes="192x192" />
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20261121" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
@@ -38,8 +35,8 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261115" />
-  <link rel="stylesheet" href="/assets/estimation.css?v=20261119" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/estimation.css?v=20261123" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Estimation en ligne", "item": "https://net-et-net.fr/estimation/"}]}</script>
 </head>
 <body class="antialiased selection:bg-cyber-cyan selection:text-cyber-bg relative">
@@ -72,9 +69,7 @@
       </nav>
 
       <div class="flex items-center gap-3">
-        <a href="/estimation/" class="hidden sm:inline-flex items-center gap-2 btn-neon-cyan text-sm font-semibold px-5 py-2.5 rounded-full">
-          <span>Estimation</span>
-        </a>
+        <a href="/estimation/" class="btn-estimer btn-estimer-header">Faire une estimation</a>
         <a href="/devis/" class="hidden sm:inline-flex items-center gap-2 btn-neon-coral text-white text-sm font-semibold px-5 py-2.5 rounded-full">
           <svg class="ic text-xs" aria-hidden="true" focusable="false"><use href="#i-bolt"/></svg>
           <span>Devis Gratuit</span>
@@ -95,10 +90,10 @@
     <a href="/galerie/" class="text-2xl font-display font-bold text-white hover:text-cyber-cyan py-2 transition-colors">Galerie</a>
     <a href="/a-propos/" class="text-2xl font-display font-bold text-white hover:text-cyber-cyan py-2 transition-colors">À propos</a>
     <a href="/contact/" class="text-2xl font-display font-bold text-white hover:text-cyber-cyan py-2 transition-colors">Contact</a>
-    <a href="/estimation/" class="mt-4 btn-neon-cyan font-semibold px-8 py-3.5 rounded-full text-lg flex items-center gap-2">Estimer mon prix</a>
-    <a href="/devis/" class="btn-neon-coral text-white font-semibold px-8 py-3.5 rounded-full text-lg flex items-center gap-2">
+    <a href="/devis/" class="mt-4 btn-neon-coral text-white font-semibold px-8 py-3.5 rounded-full text-lg flex items-center gap-2">
       <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-file-invoice"/></svg> Devis Gratuit sous 24h
     </a>
+    <a href="/estimation/" class="btn-estimer btn-estimer--stack">Faire une estimation</a>
   </div>
 
   <main id="contenu" class="relative z-10">
@@ -107,57 +102,64 @@
         <div class="max-w-6xl mx-auto">
           <div class="text-center mb-10 scroll-node">
             <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-cyber-cyan bg-cyber-cyan/10 border border-cyber-cyan/25 px-4 py-1.5 rounded-full mb-4">Estimation indicative</span>
-            <h1 class="font-display text-3xl sm:text-5xl font-bold text-white mb-3">Estimez le prix de votre débarras ou nettoyage</h1>
+            <h1 class="font-display text-3xl sm:text-5xl font-bold text-white mb-3">Estimez le prix de votre débarras</h1>
             <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">Répondez à quelques questions pour obtenir une fourchette de prix en 1 minute. Ce n’est pas un devis : il est donné sous réserve de validation.</p>
           </div>
 
           <div class="est-wrap">
             <form id="est-form" class="est-card" novalidate aria-label="Formulaire d'estimation">
-              <fieldset class="est-fieldset"><legend class="est-legend">Que souhaitez-vous ?</legend><div class="est-grid cols3"><label class="est-opt"><input type="radio" name="service" value="debarras" /><span>Débarras</span></label><label class="est-opt"><input type="radio" name="service" value="nettoyage" /><span>Nettoyage</span></label><label class="est-opt"><input type="radio" name="service" value="both" /><span>Débarras + nettoyage</span></label></div></fieldset>
+              <fieldset class="est-fieldset"><legend class="est-legend">Que souhaitez-vous ?</legend><div class="est-grid cols3"><label class="est-opt"><input type="radio" name="service" value="debarras" checked /><span>Débarras<small>Vider et évacuer</small></span></label><label class="est-opt"><input type="radio" name="service" value="deb_net" /><span>Débarras + nettoyage<small>Vider puis nettoyer</small></span></label><label class="est-opt"><input type="radio" name="service" value="net" /><span>Nettoyage seul<small>Sans débarras</small></span></label></div></fieldset>
 
-              <fieldset class="est-fieldset"><legend class="est-legend">Quel type de lieu ?</legend><div class="est-grid cols3"><label class="est-opt"><input type="radio" name="type" value="appartement" /><span>Appartement</span></label><label class="est-opt"><input type="radio" name="type" value="maison" /><span>Maison</span></label><label class="est-opt"><input type="radio" name="type" value="cave" /><span>Cave / grenier</span></label><label class="est-opt"><input type="radio" name="type" value="garage" /><span>Garage / box</span></label><label class="est-opt"><input type="radio" name="type" value="local" /><span>Local commercial</span></label><label class="est-opt"><input type="radio" name="type" value="entrepot" /><span>Entrepôt</span></label></div></fieldset>
+              <fieldset class="est-fieldset"><legend class="est-legend">Quel type de lieu ?</legend><div class="est-grid cols3"><label class="est-opt"><input type="radio" name="type" value="appartement" /><span>Appartement</span></label><label class="est-opt"><input type="radio" name="type" value="maison" /><span>Maison</span></label><label class="est-opt"><input type="radio" name="type" value="cave" /><span>Cave / grenier</span></label><label class="est-opt"><input type="radio" name="type" value="garage" /><span>Garage / box</span></label><label class="est-opt"><input type="radio" name="type" value="local" /><span>Local professionnel</span></label></div></fieldset>
 
               <div class="est-two est-fieldset">
-                <div id="w-surf-d"><label class="est-label" id="l-surf-d" for="e-surface-d">Surface (m²)</label><input id="e-surface-d" type="number" inputmode="decimal" min="1" max="2000" step="1" placeholder="Ex : 60" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" /></div>
-                <div id="w-surf-n" hidden><label class="est-label" id="l-surf-n" for="e-surface-n">Surface (m²)</label><input id="e-surface-n" type="number" inputmode="decimal" min="1" max="2000" step="1" placeholder="Ex : 60" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" /></div>
+                <div><label class="est-label" for="e-surface">Surface (m²)</label><input id="e-surface" type="number" inputmode="decimal" min="1" max="2000" step="1" placeholder="Ex : 60" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" /></div>
                 <div><label class="est-label" for="e-ville">Ville / code postal <span class="est-hint">(facultatif)</span></label><input id="e-ville" type="text" autocomplete="postal-code" placeholder="94270 Le Kremlin-Bicêtre" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" /></div>
               </div>
 
-              <fieldset class="est-fieldset" id="b-debarras" hidden><legend class="est-legend">Niveau d’encombrement</legend><div class="est-grid"><label class="est-opt"><input type="radio" name="niveau" value="leger" /><span>Peu encombré<small>Quelques meubles, pièces presque vides</small></span></label><label class="est-opt"><input type="radio" name="niveau" value="moyen" /><span>Moyennement encombré<small>Logement meublé normalement</small></span></label><label class="est-opt"><input type="radio" name="niveau" value="charge" /><span>Très chargé<small>Beaucoup d’objets, cartons, stockage</small></span></label></div></fieldset>
+              <div id="grp-debarras">
+                <fieldset class="est-fieldset"><legend class="est-legend">Niveau d’encombrement</legend><div class="est-grid"><label class="est-opt"><input type="radio" name="niveau" value="leger" /><span>Peu encombré<small>Quelques meubles, pièces presque vides</small></span></label><label class="est-opt"><input type="radio" name="niveau" value="moyen" /><span>Moyennement encombré<small>Logement meublé normalement</small></span></label><label class="est-opt"><input type="radio" name="niveau" value="charge" /><span>Très chargé<small>Beaucoup d’objets, cartons, stockage</small></span></label></div></fieldset>
 
-              <fieldset class="est-fieldset" id="b-nettoyage" hidden><legend class="est-legend">État de propreté</legend><div class="est-grid"><label class="est-opt"><input type="radio" name="proprete" value="propre" /><span>Entretenu<small>Propreté courante, remise à neuf simple</small></span></label><label class="est-opt"><input type="radio" name="proprete" value="encrasse" /><span>Encrassé<small>Saleté installée : graisse, calcaire, poussière épaisse</small></span></label><label class="est-opt"><input type="radio" name="proprete" value="tres" /><span>Très encrassé<small>Remise en état complète nécessaire</small></span></label></div>
-                <label class="est-opt" style="display:block;margin-top:.8rem"><input type="checkbox" id="e-vitres" /><span>Ajouter le nettoyage des vitres<small>Option : fenêtres, baies vitrées et portes-fenêtres</small></span></label>
-              </fieldset>
+                <div class="est-two est-fieldset">
+                  <div><label class="est-label" for="e-etage">Étage</label><select id="e-etage" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm"><option value="0">Rez-de-chaussée</option><option value="1">1er étage</option><option value="2">2e étage</option><option value="3">3e étage</option><option value="4">4e étage</option><option value="5">5e étage</option><option value="6">6e étage</option><option value="7">7e étage ou plus</option></select></div>
+                  <fieldset class="est-fieldset" style="margin:0"><legend class="est-legend">Ascenseur</legend><div class="est-grid"><label class="est-opt"><input type="radio" name="ascenseur" value="non" checked /><span>Non</span></label><label class="est-opt"><input type="radio" name="ascenseur" value="oui" /><span>Oui</span></label></div></fieldset>
+                </div>
 
-              <div class="est-two est-fieldset" id="b-etage">
-                <div><label class="est-label" for="e-etage">Étage</label><select id="e-etage" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm"><option value="-1">Sous-sol (−1)</option><option value="0" selected>Rez-de-chaussée</option><option value="1">1er étage</option><option value="2">2e étage</option><option value="3">3e étage</option><option value="4">4e étage</option><option value="5">5e étage</option><option value="6">6e étage</option><option value="7">7e étage ou plus</option></select></div>
-                <fieldset class="est-fieldset" style="margin:0"><legend class="est-legend">Ascenseur</legend><div class="est-grid"><label class="est-opt"><input type="radio" name="ascenseur" value="non" checked /><span>Non</span></label><label class="est-opt"><input type="radio" name="ascenseur" value="oui" /><span>Oui</span></label></div></fieldset>
+                <fieldset class="est-fieldset"><legend class="est-legend">Stationnement du camion</legend><div class="est-grid"><label class="est-opt"><input type="radio" name="stationnement" value="facile" checked /><span>Facile<small>À proximité</small></span></label><label class="est-opt"><input type="radio" name="stationnement" value="difficile" /><span>Plus loin<small>Camion garé à distance</small></span></label></div></fieldset>
+
+                <fieldset class="est-fieldset"><legend class="est-legend">Le lieu est-il insalubre ?</legend><div class="est-grid"><label class="est-opt"><input type="radio" name="insalubre" value="non" checked /><span>Non</span></label><label class="est-opt"><input type="radio" name="insalubre" value="oui" /><span>Oui<small>Déchets, moisissures, nuisibles…</small></span></label></div></fieldset>
               </div>
-              <p id="b-cave-note" class="est-sub" style="text-align:left;margin:0 0 1.5rem" hidden>Cave / grenier : l’accès par escalier est compté automatiquement.</p>
 
-              <fieldset class="est-fieldset"><legend class="est-legend">Stationnement du camion</legend><div class="est-grid"><label class="est-opt"><input type="radio" name="stationnement" value="facile" checked /><span>Facile<small>À proximité</small></span></label><label class="est-opt"><input type="radio" name="stationnement" value="difficile" /><span>Plus loin<small>Camion garé à distance</small></span></label></div></fieldset>
+              <div id="grp-nettoyage" hidden>
+                <fieldset class="est-fieldset"><legend class="est-legend">Type de nettoyage</legend><div class="est-grid"><label class="est-opt" id="opt-apres-debarras"><input type="radio" name="nettoyage" value="apres_debarras" /><span>Après débarras<small>5 € le m²</small></span></label><label class="est-opt"><input type="radio" name="nettoyage" value="finbail" /><span>Fin de bail / état des lieux<small>8 € le m²</small></span></label><label class="est-opt"><input type="radio" name="nettoyage" value="travaux" /><span>Après travaux<small>13 € le m²</small></span></label><label class="est-opt"><input type="radio" name="nettoyage" value="regulier" /><span>Régulier<small>Particulier ou pro, sur devis</small></span></label></div></fieldset>
+                <fieldset id="grp-proprete" class="est-fieldset"><legend class="est-legend">État de saleté</legend><div class="est-grid"><label class="est-opt"><input type="radio" name="proprete" value="normal" checked /><span>Normal<small>Entretien courant</small></span></label><label class="est-opt"><input type="radio" name="proprete" value="tres_sale" /><span>Très sale<small>Graisse incrustée, calcaire, moisissures, logement non entretenu</small></span></label></div></fieldset>
+              </div>
 
-              <fieldset class="est-fieldset" style="margin:0"><legend class="est-legend">Le lieu est-il insalubre ?</legend><div class="est-grid"><label class="est-opt"><input type="radio" name="insalubre" value="non" checked /><span>Non</span></label><label class="est-opt"><input type="radio" name="insalubre" value="oui" /><span>Oui<small>Déchets, moisissures, nuisibles…</small></span></label></div></fieldset>
+              <div class="est-two est-fieldset" style="margin:0">
+                <div><label class="est-label" for="e-date">Date souhaitée <span class="est-hint">(facultatif)</span></label><input id="e-date" type="date" class="cyber-input w-full px-4 py-3.5 rounded-xl text-sm" /></div>
+                <div style="display:flex;align-items:flex-end"><label class="est-opt" style="display:block;width:100%"><input type="checkbox" id="e-flex" /><span>Je suis flexible sur la date</span></label></div>
+              </div>
             </form>
 
             <aside class="est-card est-sticky" aria-live="polite" aria-label="Résultat de l'estimation">
-              <div id="est-empty" class="est-empty">Choisissez la prestation, le type de lieu et la surface, puis répondez aux questions : votre estimation s’affiche ici.</div>
+              <div id="est-empty" class="est-empty">Choisissez le type de lieu, indiquez la surface et le niveau d’encombrement : votre estimation s’affiche ici.</div>
               <div id="est-result" class="est-result-box" hidden>
                 <span class="est-badge">Estimation indicative</span>
                 <div id="est-range" class="est-range"></div>
                 <p class="est-sub">TVA non applicable, art. 293 B du CGI</p>
                 <ul id="est-lines" class="est-lines"></ul>
-                <p id="est-sur-devis" class="est-sub" style="text-align:left;margin-top:.8rem" hidden>Pour un entrepôt de plus de 500 m², nous établissons un devis personnalisé à partir de vos photos.</p>
-                <p class="est-note"><strong class="text-white">Sous réserve.</strong> Fourchette indicative et non contractuelle, basée sur la surface, le type de lieu et l’état des lieux. Le volume réel, les objets de valeur récupérés (qui peuvent faire l’objet d’une déduction) et l’accès sont vérifiés sur photos : le prix n’est ferme qu’après un devis écrit et accepté.</p>
+                <p id="est-clean" class="est-sub" style="text-align:left;margin-top:.8rem" hidden>Le nettoyage régulier n’est pas inclus : il sera chiffré sur devis.</p>
+                <p class="est-note"><strong class="text-white">Sous réserve.</strong> Fourchette indicative et non contractuelle, basée sur un volume estimé à partir de la surface (débarras) et sur un tarif au m² (nettoyage). Prix minimum d’intervention : 350 €. Le volume réel, les objets de valeur récupérés (qui peuvent faire l’objet d’une déduction) et l’accès sont vérifiés sur photos : le prix n’est ferme qu’après un devis écrit et accepté.</p>
               </div>
+              <div id="est-surdevis" class="est-result-box" hidden><span class="est-badge">Sur devis</span><div class="est-range" style="font-size:1.35rem">Nettoyage régulier</div><p class="est-sub" style="margin-top:.6rem">Le prix dépend de la fréquence, de la surface et des horaires. Demandez votre devis gratuit : réponse sous 24 h.</p></div>
               <a id="est-cta" href="/devis/" class="est-cta btn-neon-coral">Recevoir mon devis précis et gratuit</a>
               <p class="est-sub" style="text-align:center">Vos réponses restent dans votre navigateur : rien n’est envoyé tant que vous ne demandez pas un devis.</p>
             </aside>
           </div>
 
           <div class="est-info">
-            <div class="est-card"><h2>Ce qui fait varier le prix</h2><ul><li>Le type de lieu et la surface à débarrasser ou nettoyer</li><li>Le niveau d’encombrement et l’état de propreté</li><li>L’étage et l’absence d’ascenseur</li><li>La distance de stationnement du camion</li><li>L’état du lieu (insalubrité)</li><li>La valeur des objets récupérés, qui peut être déduite</li></ul></div>
-            <div class="est-card"><h2>Non inclus dans l’estimation</h2><ul><li>Déchets dangereux (amiante, produits chimiques, peintures)</li><li>Démontage de cuisine, de placards ou d’installations fixes</li><li>Évacuation d’objets nécessitant une filière spécifique</li><li>Cas particuliers vus sur photos (accès très difficile, très grandes surfaces)</li></ul></div>
+            <div class="est-card"><h2>Ce qui fait varier le prix</h2><ul><li>Le volume réel d’objets à évacuer (en m³)</li><li>L’étage et l’absence d’ascenseur</li><li>La distance de stationnement du camion</li><li>L’état du lieu (insalubrité, saleté)</li><li>La valeur des objets récupérés, qui peut être déduite</li></ul></div>
+            <div class="est-card"><h2>Non inclus dans l’estimation</h2><ul><li>Déchets dangereux (amiante, produits chimiques, peintures)</li><li>Démontage de cuisine, de placards ou d’installations fixes</li><li>Évacuation d’objets nécessitant une filière spécifique</li><li>Nettoyage régulier (sur devis)</li><li>Cas particuliers vus sur photos (accès très difficile)</li></ul></div>
           </div>
         </div>
       </div>
@@ -184,6 +186,7 @@
             <li><a href="/galerie/" class="hover:text-cyber-cyan transition-colors">Galerie</a></li>
             <li><a href="/a-propos/" class="hover:text-cyber-cyan transition-colors">À propos</a></li>
             <li><a href="/devis/" class="hover:text-cyber-cyan transition-colors">Devis gratuit</a></li>
+            <li><a href="/estimation/" class="hover:text-cyber-cyan transition-colors">Estimation en ligne</a></li>
             <li><a href="/mentions-legales/" class="hover:text-cyber-cyan transition-colors">Mentions légales</a></li>
           </ul>
         </div>
@@ -236,7 +239,7 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261115" defer></script>
-  <script src="/assets/estimation.js?v=20261119" defer></script>
+  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/estimation.js?v=20261123" defer></script>
 </body>
 </html>

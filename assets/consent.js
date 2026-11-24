@@ -1,13 +1,12 @@
 /* Gestion du consentement — Net & Net
    - Aucun appel à Google tant que le visiteur n'a pas donné son accord.
-   - Google Analytics (gtag.js) n'est chargé qu'après acceptation de la mesure d'audience.
+   - Google Tag Manager n'est chargé qu'après acceptation d'au moins une catégorie.
    - Google Consent Mode v2 : tout est « denied » par défaut, mis à jour selon le choix.
    - Le choix est conservé 6 mois (cookie technique « nn_consent »), puis redemandé. */
 (function () {
   "use strict";
 
-  var GA_ID = "G-N95HZH51LL";     // Google Analytics 4
-  var ADS_ID = "";                // à renseigner (ex. "AW-XXXXXXXXX") quand vous lancerez Google Ads
+  var GTM_ID = "GTM-5J5P8R6D";
   var COOKIE = "nn_consent";
   var VERSION = 1;               // à incrémenter si les catégories changent : le bandeau est alors redemandé
   var MAX_AGE = 15552000;        // 180 jours (~6 mois)
@@ -23,7 +22,7 @@
     analytics_storage: "denied"
   });
 
-  var loaded = false, gaConfigured = false, adsConfigured = false;
+  var gtmLoaded = false;
   var current = null;            // consentement en vigueur { v, a, p, t }
   var box = null;
 
@@ -59,15 +58,15 @@
   var RE_ANALYTICS = /^(_ga|_gid|_gat|_gac_)/;
   var RE_ADS = /^(_gcl_|_gac_|_gads|_gpi|IDE|test_cookie)/;
 
-  /* ---------- Chargement de Google Analytics (après accord uniquement) ---------- */
-  function loadGtag() {
-    if (loaded) return;
-    loaded = true;
-    var sc = document.createElement("script");
-    sc.async = true;
-    sc.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
-    document.head.appendChild(sc);
-    gtag("js", new Date());
+  /* ---------- Chargement de Google Tag Manager (après accord uniquement) ---------- */
+  function loadGTM() {
+    if (gtmLoaded) return;
+    gtmLoaded = true;
+    window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtm.js?id=" + GTM_ID;
+    document.head.appendChild(s);
   }
 
   /* ---------- Application du choix ---------- */
@@ -84,11 +83,9 @@
     if (previous) {                                  // retrait d'un consentement donné
       if (previous.a && !c.a) purge(RE_ANALYTICS);
       if (previous.p && !c.p) purge(RE_ADS);
-      if (loaded && !c.a && !c.p) { location.reload(); return; } // décharge complètement Google
+      if (gtmLoaded && !c.a && !c.p) { location.reload(); return; } // décharge complètement Google
     }
-    if (c.a || (c.p && ADS_ID)) loadGtag();
-    if (c.a && !gaConfigured) { gaConfigured = true; gtag("config", GA_ID, { cookie_expires: 34128000 }); }   // cookies limités à 13 mois
-    if (c.p && ADS_ID && !adsConfigured) { adsConfigured = true; gtag("config", ADS_ID); }
+    if ((c.a || c.p) && !gtmLoaded) loadGTM();
   }
 
   function save(a, p) {

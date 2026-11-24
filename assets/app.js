@@ -493,6 +493,15 @@
         }
 
         if (isValid) {
+          const df = document.getElementById('f-date');
+          if (df && df.value && df.min && df.value < df.min) {
+            isValid = false;
+            df.classList.add('input-error');
+            fieldsMessage = 'La date souhaitée ne peut pas être dans le passé.';
+          }
+        }
+
+        if (isValid) {
           hideFieldsError();
         } else {
           showFieldsError(fieldsMessage);
@@ -534,7 +543,16 @@
             ville: document.getElementById('f-ville').value.trim(),
             prestation: document.getElementById('f-type').value,
             surface: document.getElementById('f-surf').value.trim(),
-            message: document.getElementById('f-msg').value.trim(),
+            message: (function () {
+              // La date est ajoutée au message : aucun changement nécessaire côté Apps Script
+              let m = document.getElementById('f-msg').value.trim();
+              const dv = document.getElementById('f-date');
+              const fx = document.getElementById('f-flex');
+              let line = '';
+              if (dv && dv.value) { const x = dv.value.split('-'); line = 'Date souhaitée : ' + x[2] + '/' + x[1] + '/' + x[0] + (fx && fx.checked ? ' (flexible)' : ''); }
+              else if (fx && fx.checked) { line = 'Date : flexible'; }
+              return (m + (line ? '\n\n' + line : '')).trim();
+            })(),
             company: '',
             elapsed: Date.now() - formStartedAt,
             photos: photos
@@ -598,6 +616,15 @@
         const surf = (q.get('surface') || '').replace(/[^0-9.,]/g, '').slice(0, 6);
         const surfField = document.getElementById('f-surf');
         if (surf && surfField && !surfField.value) surfField.value = surf;
+        const dateParam = (q.get('date') || '').slice(0, 10);
+        const dateField = document.getElementById('f-date');
+        if (dateField) {
+          const t = new Date(); t.setMinutes(t.getMinutes() - t.getTimezoneOffset());
+          dateField.min = t.toISOString().slice(0, 10);
+          if (/^\d{4}-\d{2}-\d{2}$/.test(dateParam) && dateParam >= dateField.min && !dateField.value) dateField.value = dateParam;
+        }
+        const flexField = document.getElementById('f-flex');
+        if (flexField && q.get('flex') === '1') flexField.checked = true;
         const note = (q.get('note') || '').slice(0, 400);
         const msg = document.getElementById('f-msg');
         if (note && msg && !msg.value) msg.value = note;

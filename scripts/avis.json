@@ -3,5 +3,18 @@
   "lien_avis": "https://share.google/DRbUoMhGichVoZXFq",
   "note_min": 4,
   "max_avis": 6,
-  "avis": []
+  "avis": [
+    {
+      "nom": "sami oueskaoua",
+      "note": 5,
+      "date": "2026-11",
+      "texte": "Super expérience avec cette équipe venue vider ma cave tout a été fluide et l’equipe professionnel. Je recommande a 100% et leur souhaite une belle continuation !"
+    },
+    {
+      "nom": "Mohamed Ali K",
+      "note": 5,
+      "date": "2026-11",
+      "texte": "Très satisfait de la prestation ! Travail sérieux, rapide et efficace. Équipe sympathique, professionnelle et à l’écoute. Le débarras a été réalisé avec soin et dans la bonne humeur. Je recommande vivement leurs services ! 👍"
+    }
+  ]
 }

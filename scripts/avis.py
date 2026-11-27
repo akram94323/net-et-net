@@ -30,11 +30,12 @@ ETOILE = '<svg class="ic " aria-hidden="true" focusable="false"><use href="#i-st
 
 
 def nom_court(nom):
-    """« Marie Dupont » → « Marie D. » : on n'affiche pas le nom complet sur le site."""
-    morceaux = nom.split()
+    """« marie dupont » → « Marie D. » : on n'affiche pas le nom complet sur le site."""
+    morceaux = [m[:1].upper() + m[1:] for m in nom.split()]
     if len(morceaux) < 2:
-        return nom
-    return f"{morceaux[0]} {morceaux[-1][0].upper()}."
+        return " ".join(morceaux)
+    *prenoms, famille = morceaux
+    return f"{' '.join(prenoms)} {famille.rstrip('.')[0]}."
 
 
 def initiales(nom):

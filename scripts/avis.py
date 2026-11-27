@@ -1,37 +1,23 @@
 #!/usr/bin/env python3
-"""Met à jour la section « Avis Google » de la page d'accueil.
+"""Met à jour la section « Avis Google » de la page d'accueil à partir de scripts/avis.json.
 
-Lancé chaque jour par .github/workflows/avis-google.yml (ou à la main) :
-  1. interroge l'API Google Places (New) pour la fiche Net & Net ;
-  2. garde les avis notés au moins `note_min` étoiles (4 par défaut) et qui contiennent un texte ;
-  3. réécrit le bloc compris entre <!-- AVIS:DEBUT --> et <!-- AVIS:FIN --> dans index.html.
-
-Les avis sont écrits en dur dans la page : le visiteur ne contacte jamais Google
-(rien à déclarer côté cookies) et les avis sont lisibles par les moteurs de recherche.
-
-Variables d'environnement :
-  GOOGLE_PLACES_API_KEY  clé API Google (secret GitHub du même nom)
-Configuration : scripts/avis-config.json
-  place_id   identifiant Google de la fiche (trouvé automatiquement au premier lancement si vide)
-  note_min   note minimale affichée
-  max_avis   nombre maximal d'avis dans le carrousel
+Pour ajouter un avis : le copier dans scripts/avis.json (nom, note, texte, date « AAAA-MM »),
+puis lancer `python3 scripts/avis.py`. Le script :
+  - calcule la note moyenne et le nombre d'avis à partir de tous les avis du fichier ;
+  - n'affiche dans le carrousel que les avis notés au moins `note_min` étoiles (4 par défaut) ;
+  - réécrit le bloc compris entre <!-- AVIS:DEBUT --> et <!-- AVIS:FIN --> dans index.html.
+Les avis sont écrits en dur dans la page : aucun appel à Google, lisibles par les moteurs de recherche.
 """
 import html
 import json
-import os
 import re
 import sys
-import unicodedata
-import urllib.error
-import urllib.request
-from datetime import datetime
 from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
-CONFIG = RACINE / "scripts" / "avis-config.json"
+DONNEES = RACINE / "scripts" / "avis.json"
 PAGE = RACINE / "index.html"
 DEBUT, FIN = "<!-- AVIS:DEBUT -->", "<!-- AVIS:FIN -->"
-API = "https://places.googleapis.com/v1"
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet",
         "août", "septembre", "octobre", "novembre", "décembre"]
 DEGRADES = [
@@ -41,37 +27,6 @@ DEGRADES = [
     ("from-cyber-coral to-amber-500", "text-white", "text-cyber-coral"),
 ]
 ETOILE = '<svg class="ic " aria-hidden="true" focusable="false"><use href="#i-star"/></svg>'
-
-
-def appel(methode, chemin, cle, champs, corps=None):
-    requete = urllib.request.Request(
-        API + chemin,
-        data=json.dumps(corps).encode() if corps is not None else None,
-        method=methode,
-        headers={"X-Goog-Api-Key": cle, "X-Goog-FieldMask": champs, "Content-Type": "application/json"},
-    )
-    try:
-        with urllib.request.urlopen(requete, timeout=30) as reponse:
-            return json.load(reponse)
-    except urllib.error.HTTPError as e:
-        sys.exit(f"Erreur API Google ({e.code}) : {e.read().decode(errors='replace')[:500]}")
-
-
-def normaliser(texte):
-    texte = unicodedata.normalize("NFKD", texte).encode("ascii", "ignore").decode().lower()
-    return re.sub(r"[^a-z]", "", texte.replace("&", "et"))
-
-
-def trouver_fiche(cle):
-    """Recherche la fiche Net & Net et vérifie que le nom correspond avant de l'adopter."""
-    resultats = appel("POST", "/places:searchText", cle, "places.id,places.displayName,places.formattedAddress",
-                      {"textQuery": "Net&Net débarras nettoyage Le Kremlin-Bicêtre", "languageCode": "fr"}).get("places", [])
-    for lieu in resultats:
-        print(f"  candidat : {lieu['displayName']['text']} — {lieu.get('formattedAddress', '?')} ({lieu['id']})")
-    retenus = [l for l in resultats if normaliser(l["displayName"]["text"]) == "netetnet"]
-    if len(retenus) != 1:
-        sys.exit("Fiche introuvable ou ambiguë : renseignez place_id dans scripts/avis-config.json.")
-    return retenus[0]["id"]
 
 
 def nom_court(nom):
@@ -87,22 +42,22 @@ def initiales(nom):
     return "".join(lettres[:2]).upper() or "?"
 
 
-def date_fr(iso):
+def date_fr(aaaa_mm):
     try:
-        d = datetime.fromisoformat(iso.replace("Z", "+00:00"))
-    except (AttributeError, ValueError):
+        annee, mois = (int(x) for x in str(aaaa_mm).split("-")[:2])
+        return f"{MOIS[mois - 1]} {annee}"
+    except (ValueError, IndexError):
         return ""
-    return f"{MOIS[d.month - 1]} {d.year}"
 
 
 def carte(avis, i):
     degrade, texte_pastille, couleur = DEGRADES[i % len(DEGRADES)]
-    nom = nom_court(avis["authorAttribution"].get("displayName", "Client Google"))
-    texte = avis["text"]["text"].strip()
+    nom = nom_court(avis.get("nom") or "Client Google")
+    texte = avis["texte"].strip()
     if len(texte) > 420:
         texte = texte[:420].rsplit(" ", 1)[0] + "…"
-    note = int(avis["rating"])
-    quand = date_fr(avis.get("publishTime", ""))
+    note = int(avis["note"])
+    quand = date_fr(avis.get("date", ""))
     e = html.escape
     return f"""                <div class="min-w-full px-2">
                   <figure class="spotlight-card p-8 sm:p-12 text-center">
@@ -127,6 +82,7 @@ def carte(avis, i):
 
 
 def section(fiche, avis, note_min, lien_avis):
+    """fiche = {rating, userRatingCount, googleMapsUri}."""
     e = html.escape
     note = fiche.get("rating")
     total = fiche.get("userRatingCount", 0)
@@ -160,7 +116,7 @@ def section(fiche, avis, note_min, lien_avis):
         corps = """
           <p class="text-center text-slate-300 scroll-node">Vous avez fait appel à nous ? Votre avis aide d'autres clients à nous choisir.</p>"""
     return f"""{DEBUT}
-      <!-- Bloc généré automatiquement par scripts/avis_google.py : ne pas modifier à la main -->
+      <!-- Bloc généré automatiquement par scripts/avis.py : ne pas modifier à la main -->
       <section class="py-24 px-4 sm:px-6" aria-labelledby="avis-titre">
         <div class="max-w-4xl mx-auto">
           <div class="text-center mb-14 scroll-node">
@@ -175,40 +131,31 @@ def section(fiche, avis, note_min, lien_avis):
             <a href="{e(lien_fiche)}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 glass-panel text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:border-cyber-cyan/50 transition-colors">Voir tous les avis sur Google</a>
             <a href="{e(lien_avis)}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 btn-neon-coral text-white text-sm font-semibold px-5 py-2.5 rounded-full"><svg class="ic text-xs" aria-hidden="true" focusable="false"><use href="#i-star"/></svg><span>Laisser un avis</span></a>
           </div>
-          <p class="mt-6 text-center text-xs text-slate-500">{"Sélection des avis notés " + str(note_min) + " et 5 étoiles publiés sur notre fiche Google, mise à jour automatiquement. " if avis else ""}Les avis Google ne sont ni modifiés ni vérifiés par Net &amp; Net ; l'ensemble des avis est consultable sur Google.</p>
+          <p class="mt-6 text-center text-xs text-slate-500">{"Sélection des avis notés " + str(note_min) + " et 5 étoiles publiés sur notre fiche Google, reproduits sans modification. " if avis else ""}L'ensemble de nos avis est consultable sur Google.</p>
         </div>
       </section>
       {FIN}"""
 
 
 def main():
-    cle = os.environ.get("GOOGLE_PLACES_API_KEY", "").strip()
-    if not cle:
-        print("::warning::Secret GOOGLE_PLACES_API_KEY absent : avis non mis à jour.")
-        return
-    config = json.loads(CONFIG.read_text(encoding="utf-8"))
-    if not config.get("place_id"):
-        print("Recherche de la fiche Google…")
-        config["place_id"] = trouver_fiche(cle)
-        CONFIG.write_text(json.dumps(config, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        print(f"Fiche retenue : {config['place_id']}")
-    note_min = int(config.get("note_min", 4))
-
-    fiche = appel("GET", f"/places/{config['place_id']}?languageCode=fr", cle,
-                  "displayName,rating,userRatingCount,googleMapsUri,reviews")
-    avis = [a for a in fiche.get("reviews", [])
-            if a.get("rating", 0) >= note_min and a.get("text", {}).get("text", "").strip()]
-    avis.sort(key=lambda a: a.get("publishTime", ""), reverse=True)
-    avis = avis[: int(config.get("max_avis", 5))]
-    lien_avis = f"https://search.google.com/local/writereview?placeid={config['place_id']}"
+    donnees = json.loads(DONNEES.read_text(encoding="utf-8"))
+    note_min = int(donnees.get("note_min", 4))
+    tous = [a for a in donnees.get("avis", []) if a.get("note")]
+    fiche = {"googleMapsUri": donnees["lien_fiche"]}
+    if tous:
+        fiche["rating"] = sum(int(a["note"]) for a in tous) / len(tous)
+        fiche["userRatingCount"] = len(tous)
+    affiches = [a for a in tous if int(a["note"]) >= note_min and a.get("texte", "").strip()]
+    affiches.sort(key=lambda a: str(a.get("date", "")), reverse=True)
+    affiches = affiches[: int(donnees.get("max_avis", 6))]
 
     page = PAGE.read_text(encoding="utf-8")
     motif = re.compile(re.escape(DEBUT) + r".*?" + re.escape(FIN), re.S)
     if not motif.search(page):
         sys.exit("Marqueurs AVIS:DEBUT / AVIS:FIN introuvables dans index.html")
-    PAGE.write_text(motif.sub(lambda _: section(fiche, avis, note_min, lien_avis), page, count=1), encoding="utf-8")
-    print(f"{fiche.get('displayName', {}).get('text', '?')} : note {fiche.get('rating')} "
-          f"({fiche.get('userRatingCount', 0)} avis) — {len(avis)} avis affiché(s).")
+    bloc = section(fiche, affiches, note_min, donnees.get("lien_avis") or donnees["lien_fiche"])
+    PAGE.write_text(motif.sub(lambda _: bloc, page, count=1), encoding="utf-8")
+    print(f"{len(tous)} avis dans le fichier — {len(affiches)} affiché(s) sur le site.")
 
 
 if __name__ == "__main__":

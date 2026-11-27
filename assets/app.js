@@ -200,6 +200,7 @@
     function updateCarousel() {
       if (!track) return;
       track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      if (!dotsContainer) return;
       Array.from(dotsContainer.children).forEach((dot, index) => {
         if (index === currentSlide) {
           dot.className = 'h-2.5 w-8 rounded-full bg-cyber-cyan transition-all duration-300 shadow-[0_0_10px_rgba(0,245,212,0.6)]';
@@ -225,8 +226,17 @@
     }
 
     // Défilement automatique (désactivé si l'utilisateur préfère réduire les animations)
+    // Pause quand la souris ou le clavier est sur un avis, pour laisser le temps de le lire
+    let carouselPaused = false;
+    if (track) {
+      const zone = track.closest('.relative') || track;
+      zone.addEventListener('mouseenter', () => { carouselPaused = true; });
+      zone.addEventListener('mouseleave', () => { carouselPaused = false; });
+      zone.addEventListener('focusin', () => { carouselPaused = true; });
+      zone.addEventListener('focusout', () => { carouselPaused = false; });
+    }
     if (!prefersReducedMotion && totalSlides > 1) {
-      setInterval(nextTestimonial, 5500);
+      setInterval(() => { if (!carouselPaused && !document.hidden) nextTestimonial(); }, 6500);
     }
 
     // 9. Lightbox Galerie

@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Zones d'intervention", "item": "https://net-et-net.fr/zones-intervention/"}, {"@type": "ListItem", "position": 3, "name": "Seine-et-Marne (77)", "item": "https://net-et-net.fr/debarras-seine-et-marne/"}, {"@type": "ListItem", "position": 4, "name": "Melun"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Débarras et nettoyage à Melun", "url": "https://net-et-net.fr/debarras-melun/", "serviceType": "Débarras et nettoyage", "description": "Débarras de logement, cave et local à Melun (77), préfecture de la Seine-et-Marne. Nettoyage de fin de bail, devis gratuit sous 24 h.", "provider": {"@id": "https://net-et-net.fr/#entreprise"}, "areaServed": {"@type": "City", "name": "Melun"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Intervenez-vous dans les communes autour de Melun ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, indiquez l’adresse dans votre demande : nous confirmons la faisabilité dans le devis."}}, {"@type": "Question", "name": "Pouvez-vous vider une maison entière ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, avec des photos de chaque pièce, cave et grenier compris."}}, {"@type": "Question", "name": "Faites-vous le nettoyage de fin de bail ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, avec un devis unique pour débarras et nettoyage."}}, {"@type": "Question", "name": "Peut-on obtenir une estimation en ligne ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, notre estimateur donne une fourchette indicative."}}]}</script>
@@ -367,6 +365,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

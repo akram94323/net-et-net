@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Zones d'intervention", "item": "https://net-et-net.fr/zones-intervention/"}, {"@type": "ListItem", "position": 3, "name": "Essonne (91)", "item": "https://net-et-net.fr/debarras-essonne/"}, {"@type": "ListItem", "position": 4, "name": "Corbeil-Essonnes"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Débarras et nettoyage à Corbeil-Essonnes", "url": "https://net-et-net.fr/debarras-corbeil-essonnes/", "serviceType": "Débarras et nettoyage", "description": "Débarras de logement, cave, garage et local à Corbeil-Essonnes (91), nettoyage de fin de bail. Devis gratuit sous 24 h sur photos.", "provider": {"@id": "https://net-et-net.fr/#entreprise"}, "areaServed": {"@type": "City", "name": "Corbeil-Essonnes"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Intervenez-vous des deux côtés de la Seine ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, nous intervenons sur toute la commune. L’adresse nous sert à préparer l’accès du camion."}}, {"@type": "Question", "name": "Pouvez-vous débarrasser une cave voûtée ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, en tenant compte de la hauteur et du passage. Envoyez-nous une photo de l’entrée de la cave."}}, {"@type": "Question", "name": "Faites-vous le nettoyage de fin de bail ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, avec un devis unique pour débarras et nettoyage."}}, {"@type": "Question", "name": "Pouvez-vous intervenir pour une succession ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, avec un tri préalable et la mise de côté de ce que vous souhaitez conserver."}}]}</script>
@@ -367,6 +365,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

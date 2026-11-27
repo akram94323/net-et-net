@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://net-et-net.fr/#entreprise", "name": "Net & Net", "url": "https://net-et-net.fr/", "description": "Débarras et nettoyage pour particuliers et professionnels en Île-de-France. Devis gratuit sous 24 h.", "image": "https://net-et-net.fr/assets/og-image.png", "logo": "https://net-et-net.fr/assets/apple-touch-icon.png", "telephone": "+33758695823", "email": "contact@net-et-net.fr", "address": {"@type": "PostalAddress", "streetAddress": "13 avenue du Docteur Antoine Lacroix", "postalCode": "94270", "addressLocality": "Le Kremlin-Bicêtre", "addressCountry": "FR"}, "areaServed": [{"@type": "AdministrativeArea", "name": "Paris"}, {"@type": "AdministrativeArea", "name": "Hauts-de-Seine"}, {"@type": "AdministrativeArea", "name": "Seine-Saint-Denis"}, {"@type": "AdministrativeArea", "name": "Val-de-Marne"}, {"@type": "AdministrativeArea", "name": "Yvelines"}, {"@type": "AdministrativeArea", "name": "Essonne"}, {"@type": "AdministrativeArea", "name": "Val-d'Oise"}, {"@type": "AdministrativeArea", "name": "Seine-et-Marne"}], "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "08:00", "closes": "20:00"}], "identifier": {"@type": "PropertyValue", "propertyID": "SIRET", "value": "90980630900029"}}</script>
 </head>
 <body class="antialiased selection:bg-cyber-cyan selection:text-cyber-bg relative">
@@ -153,8 +151,8 @@
               
               <div class="relative rounded-[24px] overflow-hidden border border-white/15 shadow-2xl bg-cyber-surface">
                 <img 
-                  fetchpriority="high" decoding="async" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=85" 
-                  alt="Équipe de nettoyage professionnel Net &amp; Net" 
+                  fetchpriority="high" decoding="async" src="/assets/img/nettoyage-professionnel-1080.webp" srcset="/assets/img/nettoyage-professionnel-640.webp 640w, /assets/img/nettoyage-professionnel-1080.webp 1080w" sizes="(min-width: 1024px) 600px, 100vw" width="1080" height="720" 
+                  alt="Nettoyage professionnel d’un logement (photo d’illustration)" 
                   class="w-full h-[380px] sm:h-[450px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-transparent to-transparent opacity-80"></div>
@@ -650,6 +648,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

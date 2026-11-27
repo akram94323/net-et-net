@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Zones d'intervention", "item": "https://net-et-net.fr/zones-intervention/"}, {"@type": "ListItem", "position": 3, "name": "Val-de-Marne (94)", "item": "https://net-et-net.fr/debarras-val-de-marne/"}, {"@type": "ListItem", "position": 4, "name": "Le Kremlin-Bicêtre"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Débarras et nettoyage au Kremlin-Bicêtre", "url": "https://net-et-net.fr/debarras-le-kremlin-bicetre/", "serviceType": "Débarras et nettoyage", "description": "Net & Net est basé au Kremlin-Bicêtre (94) : débarras de logement, cave, local et nettoyage. Devis gratuit sous 24 h, du lundi au samedi.", "provider": {"@id": "https://net-et-net.fr/#entreprise"}, "areaServed": {"@type": "City", "name": "Le Kremlin-Bicêtre"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Où se trouve Net & Net ?", "acceptedAnswer": {"@type": "Answer", "text": "Notre adresse est au 13 avenue du Docteur Antoine Lacroix, 94270 Le Kremlin-Bicêtre. Nous intervenons chez vous, en Île-de-France, du lundi au samedi."}}, {"@type": "Question", "name": "Intervenez-vous vite pour un état des lieux serré ?", "acceptedAnswer": {"@type": "Answer", "text": "Dites-nous votre date limite dans la demande : nous planifions selon l’urgence et nos disponibilités."}}, {"@type": "Question", "name": "Le stationnement est-il un problème au Kremlin-Bicêtre ?", "acceptedAnswer": {"@type": "Answer", "text": "Dans une commune dense, c’est un point à anticiper. Nous préparons l’arrivée du camion avec vous, avec le gardien ou le syndic si besoin."}}, {"@type": "Question", "name": "Pouvez-vous nettoyer après le débarras ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, nous pouvons faire les deux dans la même demande, avec un devis unique."}}]}</script>
@@ -367,6 +365,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

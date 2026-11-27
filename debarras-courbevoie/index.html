@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Zones d'intervention", "item": "https://net-et-net.fr/zones-intervention/"}, {"@type": "ListItem", "position": 3, "name": "Hauts-de-Seine (92)", "item": "https://net-et-net.fr/debarras-hauts-de-seine/"}, {"@type": "ListItem", "position": 4, "name": "Courbevoie"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Débarras et nettoyage à Courbevoie", "url": "https://net-et-net.fr/debarras-courbevoie/", "serviceType": "Débarras et nettoyage", "description": "Débarras d’appartement et nettoyage de bureaux à Courbevoie (92), près de La Défense. Devis gratuit sous 24 h à partir de vos photos.", "provider": {"@id": "https://net-et-net.fr/#entreprise"}, "areaServed": {"@type": "City", "name": "Courbevoie"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Intervenez-vous dans les tours de La Défense ?", "acceptedAnswer": {"@type": "Answer", "text": "Nous pouvons intervenir dans les immeubles de bureaux, sous réserve des règles du gestionnaire (badges, monte-charge, horaires). Nous les préparons avec vous."}}, {"@type": "Question", "name": "Faut-il une attestation d’assurance ?", "acceptedAnswer": {"@type": "Answer", "text": "Notre activité est couverte par une assurance responsabilité civile professionnelle. Demandez-nous le justificatif si votre gestionnaire l’exige."}}, {"@type": "Question", "name": "Pouvez-vous intervenir en soirée ou le samedi ?", "acceptedAnswer": {"@type": "Answer", "text": "Selon les contraintes du site, nous nous adaptons dans la mesure du possible, du lundi au samedi."}}, {"@type": "Question", "name": "Proposez-vous le nettoyage de bureaux après vidage ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, nettoyage ponctuel du plateau après évacuation, avec un devis unique."}}]}</script>
@@ -367,6 +365,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Zones d'intervention", "item": "https://net-et-net.fr/zones-intervention/"}, {"@type": "ListItem", "position": 3, "name": "Val-de-Marne (94)", "item": "https://net-et-net.fr/debarras-val-de-marne/"}, {"@type": "ListItem", "position": 4, "name": "Champigny-sur-Marne"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Débarras et nettoyage à Champigny-sur-Marne", "url": "https://net-et-net.fr/debarras-champigny-sur-marne/", "serviceType": "Débarras et nettoyage", "description": "Débarras de logement, cave, garage et local à Champigny-sur-Marne (94), nettoyage en fin de bail ou après travaux. Devis gratuit sous 24 h.", "provider": {"@id": "https://net-et-net.fr/#entreprise"}, "areaServed": {"@type": "City", "name": "Champigny-sur-Marne"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Intervenez-vous près des bords de Marne comme sur le plateau ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, nous intervenons sur toute la commune. L’essentiel est de nous indiquer l’adresse et l’accès pour organiser le stationnement du camion."}}, {"@type": "Question", "name": "Mon logement est en étage sans ascenseur : est-ce un problème ?", "acceptedAnswer": {"@type": "Answer", "text": "Non, mais cela change la durée et l’organisation. Indiquez simplement l’étage lors de votre demande."}}, {"@type": "Question", "name": "Pouvez-vous intervenir après travaux ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui : évacuation des gravats légers et des restes de chantier, puis nettoyage de fin de travaux. Précisez la nature des déchets dans votre demande."}}, {"@type": "Question", "name": "Peut-on obtenir une estimation avant de demander un devis ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, notre outil d’estimation en ligne donne une fourchette indicative selon le type de lieu, la surface et l’accès."}}]}</script>
@@ -367,6 +365,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

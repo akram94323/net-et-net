@@ -1,6 +1,8 @@
 /* Net & Net – comportement du site (menu, animations, galerie, formulaire de devis) */
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Pas d'effet de profondeur sur mobile (économise la batterie et évite les saccades)
+    const isSmallScreen = window.matchMedia('(max-width: 767px)');
 
     // 0. Image de secours (intégrée) si une photo ne charge pas
     const FALLBACK_IMG = 'data:image/svg+xml;utf8,' + encodeURIComponent(
@@ -76,7 +78,7 @@
       }
 
       const heroVis = document.getElementById('hero-parallax');
-      if (heroVis && !prefersReducedMotion && scrollTop < 900) {
+      if (heroVis && !prefersReducedMotion && !isSmallScreen.matches && scrollTop < 900) {
         heroVis.style.transform = `translateY(${scrollTop * 0.08}px)`;
       }
     }

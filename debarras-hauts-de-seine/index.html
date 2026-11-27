@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Zones d'intervention", "item": "https://net-et-net.fr/zones-intervention/"}, {"@type": "ListItem", "position": 3, "name": "Hauts-de-Seine (92)"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Débarras et nettoyage dans les Hauts-de-Seine", "url": "https://net-et-net.fr/debarras-hauts-de-seine/", "serviceType": "Débarras et nettoyage", "provider": {"@id": "https://net-et-net.fr/#entreprise"}, "areaServed": {"@type": "AdministrativeArea", "name": "Hauts-de-Seine"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Intervenez-vous dans les immeubles de bureaux ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, sous réserve des règles du gestionnaire (badges, monte-charge, horaires). Nous les préparons avec vous avant l’intervention."}}, {"@type": "Question", "name": "Une copropriété peut-elle imposer des conditions ?", "acceptedAnswer": {"@type": "Answer", "text": "C’est fréquent : horaires, réservation d’ascenseur, protection des parties communes. Nous vous demandons ces informations pour caler le créneau."}}, {"@type": "Question", "name": "Pouvez-vous libérer un local commercial avant la fin de bail ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui : mobilier, rayonnages, stock, matériel non dangereux, avec nettoyage de remise en état possible."}}, {"@type": "Question", "name": "Comment gérez-vous le stationnement du camion ?", "acceptedAnswer": {"@type": "Answer", "text": "Nous étudions l’adresse en amont et prévoyons un emplacement adapté, si besoin avec une demande auprès de la mairie."}}]}</script>
@@ -394,6 +392,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

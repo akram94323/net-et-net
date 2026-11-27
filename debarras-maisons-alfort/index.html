@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Zones d'intervention", "item": "https://net-et-net.fr/zones-intervention/"}, {"@type": "ListItem", "position": 3, "name": "Val-de-Marne (94)", "item": "https://net-et-net.fr/debarras-val-de-marne/"}, {"@type": "ListItem", "position": 4, "name": "Maisons-Alfort"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Débarras et nettoyage à Maisons-Alfort", "url": "https://net-et-net.fr/debarras-maisons-alfort/", "serviceType": "Débarras et nettoyage", "description": "Débarras et nettoyage à Maisons-Alfort (94) : appartement, pavillon, cave, garage ou local. Intervention du lundi au samedi, devis gratuit sous 24 h.", "provider": {"@id": "https://net-et-net.fr/#entreprise"}, "areaServed": {"@type": "City", "name": "Maisons-Alfort"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Débarrassez-vous les pavillons entiers à Maisons-Alfort ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui : pièces de vie, cave, garage, abri de jardin. Pour un pavillon, un échange de photos pièce par pièce nous permet de chiffrer précisément."}}, {"@type": "Question", "name": "Peut-on garder certains objets de famille ?", "acceptedAnswer": {"@type": "Answer", "text": "Bien sûr. Nous trions avec vous, ou selon vos consignes, et mettons de côté ce que vous souhaitez conserver, donner ou faire estimer."}}, {"@type": "Question", "name": "Le nettoyage de fin de bail est-il possible après votre passage ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Sols, vitres, cuisine et sanitaires peuvent être traités dans la foulée, ce qui évite de coordonner deux prestataires."}}, {"@type": "Question", "name": "Intervenez-vous pour les petites surfaces ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, un box, une cave ou un studio peuvent faire l’objet d’un devis. L’estimation en ligne vous donne déjà une fourchette indicative."}}]}</script>
@@ -367,6 +365,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

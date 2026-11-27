@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Services"}]}</script>
 </head>
 <body class="antialiased selection:bg-cyber-cyan selection:text-cyber-bg relative">
@@ -108,7 +106,7 @@
         <!-- Service 1 -->
         <div class="spotlight-card scroll-node p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div class="lg:col-span-5 overflow-hidden rounded-2xl border border-white/10">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Débarras maison et appartement" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
+            <img loading="lazy" decoding="async" src="/assets/img/debarras-maison-1080.webp" srcset="/assets/img/debarras-maison-640.webp 640w, /assets/img/debarras-maison-1080.webp 1080w" sizes="(min-width: 1024px) 600px, 100vw" width="1080" height="720" alt="Débarras maison et appartement" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
           </div>
           <div class="lg:col-span-7 spotlight-content">
             <span class="text-xs font-semibold uppercase tracking-widest text-cyber-cyan">01 • Habitation</span>
@@ -141,14 +139,14 @@
             </ul>
           </div>
           <div class="lg:col-span-5 lg:order-2 order-1 overflow-hidden rounded-2xl border border-white/10">
-            <img loading="lazy" decoding="async" src="/assets/cave-grenier.jpg" alt="Cave voûtée en pierre et grenier rangés (photo d’illustration)" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
+            <img loading="lazy" decoding="async" src="/assets/img/cave-grenier-1080.webp" srcset="/assets/img/cave-grenier-640.webp 640w, /assets/img/cave-grenier-1080.webp 1080w" sizes="(min-width: 1024px) 600px, 100vw" width="1080" height="608" alt="Cave voûtée en pierre et grenier rangés (photo d’illustration)" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
           </div>
         </div>
 
         <!-- Service 3 -->
         <div class="spotlight-card scroll-node p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div class="lg:col-span-5 overflow-hidden rounded-2xl border border-white/10">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Locaux professionnels" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
+            <img loading="lazy" decoding="async" src="/assets/img/locaux-professionnels-1080.webp" srcset="/assets/img/locaux-professionnels-640.webp 640w, /assets/img/locaux-professionnels-1080.webp 1080w" sizes="(min-width: 1024px) 600px, 100vw" width="1080" height="721" alt="Locaux professionnels" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
           </div>
           <div class="lg:col-span-7 spotlight-content">
             <span class="text-xs font-semibold uppercase tracking-widest text-cyber-coral">03 • Entreprises</span>
@@ -181,7 +179,7 @@
             </ul>
           </div>
           <div class="lg:col-span-5 lg:order-2 order-1 overflow-hidden rounded-2xl border border-white/10">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Nettoyage particulier et professionnel" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
+            <img loading="lazy" decoding="async" src="/assets/img/nettoyage-professionnel-1080.webp" srcset="/assets/img/nettoyage-professionnel-640.webp 640w, /assets/img/nettoyage-professionnel-1080.webp 1080w" sizes="(min-width: 1024px) 600px, 100vw" width="1080" height="720" alt="Nettoyage particulier et professionnel" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500" />
           </div>
         </div>
 
@@ -271,6 +269,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

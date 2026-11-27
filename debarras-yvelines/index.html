@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Zones d'intervention", "item": "https://net-et-net.fr/zones-intervention/"}, {"@type": "ListItem", "position": 3, "name": "Yvelines (78)"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Débarras et nettoyage dans les Yvelines", "url": "https://net-et-net.fr/debarras-yvelines/", "serviceType": "Débarras et nettoyage", "provider": {"@id": "https://net-et-net.fr/#entreprise"}, "areaServed": {"@type": "AdministrativeArea", "name": "Yvelines"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Débarrassez-vous les grandes maisons avec jardin ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, intérieur, cave, grenier, garage et dépendances, avec un tri préalable."}}, {"@type": "Question", "name": "Comment protégez-vous les centres anciens et les parties communes ?", "acceptedAnswer": {"@type": "Answer", "text": "Nous protégeons sols et escaliers, et nous coordonnons l’accès avec le gardien ou le syndic quand c’est nécessaire."}}, {"@type": "Question", "name": "Intervenez-vous à Mantes-la-Jolie ou Rambouillet ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, indiquez l’adresse dans votre demande : nous confirmons l’organisation dans le devis."}}, {"@type": "Question", "name": "Pouvez-vous nettoyer la maison après le débarras ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, sols, vitres, cuisine et sanitaires, avec un devis unique pour les deux prestations."}}]}</script>
@@ -388,6 +386,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Galerie"}]}</script>
 </head>
 <body class="antialiased selection:bg-cyber-cyan selection:text-cyber-bg relative">
@@ -107,7 +105,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 pb-24">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Nettoyage professionnel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img loading="lazy" decoding="async" src="/assets/img/nettoyage-professionnel-1080.webp" srcset="/assets/img/nettoyage-professionnel-640.webp 640w, /assets/img/nettoyage-professionnel-1080.webp 1080w" sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" width="1080" height="720" alt="Nettoyage professionnel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <span class="font-display font-semibold text-white text-sm sm:text-base">Nettoyage professionnel</span>
@@ -116,7 +114,7 @@
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Débarras maison" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img loading="lazy" decoding="async" src="/assets/img/debarras-maison-1080.webp" srcset="/assets/img/debarras-maison-640.webp 640w, /assets/img/debarras-maison-1080.webp 1080w" sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" width="1080" height="720" alt="Débarras maison" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <span class="font-display font-semibold text-white text-sm sm:text-base">Débarras maison</span>
@@ -125,7 +123,7 @@
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img loading="lazy" decoding="async" src="/assets/cave-grenier.jpg" alt="Vidage de cave : cave voûtée en pierre rangée (photo d’illustration)" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img loading="lazy" decoding="async" src="/assets/img/cave-grenier-1080.webp" srcset="/assets/img/cave-grenier-640.webp 640w, /assets/img/cave-grenier-1080.webp 1080w" sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" width="1080" height="608" alt="Vidage de cave : cave voûtée en pierre rangée (photo d’illustration)" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <span class="font-display font-semibold text-white text-sm sm:text-base">Vidage de cave</span>
@@ -134,7 +132,7 @@
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Locaux professionnels" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img loading="lazy" decoding="async" src="/assets/img/locaux-professionnels-1080.webp" srcset="/assets/img/locaux-professionnels-640.webp 640w, /assets/img/locaux-professionnels-1080.webp 1080w" sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" width="1080" height="721" alt="Locaux professionnels" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <span class="font-display font-semibold text-white text-sm sm:text-base">Locaux professionnels</span>
@@ -143,7 +141,7 @@
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80" alt="Nettoyage de cuisine" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img loading="lazy" decoding="async" src="/assets/img/nettoyage-cuisine-1080.webp" srcset="/assets/img/nettoyage-cuisine-640.webp 640w, /assets/img/nettoyage-cuisine-1080.webp 1080w" sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" width="1080" height="647" alt="Nettoyage de cuisine" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <span class="font-display font-semibold text-white text-sm sm:text-base">Nettoyage de cuisine</span>
@@ -152,7 +150,7 @@
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="Logement prêt à l'emploi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img loading="lazy" decoding="async" src="/assets/img/logement-pret-1080.webp" srcset="/assets/img/logement-pret-640.webp 640w, /assets/img/logement-pret-1080.webp 1080w" sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" width="1080" height="734" alt="Logement prêt à l'emploi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <span class="font-display font-semibold text-white text-sm sm:text-base">Logement prêt à l'emploi</span>
@@ -161,7 +159,7 @@
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Débarras en équipe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img loading="lazy" decoding="async" src="/assets/img/equipe-debarras-1080.webp" srcset="/assets/img/equipe-debarras-640.webp 640w, /assets/img/equipe-debarras-1080.webp 1080w" sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" width="1080" height="720" alt="Débarras en équipe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <span class="font-display font-semibold text-white text-sm sm:text-base">Débarras en équipe</span>
@@ -170,7 +168,7 @@
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80" alt="Nettoyage des sols" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img loading="lazy" decoding="async" src="/assets/img/nettoyage-sols-1080.webp" srcset="/assets/img/nettoyage-sols-640.webp 640w, /assets/img/nettoyage-sols-1080.webp 1080w" sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" width="1080" height="720" alt="Nettoyage des sols" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <span class="font-display font-semibold text-white text-sm sm:text-base">Nettoyage des sols</span>
@@ -179,7 +177,7 @@
           </div>
 
           <div onclick="openLightbox(this)" class="spotlight-card scroll-node group cursor-pointer aspect-[4/3]">
-            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=800&q=80" alt="Rangement et tri" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            <img loading="lazy" decoding="async" src="/assets/img/rangement-tri-1080.webp" srcset="/assets/img/rangement-tri-640.webp 640w, /assets/img/rangement-tri-1080.webp 1080w" sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" width="1080" height="810" alt="Rangement et tri" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-cyber-bg/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity"></div>
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <span class="font-display font-semibold text-white text-sm sm:text-base">Rangement et tri</span>
@@ -276,6 +274,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

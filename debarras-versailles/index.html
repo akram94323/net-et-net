@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Zones d'intervention", "item": "https://net-et-net.fr/zones-intervention/"}, {"@type": "ListItem", "position": 3, "name": "Yvelines (78)", "item": "https://net-et-net.fr/debarras-yvelines/"}, {"@type": "ListItem", "position": 4, "name": "Versailles"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Débarras et nettoyage à Versailles", "url": "https://net-et-net.fr/debarras-versailles/", "serviceType": "Débarras et nettoyage", "description": "Débarras de maisons, appartements, caves et greniers à Versailles (78), nettoyage avant vente. Devis gratuit sous 24 h, sur photos.", "provider": {"@id": "https://net-et-net.fr/#entreprise"}, "areaServed": {"@type": "City", "name": "Versailles"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Comment protégez-vous les parquets et les escaliers anciens ?", "acceptedAnswer": {"@type": "Answer", "text": "Nous protégeons les sols et les parties communes lors du portage, et nous adaptons les moyens de manutention aux escaliers étroits."}}, {"@type": "Question", "name": "Pouvez-vous aider à trier des objets de valeur ?", "acceptedAnswer": {"@type": "Answer", "text": "Nous mettons de côté les objets que vous souhaitez conserver ou faire estimer. Nous ne sommes pas commissaires-priseurs, mais nous vous laissons le temps de décider."}}, {"@type": "Question", "name": "Le stationnement près du centre est-il un problème ?", "acceptedAnswer": {"@type": "Answer", "text": "Parfois. Nous étudions l’adresse en amont et nous prévoyons un emplacement adapté pour le camion."}}, {"@type": "Question", "name": "Faites-vous aussi le nettoyage avant la vente ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, après le débarras, nous nettoyons le logement pour les visites ou l’état des lieux."}}]}</script>
@@ -367,6 +365,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

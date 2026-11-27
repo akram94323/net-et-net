@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Zones d'intervention", "item": "https://net-et-net.fr/zones-intervention/"}, {"@type": "ListItem", "position": 3, "name": "Val-de-Marne (94)"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Débarras et nettoyage dans le Val-de-Marne", "url": "https://net-et-net.fr/debarras-val-de-marne/", "serviceType": "Débarras et nettoyage", "provider": {"@id": "https://net-et-net.fr/#entreprise"}, "areaServed": {"@type": "AdministrativeArea", "name": "Val-de-Marne"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Où est situé votre siège dans le Val-de-Marne ?", "acceptedAnswer": {"@type": "Answer", "text": "Net & Net est basé au 13 avenue du Docteur Antoine Lacroix, 94270 Le Kremlin-Bicêtre."}}, {"@type": "Question", "name": "Intervenez-vous près de la Marne comme près de la Seine ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, sur tout le département : bords de Seine, bords de Marne, centres anciens et secteurs pavillonnaires."}}, {"@type": "Question", "name": "Pouvez-vous libérer un local d’activité ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, mobilier, rayonnages, matériel non dangereux et stock, avec nettoyage final possible."}}, {"@type": "Question", "name": "Peut-on vous confier un pavillon entier ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, pièces de vie, cave, garage et jardin, avec un tri préalable avec vous."}}]}</script>
@@ -424,6 +422,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

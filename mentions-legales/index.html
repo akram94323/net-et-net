@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
 </head>
 <body class="antialiased selection:bg-cyber-cyan selection:text-cyber-bg relative">
   <a href="#contenu" class="skip-link">Aller au contenu</a>
@@ -100,7 +98,7 @@
           Informations légales
         </span>
         <h1 class="font-display text-4xl sm:text-5xl font-bold text-white mb-3">Mentions légales</h1>
-        <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">Dernière mise à jour : 19 novembre 2026</p>
+        <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">Dernière mise à jour : 27 novembre 2026</p>
       </div>
 
       <div class="max-w-3xl mx-auto px-4 sm:px-6 pb-24 space-y-6">
@@ -151,7 +149,7 @@
             <li><strong class="text-white">Destinataires :</strong> l'éditeur uniquement. Pour recevoir et conserver les demandes, il utilise des prestataires techniques : Google (messagerie et stockage Google Drive) et Telegram (notification interne, limitée aux informations essentielles). Ces prestataires peuvent traiter des données en dehors de l'Union européenne, dans les conditions prévues par le RGPD.</li>
             <li><strong class="text-white">Durée de conservation :</strong> 12 mois à compter de la demande lorsqu'elle n'aboutit pas à une prestation, puis suppression. En cas de prestation, les données nécessaires à la facturation et à la comptabilité sont conservées pendant les durées légales.</li>
             <li><strong class="text-white">Vos droits :</strong> accès, rectification, effacement, limitation, opposition et portabilité de vos données, en écrivant à <a href="mailto:contact@net-et-net.fr" class="text-cyber-cyan hover:underline">contact@net-et-net.fr</a>. Vous pouvez aussi introduire une réclamation auprès de la CNIL (<a href="https://www.cnil.fr" target="_blank" rel="noopener" class="text-cyber-cyan hover:underline">www.cnil.fr</a>).</li>
-            <li><strong class="text-white">Cookies et ressources tierces :</strong> ce site ne dépose de cookies de mesure d'audience ou de publicité (Google) qu'avec votre accord, que vous pouvez modifier à tout moment via « Gérer mes cookies » en bas de page (détails dans notre <a href="/confidentialite/" class="text-cyber-cyan hover:underline">politique de confidentialité et de cookies</a>). Pour s'afficher, il charge aussi des ressources hébergées par des tiers (polices Google Fonts et photos d'illustration Unsplash) : votre adresse IP est alors transmise à ces services.</li>
+            <li><strong class="text-white">Cookies et ressources tierces :</strong> ce site ne dépose de cookies de mesure d'audience ou de publicité (Google) qu'avec votre accord, que vous pouvez modifier à tout moment via « Gérer mes cookies » en bas de page (détails dans notre <a href="/confidentialite/" class="text-cyber-cyan hover:underline">politique de confidentialité et de cookies</a>). Les polices et les photos sont hébergées directement sur ce site : leur affichage ne transmet aucune donnée à un service tiers.</li>
           </ul>
         </div>
 
@@ -261,6 +259,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

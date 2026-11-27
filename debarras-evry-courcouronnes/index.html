@@ -29,13 +29,11 @@
   <!-- Le contenu reste visible même si JavaScript est désactivé -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Polices : chargées sans bloquer l'affichage -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <!-- Polices hébergées sur le site : aucune donnée envoyée à Google -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
 
-  <link rel="stylesheet" href="/assets/style.css?v=20261123" />
+  <link rel="stylesheet" href="/assets/style.css?v=20261127" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://net-et-net.fr/"}, {"@type": "ListItem", "position": 2, "name": "Zones d'intervention", "item": "https://net-et-net.fr/zones-intervention/"}, {"@type": "ListItem", "position": 3, "name": "Essonne (91)", "item": "https://net-et-net.fr/debarras-essonne/"}, {"@type": "ListItem", "position": 4, "name": "Évry-Courcouronnes"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Débarras et nettoyage à Évry-Courcouronnes", "url": "https://net-et-net.fr/debarras-evry-courcouronnes/", "serviceType": "Débarras et nettoyage", "description": "Débarras d’appartement, cave et local à Évry-Courcouronnes (91), préfecture de l’Essonne. Nettoyage fin de bail, devis gratuit sous 24 h.", "provider": {"@id": "https://net-et-net.fr/#entreprise"}, "areaServed": {"@type": "City", "name": "Évry-Courcouronnes"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Intervenez-vous à Évry comme à Courcouronnes ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, sur toute la commune nouvelle, centre comme quartiers périphériques."}}, {"@type": "Question", "name": "Comment gérez-vous les accès piétons du centre ?", "acceptedAnswer": {"@type": "Answer", "text": "Nous vérifions avec vous le chemin entre le camion et l’entrée, et nous adaptons le portage."}}, {"@type": "Question", "name": "Pouvez-vous nettoyer des bureaux après vidage ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, nettoyage ponctuel des locaux après évacuation, avec un devis unique."}}, {"@type": "Question", "name": "Faut-il des photos pour un devis ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, elles permettent de chiffrer précisément. Ajoutez la surface et l’étage."}}]}</script>
@@ -367,6 +365,6 @@
     <svg class="ic text-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg>
   </button>
 
-  <script src="/assets/app.js?v=20261123" defer></script>
+  <script src="/assets/app.js?v=20261127" defer></script>
 </body>
 </html>

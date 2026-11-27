@@ -519,13 +519,8 @@
           showFieldsError(fieldsMessage);
         }
 
-        const errPhotos = document.getElementById('err-photos');
-        if (uploadedPhotos.length === 0) {
-          errPhotos.classList.remove('hidden');
-          isValid = false;
-        } else {
-          errPhotos.classList.add('hidden');
-        }
+        // Photos facultatives : on n'empêche plus l'envoi sans photo
+        document.getElementById('err-photos').classList.add('hidden');
 
         if (!isValid) return;
 

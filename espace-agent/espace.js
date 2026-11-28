@@ -190,7 +190,7 @@
 
   /* ---------------- Fiche client ---------------- */
   const TARIFS = { prixM3: 50, diviseur: { leger: 4, moyen: 2, charge: 1 }, parEtage: 0.10, loin: 0.10, insalubre: 0.50,
-    netM2: { apres_debarras: 5, finbail: 8, travaux: 13 }, tresSale: 0.50, minimum: 350, bas: 0.85, haut: 1.25 };
+    netM2: { apres_debarras: 5, finbail: 8, travaux: 13 }, tresSale: 0.50, bas: 0.85, haut: 1.25 };
   function estimation(c) {
     const surface = parseFloat(String(c.surface || '').replace(',', '.'));
     if (!(surface >= 1 && surface <= 2000)) return null;
@@ -211,8 +211,7 @@
       else if (!deb) return null;
     }
     const r10 = n => Math.round(n / 10) * 10;
-    total = Math.max(total, TARIFS.minimum);
-    const min = Math.max(TARIFS.minimum, r10(total * TARIFS.bas));
+    const min = r10(total * TARIFS.bas);
     return { min: min, max: Math.max(min, r10(total * TARIFS.haut)) };
   }
 

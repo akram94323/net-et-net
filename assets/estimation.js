@@ -15,7 +15,6 @@
     insalubre: 0.50,
     nettoyageM2: { apres_debarras: 5, finbail: 8, travaux: 13 },   // « regulier » = sur devis
     nettoyageTresSale: 0.50,
-    minimum: 350,                                                  // prix minimum d'intervention (€)
     marge: { bas: 0.85, haut: 1.25 }
   };
 
@@ -110,8 +109,7 @@
     if (r.surDevis && !withDebarras) return r;
 
     let total = r.total;
-    if (total < TARIFS.minimum) { r.lignes.push(['Ajustement au minimum d’intervention', TARIFS.minimum - total]); total = TARIFS.minimum; }
-    r.min = Math.max(TARIFS.minimum, fmt(total * TARIFS.marge.bas));
+    r.min = fmt(total * TARIFS.marge.bas);
     r.max = Math.max(r.min, fmt(total * TARIFS.marge.haut));
     return r;
   }

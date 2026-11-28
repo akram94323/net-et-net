@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espace agent | Net &amp; Net</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="theme-color" content="#0e7490" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/assets/fonts.css?v=20261127" />
+  <link rel="stylesheet" href="/espace-agent/espace.css?v=20261128" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Net <span>&amp;</span> Net <small>Espace agent</small></div>
+    <div class="clock" id="horloge" title="Heure en France"></div>
+    <div class="who" id="who" hidden>
+      <span id="who-nom"></span>
+      <button type="button" class="btn-ghost" id="btn-deconnexion">Déconnexion</button>
+    </div>
+  </header>
+
+  <!-- Connexion -->
+  <main id="ecran-connexion" class="login">
+    <div class="card login-card">
+      <h1>Espace agent</h1>
+      <p>Connecte-toi avec ton compte Google professionnel.</p>
+      <div id="login-btn"></div>
+      <p class="muted small" id="login-msg"></p>
+      <p class="muted small">Accès réservé. Toutes les connexions sont enregistrées.</p>
+    </div>
+  </main>
+
+  <!-- Tableau de bord -->
+  <main id="ecran-tableau" hidden>
+    <section class="consigne" id="consigne" hidden></section>
+
+    <section class="kpis" id="kpis"></section>
+
+    <div class="layout">
+      <aside class="card file">
+        <div class="tabs" role="tablist">
+          <button type="button" role="tab" class="tab active" data-tab="nouvelles">📞 Nouvelles <b id="n-nouvelles">0</b></button>
+          <button type="button" role="tab" class="tab" data-tab="rappels">⏰ Rappels <b id="n-rappels">0</b></button>
+          <button type="button" role="tab" class="tab" data-tab="prospects">🏢 Pros <b id="n-prospects">0</b></button>
+        </div>
+        <div id="liste" class="liste"></div>
+        <button type="button" class="btn-ghost full" id="btn-ajout-prospect" hidden>+ Ajouter un prospect</button>
+      </aside>
+
+      <section class="card detail" id="detail">
+        <div class="vide">
+          <p class="big">📋</p>
+          <p>Choisis un client ou un prospect dans la liste.</p>
+          <p class="muted small">Les nouvelles demandes sont triées de la plus ancienne à la plus récente : appelle toujours celle du haut en premier.</p>
+        </div>
+      </section>
+    </div>
+
+    <section class="card ressources">
+      <h2>📚 Mes documents</h2>
+      <div class="liens" id="liens"></div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="/espace-agent/espace.js?v=20261128" defer></script>
+</body>
+</html>
